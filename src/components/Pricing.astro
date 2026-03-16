@@ -1,0 +1,116 @@
+---
+import type { Translations } from '../i18n/translations';
+
+interface Props {
+  t: Translations['pricing'];
+  lang: 'en' | 'es';
+}
+
+const { t, lang } = Astro.props;
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+---
+
+<section id="pricing" class="section-padding relative overflow-hidden">
+
+  <div class="section-container relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="badge mb-4" style="margin-left:auto;margin-right:auto;width:fit-content">{t.badge}</div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+        {t.headline}
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 text-lg">{t.subheadline}</p>
+    </div>
+
+    <!-- Plans grid — 4 columns on xl, 2 on md, 1 on sm -->
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-5 items-stretch">
+      {t.plans.map((plan) => (
+        <div
+          class={`relative flex flex-col rounded-2xl p-5 lg:p-6 transition-all duration-300 ${
+            plan.featured
+              ? 'border-2 border-indigo-500/60 shadow-glow'
+              : 'card-glass'
+          }`}
+          style={plan.featured ? 'background: rgba(99,102,241,0.07)' : ''}
+        >
+          <!-- Popular badge -->
+          {plan.featured && plan.badge && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+              <span
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white whitespace-nowrap"
+                style="background: #6366f1; box-shadow: 0 0 20px rgba(99,102,241,0.4);"
+              >
+                <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                {plan.badge}
+              </span>
+            </div>
+          )}
+
+          <!-- Plan name & description -->
+          <div class="mb-4">
+            <h3 class="text-slate-900 dark:text-white font-bold text-base mb-1">{plan.name}</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{plan.description}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="mb-3">
+            {plan.price === null ? (
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white">Custom</span>
+            ) : (
+              <div class="flex items-baseline gap-0.5">
+                <span class="text-3xl font-extrabold text-slate-900 dark:text-white">{plan.currency}{plan.price}</span>
+                <span class="text-slate-400 text-sm">{plan.period}</span>
+              </div>
+            )}
+          </div>
+
+          <!-- Token indicator -->
+          <div
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg mb-4 text-xs font-medium"
+            style="background: rgba(99,102,241,0.08); color: #818cf8; border: 1px solid rgba(99,102,241,0.2);"
+          >
+            <svg class="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 2.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+            </svg>
+            {plan.tokens}
+          </div>
+
+          <!-- CTA -->
+          <a
+            href={plan.price === null ? 'mailto:sales@strategicdecision.ai' : `${APP_URL}/register`}
+            class={`mb-5 text-sm font-semibold py-2.5 rounded-xl text-center transition-all duration-200 ${
+              plan.ctaVariant === 'primary' ? 'btn-primary' : 'btn-outline'
+            }`}
+          >
+            {plan.cta}
+          </a>
+
+          <!-- Divider -->
+          <div style="height:1px;background:rgba(148,163,184,0.2);margin-bottom:1.25rem;" aria-hidden="true"></div>
+
+          <!-- Features list -->
+          <ul class="space-y-2 flex-1">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                <svg class="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+            {plan.notIncluded.map((feature) => (
+              <li class="flex items-start gap-2 text-xs text-slate-400 dark:text-slate-600">
+                <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

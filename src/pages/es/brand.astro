@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'es';
+const t = translations[lang];
+
+const assets = [
+  {
+    label: 'Logo Completo — Claro',
+    description: 'Para uso sobre fondos blancos o claros',
+    preview: '/logo-full.svg',
+    previewBg: '#f8fafc',
+    files: [
+      { name: 'SVG', href: '/logo-full.svg',  ext: 'svg' },
+      { name: 'PDF', href: '/logo-full.pdf',  ext: 'pdf' },
+      { name: 'EPS', href: '/logo-full.eps',  ext: 'eps' },
+    ],
+  },
+  {
+    label: 'Logo Completo — Oscuro',
+    description: 'Para uso sobre fondos oscuros o materiales en dark',
+    preview: '/logo-full-dark.svg',
+    previewBg: '#05090f',
+    files: [
+      { name: 'SVG', href: '/logo-full-dark.svg',  ext: 'svg' },
+      { name: 'PDF', href: '/logo-full-dark.pdf',  ext: 'pdf' },
+      { name: 'EPS', href: '/logo-full-dark.eps',  ext: 'eps' },
+    ],
+  },
+  {
+    label: 'Icono',
+    description: 'Solo el diamante — para favicons, iconos de app y avatares',
+    preview: '/logo-mark.svg',
+    previewBg: '#0d1424',
+    files: [
+      { name: 'SVG', href: '/logo-mark.svg', ext: 'svg' },
+      { name: 'PDF', href: '/logo-mark.pdf', ext: 'pdf' },
+      { name: 'Favicon', href: '/favicon.svg', ext: 'svg' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title="Recursos de Marca — Strategic Decision"
+  description="Descarga los archivos oficiales del logotipo de Strategic Decision en formatos SVG y EPS."
+>
+  <Nav t={t.nav} lang={lang} />
+
+  <main class="pt-24 pb-20">
+    <div class="section-container">
+
+      <div class="mb-12">
+        <div class="badge mb-4" style="width:fit-content">Recursos de marca</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+          Logo y Archivos de Marca
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
+          Archivos oficiales del logotipo para todos los usos. SVG es el formato recomendado para web y digital.
+          El EPS usa la fuente Helvetica — ábrelo en Illustrator y aplica
+          <strong class="text-slate-700 dark:text-slate-300">Texto → Crear Contornos</strong>
+          para convertir el texto a trazados en materiales impresos.
+        </p>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">Colores de marca</h2>
+        <div class="flex flex-wrap gap-3">
+          {[
+            { name: 'Índigo',       hex: '#6366f1' },
+            { name: 'Índigo Claro', hex: '#818cf8' },
+            { name: 'Midnight',     hex: '#05090f' },
+            { name: 'Navy',         hex: '#0d1424' },
+            { name: 'Slate',        hex: '#f8fafc' },
+          ].map(c => (
+            <div class="flex items-center gap-3 card-glass rounded-xl px-4 py-3">
+              <div class="w-8 h-8 rounded-lg flex-shrink-0" style={`background:${c.hex}`}></div>
+              <div>
+                <div class="text-xs font-semibold text-slate-900 dark:text-white">{c.name}</div>
+                <div class="text-xs font-mono text-slate-500">{c.hex}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">Descargas</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {assets.map(asset => (
+          <div class="card-glass rounded-2xl overflow-hidden">
+            <div class="flex items-center justify-center p-10" style={`background: ${asset.previewBg}`}>
+              <img src={asset.preview} alt={asset.label} class="h-10 w-auto" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 dark:text-white text-sm mb-1">{asset.label}</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">{asset.description}</p>
+              <div class="flex gap-2 flex-wrap">
+                {asset.files.map(file => (
+                  <a
+                    href={file.href}
+                    download
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-200 dark:border-white/[0.12] text-slate-700 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+                    </svg>
+                    {file.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 p-5 rounded-2xl border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/5">
+        <p class="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+          <strong>Guía de uso:</strong> No alteres las proporciones, colores ni apliques efectos al logotipo.
+          Mantén un espacio libre equivalente a la altura del diamante en todos los lados.
+          Para consultas contacta <a href="mailto:hello@strategicdecision.ai" class="underline">hello@strategicdecision.ai</a>.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>

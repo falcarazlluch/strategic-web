@@ -1,0 +1,64 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 285 52
+%%LanguageLevel: 2
+%%Creator: Strategic Decision
+%%Title: (Strategic Decision Logo - Light)
+%%EndComments
+
+%%BeginProlog
+%%EndProlog
+
+gsave
+
+% ── Diamond mark ─────────────────────────────────────────────
+% SVG: translate(0,2), M24 3 L45 24 L24 45 L3 24
+% PS (y = 52 - svg_y - 2): M24 47 L45 26 L24 5 L3 26
+0.388 0.400 0.945 setrgbcolor
+newpath
+  24 47 moveto
+  45 26 lineto
+  24  5 lineto
+   3 26 lineto
+closepath
+fill
+
+% Grid lines — white at 35% opacity blended on indigo
+0.620 0.627 0.969 setrgbcolor
+1.4 setlinewidth
+1 setlinecap
+% H: SVG y=24 → PS y=52-24-2=26, x from 6 to 42
+newpath  6 26 moveto  42 26 lineto  stroke
+% V: SVG x=24, y from 6 to 42 → PS y from 44 to 8
+newpath 24 44 moveto  24  8 lineto  stroke
+
+% Corner dots
+0.753 0.757 0.976 setrgbcolor
+newpath 24 44  2 0 360 arc closepath fill
+newpath 42 26  2 0 360 arc closepath fill
+newpath 24  8  2 0 360 arc closepath fill
+newpath  6 26  2 0 360 arc closepath fill
+
+% ── Wordmark ─────────────────────────────────────────────────
+% SVG baseline y=36 → PS y = 52-36 = 16
+
+% "Strategic" — #0f172a
+0.059 0.090 0.161 setrgbcolor
+/Helvetica-Bold findfont 24 scalefont setfont
+64 16 moveto
+(Strategic) show
+
+% "Decision" — #6366f1 (same weight as Strategic)
+0.388 0.400 0.945 setrgbcolor
+/Helvetica-Bold findfont 24 scalefont setfont
+166 16 moveto
+(Decision) show
+
+% ".ai" — #818cf8 at 65% on white ≈ #B0B5FA
+0.690 0.710 0.980 setrgbcolor
+/Helvetica findfont 15 scalefont setfont
+% SVG y = 36+2=38 → PS y = 52-38 = 14
+265 14 moveto
+(.ai) show
+
+grestore
+%%EOF

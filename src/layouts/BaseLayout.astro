@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  lang: 'en' | 'es';
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogImage?: string;
+}
+
+const {
+  lang,
+  title,
+  description,
+  ogTitle = title,
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const alternateLang = lang === 'en' ? 'es' : 'en';
+const alternateURL  = new URL(
+  Astro.url.pathname.replace(`/${lang}/`, `/${alternateLang}/`),
+  Astro.site,
+);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Inline theme script: run before render to prevent flash -->
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('sd-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved !== null ? saved : (prefersDark ? 'dark' : 'dark'); // default dark
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+      })();
+    </script>
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={alternateLang} href={alternateURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/en/', Astro.site)} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:title"       content={ogTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale"      content={lang === 'en' ? 'en_US' : 'es_ES'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={ogTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={new URL(ogImage, Astro.site)} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="overflow-x-hidden">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,62 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 285 52
+%%LanguageLevel: 2
+%%Creator: Strategic Decision
+%%Title: (Strategic Decision Logo - Dark)
+%%EndComments
+
+%%BeginProlog
+%%EndProlog
+
+gsave
+
+% ── Dark background ──────────────────────────────────────────
+0.020 0.035 0.059 setrgbcolor
+0 0 285 52 rectfill
+
+% ── Diamond mark ─────────────────────────────────────────────
+0.388 0.400 0.945 setrgbcolor
+newpath
+  24 47 moveto
+  45 26 lineto
+  24  5 lineto
+   3 26 lineto
+closepath
+fill
+
+% Grid lines — white 35% opacity on dark background
+0.420 0.430 0.710 setrgbcolor
+1.4 setlinewidth
+1 setlinecap
+newpath  6 26 moveto  42 26 lineto  stroke
+newpath 24 44 moveto  24  8 lineto  stroke
+
+% Corner dots
+0.510 0.520 0.800 setrgbcolor
+newpath 24 44  2 0 360 arc closepath fill
+newpath 42 26  2 0 360 arc closepath fill
+newpath 24  8  2 0 360 arc closepath fill
+newpath  6 26  2 0 360 arc closepath fill
+
+% ── Wordmark ─────────────────────────────────────────────────
+
+% "Strategic" — off-white #f1f5f9
+0.945 0.961 0.976 setrgbcolor
+/Helvetica-Bold findfont 24 scalefont setfont
+64 16 moveto
+(Strategic) show
+
+% "Decision" — indigo-400 #818cf8
+0.506 0.549 0.973 setrgbcolor
+/Helvetica-Bold findfont 24 scalefont setfont
+166 16 moveto
+(Decision) show
+
+% ".ai" — muted indigo (70% opacity on dark)
+0.361 0.396 0.698 setrgbcolor
+/Helvetica findfont 15 scalefont setfont
+265 14 moveto
+(.ai) show
+
+grestore
+%%EOF

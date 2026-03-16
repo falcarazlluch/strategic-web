@@ -1,0 +1,15 @@
+---
+// Root: detect browser language and redirect
+---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script>
+      const lang = navigator.language?.toLowerCase().startsWith('es') ? 'es' : 'en';
+      window.location.replace('/' + lang + '/');
+    </script>
+  </head>
+  <body></body>
+</html>

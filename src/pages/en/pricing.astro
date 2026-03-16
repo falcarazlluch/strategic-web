@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Pricing from '../../components/Pricing.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const t = translations[lang];
+---
+
+<BaseLayout
+  lang={lang}
+  title={`Pricing — ${t.meta.title}`}
+  description="Simple, transparent pricing. Start free, upgrade when you need more. No hidden fees."
+>
+  <Nav t={t.nav} lang={lang} />
+  <main class="pt-16">
+    <Pricing t={t.pricing} lang={lang} />
+    <CTA t={t.cta} />
+  </main>
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>

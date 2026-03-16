@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import VideoSection from '../../components/VideoSection.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Pricing from '../../components/Pricing.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'es';
+const t = translations[lang];
+---
+
+<BaseLayout lang={lang} title={t.meta.title} description={t.meta.description} ogTitle={t.meta.ogTitle}>
+  <Nav t={t.nav} lang={lang} />
+  <main>
+    <Hero         t={t.hero}         lang={lang} />
+    <Features     t={t.features} />
+    <HowItWorks   t={t.howItWorks} />
+    <VideoSection t={t.video}        lang={lang} />
+    <Testimonials t={t.testimonials} />
+    <Pricing      t={t.pricing}      lang={lang} />
+    <CTA          t={t.cta} />
+  </main>
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>
