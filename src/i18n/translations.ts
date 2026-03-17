@@ -155,8 +155,10 @@ export const translations = {
           ],
           notIncluded: [
             'On-screen report editing',
+            'Report regeneration',
             'AI report refinement agent (Aris)',
             'Strategic history & memory',
+            'Early access to new features',
           ],
         },
         {
@@ -454,8 +456,10 @@ export const translations = {
           ],
           notIncluded: [
             'Edición de informe en pantalla',
+            'Regeneración de informe',
             'Mejora de informe conversacional con agente IA (Aris)',
             'Historial y memoria estratégica',
+            'Acceso anticipado a nuevas funciones',
           ],
         },
         {
