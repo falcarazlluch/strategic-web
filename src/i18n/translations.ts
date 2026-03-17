@@ -5,7 +5,7 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — AI-Powered Strategic Intelligence',
       description:
-        'Generate comprehensive McKinsey-style strategic reports in minutes. Powered by GPT-4o, tailored to your company\'s specific context.',
+        'Generate comprehensive boardroom-ready strategic reports in minutes. Powered by GPT-4o, tailored to your company\'s specific context.',
       ogTitle: 'Strategic Decision — Turn Business Challenges Into Boardroom-Ready Strategy',
     },
     nav: {
@@ -19,7 +19,7 @@ export const translations = {
       badge: 'Now powered by GPT-4o',
       headline: 'Turn Business Challenges Into Boardroom-Ready Strategy',
       subheadline:
-        'Generate comprehensive McKinsey-style strategic reports in minutes — not months. GPT-4o learns your company\'s context before producing a single insight.',
+        'Generate comprehensive strategic reports in minutes — not months. GPT-4o learns your company\'s context before producing a single insight.',
       ctaPrimary: 'Start Now',
       ctaSecondary: 'See how it works',
       stats: [
@@ -55,7 +55,7 @@ export const translations = {
         },
         {
           icon: 'document',
-          title: 'McKinsey-Style Reports',
+          title: 'Boardroom-Ready Reports',
           description:
             'Executive summaries, strategic frameworks, financial projections, and implementation roadmaps — structured for maximum boardroom impact.',
         },
@@ -102,7 +102,7 @@ export const translations = {
           number: '02',
           title: 'AI Intake Interview',
           description:
-            'The AI asks 5–8 targeted clarifying questions — just like a McKinsey partner would — to understand the full strategic picture.',
+            'The AI asks 5–8 targeted clarifying questions — just like a seasoned strategy partner would — to understand the full strategic picture.',
           time: '5 min',
         },
         {
@@ -242,7 +242,7 @@ export const translations = {
       items: [
         {
           quote:
-            'We used to spend €80,000 on a McKinsey engagement for the kind of analysis Strategic Decision generates in 10 minutes. The quality is genuinely comparable.',
+            'We used to spend €80,000 on a strategy consulting engagement for the kind of analysis Strategic Decision generates in 10 minutes. The quality is genuinely comparable.',
           name: 'Marcus Chen',
           title: 'Chief Strategy Officer',
           company: 'Nexus Capital Group',
@@ -289,7 +289,7 @@ export const translations = {
         privacy:   'Privacy Policy',
         terms:     'Terms of Service',
       },
-      copyright: '© 2025 Strategic Decision. All rights reserved.',
+      copyright: '© {year} Strategic Decision. All rights reserved.',
       madeWith: 'Built for leaders who move fast.',
     },
   },
@@ -299,7 +299,7 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — Inteligencia Estratégica con IA',
       description:
-        'Genera informes estratégicos al estilo McKinsey en minutos. Impulsado por GPT-4o, adaptado al contexto específico de tu empresa.',
+        'Genera informes estratégicos de nivel directivo en minutos. Impulsado por GPT-4o, adaptado al contexto específico de tu empresa.',
       ogTitle: 'Strategic Decision — Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
     },
     nav: {
@@ -313,7 +313,7 @@ export const translations = {
       badge: 'Ahora con GPT-4o',
       headline: 'Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
       subheadline:
-        'Genera informes estratégicos al estilo McKinsey en minutos, no en meses. GPT-4o aprende el contexto específico de tu empresa antes de producir una sola recomendación.',
+        'Genera informes estratégicos de alto nivel en minutos, no en meses. GPT-4o aprende el contexto específico de tu empresa antes de producir una sola recomendación.',
       ctaPrimary: 'Empieza Ahora',
       ctaSecondary: 'Cómo funciona',
       stats: [
@@ -349,7 +349,7 @@ export const translations = {
         },
         {
           icon: 'document',
-          title: 'Informes Estilo McKinsey',
+          title: 'Informes para el Consejo',
           description:
             'Resúmenes ejecutivos, marcos estratégicos, proyecciones financieras y hojas de ruta de implementación — estructurados para el máximo impacto en el consejo.',
         },
@@ -396,7 +396,7 @@ export const translations = {
           number: '02',
           title: 'Entrevista de Intake con IA',
           description:
-            'La IA hace de 5 a 8 preguntas de aclaración específicas — exactamente como lo haría un socio de McKinsey — para entender el panorama estratégico completo.',
+            'La IA hace de 5 a 8 preguntas de aclaración específicas — exactamente como lo haría un estratega senior — para entender el panorama estratégico completo.',
           time: '5 min',
         },
         {
@@ -536,7 +536,7 @@ export const translations = {
       items: [
         {
           quote:
-            'Antes gastábamos 80.000 € en un proyecto de McKinsey para el tipo de análisis que Strategic Decision genera en 10 minutos. La calidad es genuinamente comparable.',
+            'Antes gastábamos 80.000 € en consultoría estratégica para el tipo de análisis que Strategic Decision genera en 10 minutos. La calidad es genuinamente comparable.',
           name: 'Marcus Chen',
           title: 'Chief Strategy Officer',
           company: 'Nexus Capital Group',
@@ -583,7 +583,7 @@ export const translations = {
         privacy:   'Política de Privacidad',
         terms:     'Términos de Servicio',
       },
-      copyright: '© 2025 Strategic Decision. Todos los derechos reservados.',
+      copyright: '© {year} Strategic Decision. Todos los derechos reservados.',
       madeWith: 'Construido para líderes que se mueven rápido.',
     },
   },

@@ -7,8 +7,9 @@ interface Props {
 }
 
 const { t, lang } = Astro.props;
-const base    = `/${lang}`;
-const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+const base      = `/${lang}`;
+const APP_URL   = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+const copyright = t.copyright.replace('{year}', new Date().getFullYear().toString());
 ---
 
 <footer class="border-t border-slate-200 dark:border-white/[0.07] bg-slate-100 dark:bg-navy">
@@ -58,7 +59,7 @@ const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel
     </div>
 
     <div class="pt-6 border-t border-slate-200 dark:border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-3">
-      <p class="text-slate-400 text-xs">{t.copyright}</p>
+      <p class="text-slate-400 text-xs">{copyright}</p>
       <p class="text-slate-400/50 text-xs">{t.madeWith}</p>
     </div>
   </div>
