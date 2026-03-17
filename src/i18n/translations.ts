@@ -154,9 +154,6 @@ export const translations = {
             'Basic PDF export',
           ],
           notIncluded: [
-            'Multi-strategy reports',
-            'Extended company information upload',
-            'Personalised PDF & Word export',
             'On-screen report editing',
             'AI report refinement agent (Aris)',
             'Strategic history & memory',
@@ -213,11 +210,7 @@ export const translations = {
             'Strategic history & memory',
             'Early access to new features',
           ],
-          notIncluded: [
-            'Custom integrations',
-            'SSO & SAML',
-            'Dedicated account manager',
-          ],
+          notIncluded: [],
         },
         {
           name: 'Enterprise',
@@ -464,9 +457,6 @@ export const translations = {
             'Exportación PDF básico',
           ],
           notIncluded: [
-            'Informes multi-estrategia',
-            'Información amplia de la empresa (mejor resultado)',
-            'Exportación PDF y Word personalizado',
             'Edición de informe en pantalla',
             'Mejora de informe conversacional con agente IA (Aris)',
             'Historial y memoria estratégica',
@@ -523,11 +513,7 @@ export const translations = {
             'Historial y memoria estratégica',
             'Acceso anticipado a nuevas funciones',
           ],
-          notIncluded: [
-            'Integraciones personalizadas',
-            'SSO y SAML',
-            'Account manager dedicado',
-          ],
+          notIncluded: [],
         },
         {
           name: 'Enterprise',
