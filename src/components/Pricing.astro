@@ -79,7 +79,7 @@ const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel
 
           <!-- CTA -->
           <a
-            href={plan.price === null ? 'mailto:sales@strategicdecision.ai' : `${APP_URL}/register`}
+            href={plan.price === null ? 'mailto:info@strategicdecision.ai' : `${APP_URL}/register?plan=${plan.name.toLowerCase()}`}
             class={`mb-5 text-sm font-semibold py-2.5 rounded-xl text-center transition-all duration-200 ${
               plan.ctaVariant === 'primary' ? 'btn-primary' : 'btn-outline'
             }`}

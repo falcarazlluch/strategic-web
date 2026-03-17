@@ -7,7 +7,9 @@ const otherLang = lang === 'en' ? 'es' : 'en';
 
 // Swap the locale prefix in the current path
 const currentPath = Astro.url.pathname;
-const otherPath   = currentPath.replace(`/${lang}/`, `/${otherLang}/`) || `/${otherLang}/`;
+const otherPath   = currentPath.includes(`/${lang}/`)
+  ? currentPath.replace(`/${lang}/`, `/${otherLang}/`)
+  : `/${otherLang}/`;
 ---
 
 <a
