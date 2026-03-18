@@ -10,6 +10,7 @@ import Testimonials from '../../components/Testimonials.astro';
 import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
+import ArisChat from '../../components/ArisChat.astro';
 
 const lang = 'en';
 const t = translations[lang];
@@ -27,4 +28,5 @@ const t = translations[lang];
     <CTA          t={t.cta} />
   </main>
   <Footer t={t.footer} lang={lang} />
+  <ArisChat lang={lang} />
 </BaseLayout>

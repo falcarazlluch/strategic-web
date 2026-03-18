@@ -1,0 +1,418 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://strategic-backend-production.up.railway.app/api/v1';
+
+const i18n = {
+  es: {
+    greeting: '¡Hola! Soy **Aris**, tu asistente en Strategic Decision.\n\n¿En qué puedo ayudarte hoy?',
+    subtitle: 'Asistente de Strategic Decision',
+    placeholder: 'Escribe tu pregunta...',
+    error: 'Ha ocurrido un error. Por favor, inténtalo de nuevo.',
+    typing: 'Escribiendo...',
+    suggestions: [
+      '¿Cómo genero un informe estratégico?',
+      '¿Qué funcionalidades incluye cada plan?',
+      '¿Para qué sirve Aris en el informe?',
+      '¿Cómo exporto a PDF o Word?',
+      '¿Cómo empiezo a usar la plataforma?',
+    ],
+  },
+  en: {
+    greeting: 'Hi! I\'m **Aris**, your Strategic Decision assistant.\n\nHow can I help you today?',
+    subtitle: 'Strategic Decision assistant',
+    placeholder: 'Type your question...',
+    error: 'An error occurred. Please try again.',
+    typing: 'Typing...',
+    suggestions: [
+      'How do I generate a strategic report?',
+      'What does each plan include?',
+      'What is Aris used for in the report?',
+      'How do I export to PDF or Word?',
+      'How do I get started with the platform?',
+    ],
+  },
+}
+
+const t = i18n[lang];
+---
+
+<!-- Floating Aris Chat -->
+<div id="aris-chat-root">
+  <!-- Floating button -->
+  <button
+    id="aris-open-btn"
+    aria-label="Abrir Aris"
+    style="
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9000;
+      width: 4rem; height: 4rem; border-radius: 9999px;
+      background: #6366f1; color: white; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(99,102,241,0.4);
+      transition: transform 0.2s, opacity 0.2s;
+    "
+  >
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <!-- Chat panel -->
+  <div
+    id="aris-panel"
+    style="
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9001;
+      width: 380px; max-width: calc(100vw - 2rem); height: 520px;
+      border-radius: 1rem; overflow: hidden;
+      display: flex; flex-direction: column;
+      background: #09090b; border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      transform: translateY(1rem); opacity: 0; pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    "
+  >
+    <!-- Header -->
+    <div style="
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: #6366f1; flex-shrink: 0;
+    ">
+      <div style="
+        width: 2rem; height: 2rem; border-radius: 0.5rem; overflow: hidden;
+        background: rgba(255,255,255,0.15); flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center;
+      ">
+        <img src="/aris-avatar.png" alt="Aris" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <svg style="display:none;color:white;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div style="flex:1; min-width:0;">
+        <p style="margin:0; font-size:0.875rem; font-weight:600; color:white;">Aris</p>
+        <p style="margin:0; font-size:0.75rem; color:rgba(255,255,255,0.75);">{t.subtitle}</p>
+      </div>
+      <button id="aris-close-btn" style="
+        background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.7);
+        display:flex; align-items:center; justify-content:center;
+        width:1.75rem; height:1.75rem; border-radius:50%;
+        transition: background 0.15s;
+      " aria-label="Cerrar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div id="aris-messages" style="
+      flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
+    "></div>
+
+    <!-- Input -->
+    <div style="
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 0.625rem 0.75rem;
+      display: flex; gap: 0.5rem; align-items: flex-end;
+      flex-shrink: 0;
+    ">
+      <textarea
+        id="aris-input"
+        placeholder={t.placeholder}
+        rows="1"
+        style="
+          flex:1; resize:none; border-radius:0.75rem;
+          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.05);
+          color: #e4e4e7; padding: 0.5rem 0.75rem;
+          font-size: 0.875rem; font-family: inherit;
+          outline: none; max-height: 6rem; line-height: 1.5;
+          scrollbar-width: none;
+        "
+      ></textarea>
+      <button id="aris-send-btn" style="
+        width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; flex-shrink:0;
+        background: #6366f1; border: none; cursor: pointer; color: white;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.15s; opacity: 0.4;
+      " disabled aria-label="Enviar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ API_URL, greetingRaw: t.greeting, suggestions: t.suggestions, errorMsg: t.error, typingMsg: t.typing }}>
+  (function () {
+    const panel    = document.getElementById('aris-panel')
+    const openBtn  = document.getElementById('aris-open-btn')
+    const closeBtn = document.getElementById('aris-close-btn')
+    const msgBox   = document.getElementById('aris-messages')
+    const input    = document.getElementById('aris-input')
+    const sendBtn  = document.getElementById('aris-send-btn')
+
+    let isOpen     = false
+    let isStreaming = false
+    let history    = []
+    let abortCtrl  = null
+    let initialized = false
+
+    // ── Simple markdown renderer ─────────────────────────────────────────────
+    function renderMarkdown(text) {
+      const lines = text.split('\n')
+      let html = ''
+      let inUl = false
+      let inOl = false
+
+      function closeList() {
+        if (inUl) { html += '</ul>'; inUl = false }
+        if (inOl) { html += '</ol>'; inOl = false }
+      }
+
+      for (let i = 0; i < lines.length; i++) {
+        let line = lines[i]
+
+        // Headings
+        if (/^### (.+)/.test(line)) {
+          closeList()
+          html += `<p style="font-weight:600;margin:0.5rem 0 0.25rem;color:#e4e4e7">${escHtml(line.replace(/^### /, ''))}</p>`
+          continue
+        }
+        if (/^## (.+)/.test(line)) {
+          closeList()
+          html += `<p style="font-weight:700;margin:0.5rem 0 0.25rem;color:#f4f4f5">${escHtml(line.replace(/^## /, ''))}</p>`
+          continue
+        }
+
+        // Unordered list
+        if (/^- (.+)/.test(line)) {
+          if (!inUl) { closeList(); html += '<ul style="margin:0.25rem 0;padding-left:1.25rem;list-style:disc;">'; inUl = true }
+          html += `<li style="margin:0.125rem 0;line-height:1.5">${inlineMarkdown(line.replace(/^- /, ''))}</li>`
+          continue
+        }
+
+        // Ordered list
+        const olMatch = line.match(/^(\d+)\. (.+)/)
+        if (olMatch) {
+          if (!inOl) { closeList(); html += '<ol style="margin:0.25rem 0;padding-left:1.25rem;">'; inOl = true }
+          html += `<li style="margin:0.125rem 0;line-height:1.5">${inlineMarkdown(olMatch[2])}</li>`
+          continue
+        }
+
+        closeList()
+
+        if (line.trim() === '') {
+          // blank line — small gap
+          if (html && !html.endsWith('</p>') && !html.endsWith('</ul>') && !html.endsWith('</ol>')) {
+            // do nothing
+          }
+          continue
+        }
+
+        html += `<p style="margin:0.1rem 0;line-height:1.6">${inlineMarkdown(line)}</p>`
+      }
+
+      closeList()
+      return html
+    }
+
+    function inlineMarkdown(text) {
+      return escHtml(text)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code style="background:rgba(255,255,255,0.1);padding:0.1em 0.3em;border-radius:0.25rem;font-family:monospace;font-size:0.85em">$1</code>')
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+
+    // ── Build message bubble ─────────────────────────────────────────────────
+    function appendBubble(role, content, streaming) {
+      const wrapper = document.createElement('div')
+      wrapper.style.cssText = `display:flex;gap:0.5rem;align-items:flex-start;${role === 'user' ? 'flex-direction:row-reverse;' : ''}`
+
+      // Avatar
+      const avatar = document.createElement('div')
+      if (role === 'assistant') {
+        avatar.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:0.375rem;overflow:hidden;flex-shrink:0;background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;'
+        avatar.innerHTML = '<img src="/aris-avatar.png" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><svg style="display:none;color:#818cf8;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>'
+      } else {
+        avatar.style.cssText = 'width:1.75rem;height:1.75rem;border-radius:9999px;flex-shrink:0;background:#3f3f46;display:flex;align-items:center;justify-content:center;'
+        avatar.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>'
+      }
+
+      const bubble = document.createElement('div')
+      bubble.style.cssText = `max-width:78%;border-radius:1rem;padding:0.5rem 0.75rem;font-size:0.875rem;line-height:1.5;${
+        role === 'user'
+          ? 'background:#6366f1;color:white;border-bottom-right-radius:0.25rem;'
+          : 'background:rgba(255,255,255,0.06);color:#d4d4d8;border-bottom-left-radius:0.25rem;'
+      }`
+
+      if (streaming) {
+        bubble.innerHTML = `<span style="display:flex;align-items:center;gap:0.4rem;color:#71717a">
+          <svg class="aris-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+          ${typingMsg}
+        </span>`
+      } else if (role === 'user') {
+        bubble.textContent = content
+      } else {
+        bubble.innerHTML = renderMarkdown(content)
+      }
+
+      wrapper.appendChild(avatar)
+      wrapper.appendChild(bubble)
+      msgBox.appendChild(wrapper)
+      msgBox.scrollTop = msgBox.scrollHeight
+      return bubble
+    }
+
+    // ── Suggestions chips ────────────────────────────────────────────────────
+    function appendSuggestions() {
+      const wrap = document.createElement('div')
+      wrap.id = 'aris-suggestions'
+      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:0.375rem;margin-top:0.5rem;'
+      suggestions.forEach(s => {
+        const btn = document.createElement('button')
+        btn.textContent = s
+        btn.style.cssText = `
+          background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
+          color:#a1a1aa; border-radius:9999px; padding:0.25rem 0.75rem;
+          font-size:0.75rem; cursor:pointer; transition:all 0.15s; font-family:inherit;
+        `
+        btn.onmouseenter = () => { btn.style.color='#a5b4fc'; btn.style.borderColor='rgba(99,102,241,0.4)' }
+        btn.onmouseleave = () => { btn.style.color='#a1a1aa'; btn.style.borderColor='rgba(255,255,255,0.12)' }
+        btn.onclick = () => {
+          wrap.remove()
+          sendMessage(s)
+        }
+        wrap.appendChild(btn)
+      })
+      msgBox.appendChild(wrap)
+      msgBox.scrollTop = msgBox.scrollHeight
+    }
+
+    // ── Send message ─────────────────────────────────────────────────────────
+    async function sendMessage(text) {
+      const content = (text ?? input.value).trim()
+      if (!content || isStreaming) return
+
+      input.value = ''
+      input.style.height = 'auto'
+      sendBtn.disabled = true
+      sendBtn.style.opacity = '0.4'
+
+      document.getElementById('aris-suggestions')?.remove()
+
+      history.push({ role: 'user', content })
+      appendBubble('user', content, false)
+
+      isStreaming = true
+      const streamingBubble = appendBubble('assistant', '', true)
+
+      abortCtrl = new AbortController()
+
+      try {
+        const res = await fetch(`${API_URL}/help/public-chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: content, history: history.slice(-10) }),
+          signal: abortCtrl.signal,
+        })
+
+        if (!res.body) throw new Error('No body')
+
+        const reader = res.body.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ''
+        let accumulated = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          buffer = lines.pop() ?? ''
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue
+            const data = line.slice(6)
+            if (data === '[DONE]') break
+            accumulated += data
+            streamingBubble.innerHTML = renderMarkdown(accumulated)
+            msgBox.scrollTop = msgBox.scrollHeight
+          }
+        }
+
+        history.push({ role: 'assistant', content: accumulated })
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          streamingBubble.textContent = errorMsg
+          streamingBubble.style.color = '#f87171'
+        }
+      } finally {
+        isStreaming = false
+        abortCtrl = null
+        updateSendBtn()
+      }
+    }
+
+    // ── Open / close ─────────────────────────────────────────────────────────
+    function openChat() {
+      isOpen = true
+      panel.style.opacity = '1'
+      panel.style.transform = 'translateY(0)'
+      panel.style.pointerEvents = 'auto'
+      openBtn.style.opacity = '0'
+      openBtn.style.pointerEvents = 'none'
+      openBtn.style.transform = 'scale(0.75)'
+
+      if (!initialized) {
+        initialized = true
+        const bubble = appendBubble('assistant', greetingRaw, false)
+        bubble.innerHTML = renderMarkdown(greetingRaw)
+        appendSuggestions()
+      }
+
+      setTimeout(() => input.focus(), 150)
+    }
+
+    function closeChat() {
+      isOpen = false
+      panel.style.opacity = '0'
+      panel.style.transform = 'translateY(1rem)'
+      panel.style.pointerEvents = 'none'
+      openBtn.style.opacity = '1'
+      openBtn.style.pointerEvents = 'auto'
+      openBtn.style.transform = 'scale(1)'
+      abortCtrl?.abort()
+    }
+
+    // ── Input handling ───────────────────────────────────────────────────────
+    function updateSendBtn() {
+      const hasText = input.value.trim().length > 0 && !isStreaming
+      sendBtn.disabled = !hasText
+      sendBtn.style.opacity = hasText ? '1' : '0.4'
+      sendBtn.style.cursor = hasText ? 'pointer' : 'not-allowed'
+    }
+
+    input.addEventListener('input', () => {
+      input.style.height = 'auto'
+      input.style.height = Math.min(input.scrollHeight, 96) + 'px'
+      updateSendBtn()
+    })
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault()
+        sendMessage()
+      }
+    })
+
+    sendBtn.addEventListener('click', () => sendMessage())
+    openBtn.addEventListener('click', openChat)
+    closeBtn.addEventListener('click', closeChat)
+
+    // Inject spin animation
+    const style = document.createElement('style')
+    style.textContent = '@keyframes aris-spin{to{transform:rotate(360deg)}}.aris-spin{animation:aris-spin 1s linear infinite}'
+    document.head.appendChild(style)
+  })()
+</script>
