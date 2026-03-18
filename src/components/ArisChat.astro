@@ -180,6 +180,10 @@ const t = i18n[lang];
   }
 
   function md(text) {
+    // Normalize: ensure list items always start on their own line
+    text = text
+      .replace(/([^\n])(- )/g, '$1\n$2')
+      .replace(/\n{3,}/g, '\n\n')
     const lines = text.split('\n')
     let html = '', inUl = false, inOl = false
 
