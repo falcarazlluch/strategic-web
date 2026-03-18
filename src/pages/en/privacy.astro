@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const t = translations[lang];
+const updated = 'March 18, 2026';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Privacy Policy — Strategic Decision"
+  description="Privacy Policy for Strategic Decision. How we collect, use and protect your data."
+>
+  <Nav t={t.nav} lang={lang} />
+
+  <main class="pt-24 pb-20">
+    <div class="section-container max-w-3xl">
+
+      <div class="mb-10">
+        <div class="badge mb-4" style="width:fit-content">Legal</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+          Privacy Policy
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Last updated: {updated}</p>
+      </div>
+
+      <div class="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">1. Data Controller</h2>
+          <p>
+            Strategic Decision AI S.L. (hereinafter <strong>"we"</strong>, <strong>"us"</strong> or <strong>"the Company"</strong>) is the data controller for personal data collected through the <strong>strategicdecision.ai</strong> platform.
+          </p>
+          <p class="mt-2">Contact: <a href="mailto:info@strategicdecision.ai" class="text-indigo-600 dark:text-indigo-400 hover:underline">info@strategicdecision.ai</a></p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">2. Data We Collect</h2>
+          <ul class="list-disc list-inside space-y-1.5">
+            <li><strong>Account data:</strong> name, email address, and password (stored as a bcrypt hash).</li>
+            <li><strong>Company data:</strong> company name, sector, size, logo and brand colours voluntarily provided by the user.</li>
+            <li><strong>Uploaded documents:</strong> files uploaded to enrich the context of your projects.</li>
+            <li><strong>Usage data:</strong> projects created, reports generated, Aris chat history and configuration preferences.</li>
+            <li><strong>Payment data:</strong> processed entirely by our payment provider (Stripe). We do not store card details.</li>
+            <li><strong>Technical data:</strong> IP address, browser type, operating system and access logs, for security and diagnostic purposes.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">3. Purpose and Legal Basis</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-white/10">
+                  <th class="text-left py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Purpose</th>
+                  <th class="text-left py-2 font-semibold text-slate-700 dark:text-slate-300">Legal basis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Service provision (report generation, chat)</td>
+                  <td class="py-2">Performance of a contract (Art. 6(1)(b) GDPR)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Account management and authentication</td>
+                  <td class="py-2">Performance of a contract (Art. 6(1)(b) GDPR)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Service communications and support</td>
+                  <td class="py-2">Legitimate interests (Art. 6(1)(f) GDPR)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Product improvement and usage analytics (anonymised)</td>
+                  <td class="py-2">Legitimate interests (Art. 6(1)(f) GDPR)</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">Marketing communications</td>
+                  <td class="py-2">Consent (Art. 6(1)(a) GDPR)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">4. AI Models and Your Data</h2>
+          <p>
+            Strategic Decision uses advanced third-party AI models to generate strategic reports. The data you provide (company context, documents, intake answers) is transmitted to those models solely to produce your report.
+          </p>
+          <p class="mt-2 font-medium text-slate-700 dark:text-slate-200">
+            Your data is never used to train any AI model — neither ours nor those of third parties.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">5. Data Sharing</h2>
+          <p>We do not sell or transfer your personal data to third parties. We only share it with:</p>
+          <ul class="list-disc list-inside space-y-1.5 mt-2">
+            <li><strong>Infrastructure providers:</strong> Railway (backend hosting), Vercel (frontend hosting), Supabase / PostgreSQL (database), under data processing agreements.</li>
+            <li><strong>AI provider:</strong> OpenAI or equivalent, under a data processing agreement that prohibits use of data for training.</li>
+            <li><strong>Payment platform:</strong> Stripe, operating under its own privacy policy.</li>
+            <li><strong>Legal obligations:</strong> when required by applicable law or court order.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">6. Data Retention</h2>
+          <p>
+            We retain your data for as long as your account is active. If you cancel your account, we will delete or anonymise your personal data within 30 days, unless a longer retention period is required by law.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">7. Your Rights</h2>
+          <p>Under GDPR you have the right to:</p>
+          <ul class="list-disc list-inside space-y-1.5 mt-2">
+            <li><strong>Access:</strong> request a copy of the data we hold about you.</li>
+            <li><strong>Rectification:</strong> correct inaccurate or incomplete data.</li>
+            <li><strong>Erasure:</strong> request deletion of your data ("right to be forgotten").</li>
+            <li><strong>Restriction:</strong> restrict processing in certain circumstances.</li>
+            <li><strong>Portability:</strong> receive your data in a structured, machine-readable format.</li>
+            <li><strong>Objection:</strong> object to processing based on legitimate interests.</li>
+          </ul>
+          <p class="mt-2">
+            To exercise any of these rights, write to us at <a href="mailto:info@strategicdecision.ai" class="text-indigo-600 dark:text-indigo-400 hover:underline">info@strategicdecision.ai</a>. We will respond within 30 days.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">8. Security</h2>
+          <p>
+            We apply technical and organisational measures to protect your data: TLS encryption in transit, bcrypt-hashed passwords, short-lived JWT tokens, per-user data isolation and continuous access monitoring.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">9. Cookies</h2>
+          <p>
+            We use only strictly necessary cookies for session management. We do not use third-party tracking or advertising cookies.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">10. Changes to This Policy</h2>
+          <p>
+            We may update this policy from time to time. We will notify you by email at least 15 days before material changes take effect. The current version will always be available on this page.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">11. Complaints</h2>
+          <p>
+            If you believe that our processing of your data infringes data protection law, you may lodge a complaint with the Spanish Data Protection Agency (AEPD) at <a href="https://www.aepd.es" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 hover:underline">www.aepd.es</a>, or with the supervisory authority in your country of residence.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>

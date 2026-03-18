@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'es';
+const t = translations[lang];
+const updated = '18 de marzo de 2026';
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Términos de Servicio — Strategic Decision"
+  description="Términos y condiciones de uso de la plataforma Strategic Decision."
+>
+  <Nav t={t.nav} lang={lang} />
+
+  <main class="pt-24 pb-20">
+    <div class="section-container max-w-3xl">
+
+      <div class="mb-10">
+        <div class="badge mb-4" style="width:fit-content">Legal</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+          Términos de Servicio
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Última actualización: {updated}</p>
+      </div>
+
+      <div class="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">1. Aceptación de los términos</h2>
+          <p>
+            Al registrarte o usar la plataforma <strong>strategicdecision.ai</strong> ("el Servicio"), aceptas quedar vinculado por estos Términos de Servicio. Si no estás de acuerdo, no debes usar el Servicio.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">2. Descripción del Servicio</h2>
+          <p>
+            Strategic Decision es una plataforma SaaS de inteligencia estratégica que utiliza modelos de IA avanzados para generar informes estratégicos a partir de la información y los documentos que el usuario proporciona. El Servicio incluye generación de informes, refinamiento conversacional con la asistente Aris, exportación de documentos y gestión de proyectos.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">3. Cuentas de usuario</h2>
+          <ul class="list-disc list-inside space-y-1.5">
+            <li>Debes proporcionar información veraz y mantenerla actualizada.</li>
+            <li>Eres responsable de la confidencialidad de tu contraseña y de toda actividad realizada desde tu cuenta.</li>
+            <li>Debes notificarnos de inmediato cualquier uso no autorizado de tu cuenta.</li>
+            <li>Una cuenta es de uso personal o empresarial según el plan contratado; no puede cederse a terceros.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">4. Planes y pagos</h2>
+          <ul class="list-disc list-inside space-y-1.5">
+            <li>Los planes de suscripción (Basic, Plus, Premium, Enterprise) se facturan mensualmente por adelantado.</li>
+            <li>Los precios pueden modificarse con 30 días de aviso previo por correo electrónico.</li>
+            <li>No se realizan reembolsos por períodos parciales, salvo obligación legal.</li>
+            <li>El impago podrá resultar en la suspensión o cancelación de la cuenta.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">5. Uso aceptable</h2>
+          <p>Queda prohibido usar el Servicio para:</p>
+          <ul class="list-disc list-inside space-y-1.5 mt-2">
+            <li>Actividades ilegales o que infrinjan derechos de terceros.</li>
+            <li>Difundir contenido falso, engañoso, ofensivo o que incite al odio.</li>
+            <li>Intentar acceder a datos de otros usuarios o a sistemas no autorizados.</li>
+            <li>Realizar ingeniería inversa, descompilar o extraer el código fuente.</li>
+            <li>Usar scraping automatizado o saturar el servicio con peticiones excesivas.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">6. Propiedad intelectual</h2>
+          <p>
+            <strong>Nuestro contenido:</strong> La plataforma, su diseño, algoritmos y marca son propiedad de Strategic Decision AI S.L. y están protegidos por la legislación de propiedad intelectual.
+          </p>
+          <p class="mt-2">
+            <strong>Tu contenido:</strong> Conservas todos los derechos sobre los documentos e información que aportas. Los informes generados son de tu propiedad. Nos otorgas una licencia limitada, no exclusiva, para procesar dicha información con el fin de prestarte el Servicio.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">7. Precisión de los informes</h2>
+          <p>
+            Los informes generados son el resultado de modelos de IA y se proporcionan con fines informativos y de apoyo a la toma de decisiones. <strong>No constituyen asesoramiento legal, financiero, fiscal ni de inversión.</strong> El usuario es responsable de validar la información y de las decisiones que tome basándose en los informes.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">8. Disponibilidad y SLA</h2>
+          <p>
+            Nos esforzamos por mantener el Servicio disponible 24/7, pero no garantizamos un tiempo de actividad específico en los planes Basic, Plus y Premium. Los planes Enterprise con SLA acordado son una excepción. Podemos realizar mantenimientos planificados con aviso previo siempre que sea posible.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">9. Limitación de responsabilidad</h2>
+          <p>
+            En la máxima medida permitida por la ley, Strategic Decision AI S.L. no será responsable por daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de uso del Servicio. Nuestra responsabilidad total acumulada no superará el importe pagado por el usuario en los 3 meses anteriores al incidente.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">10. Cancelación y terminación</h2>
+          <p>
+            Puedes cancelar tu suscripción en cualquier momento desde el panel de configuración de tu cuenta. El acceso al Servicio continuará hasta el final del período facturado en curso. Nos reservamos el derecho de suspender o cancelar cuentas que incumplan estos Términos, con aviso previo salvo en casos de infracción grave.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">11. Modificaciones</h2>
+          <p>
+            Podemos modificar estos Términos ocasionalmente. Te notificaremos por correo electrónico con al menos 15 días de antelación ante cambios materiales. El uso continuado del Servicio tras la entrada en vigor de los cambios implica su aceptación.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">12. Legislación aplicable</h2>
+          <p>
+            Estos Términos se rigen por la legislación española. Cualquier controversia se someterá a la jurisdicción de los juzgados y tribunales de Barcelona, salvo que la normativa de consumo aplicable establezca otro fuero.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">13. Contacto</h2>
+          <p>
+            Para cualquier consulta sobre estos Términos, escríbenos a <a href="mailto:info@strategicdecision.ai" class="text-indigo-600 dark:text-indigo-400 hover:underline">info@strategicdecision.ai</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>

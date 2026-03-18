@@ -5,7 +5,7 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — AI-Powered Strategic Intelligence',
       description:
-        'Generate comprehensive boardroom-ready strategic reports in minutes. Powered by GPT-4o, tailored to your company\'s specific context.',
+        'Generate comprehensive boardroom-ready strategic reports in minutes. Powered by advanced AI models, tailored to your company\'s specific context.',
       ogTitle: 'Strategic Decision — Turn Business Challenges Into Boardroom-Ready Strategy',
     },
     nav: {
@@ -16,10 +16,10 @@ export const translations = {
       getStarted: 'Get Started',
     },
     hero: {
-      badge: 'Now powered by GPT-4o',
+      badge: 'Now with advanced AI agents',
       headline: 'Turn Business Challenges Into Boardroom-Ready Strategy',
       subheadline:
-        'Generate comprehensive strategic reports in minutes — not months. GPT-4o learns your company\'s context before producing a single insight.',
+        'Generate comprehensive strategic reports in minutes — not months. Our AI agents learn your company\'s context before producing a single insight.',
       ctaPrimary: 'Start Now',
       ctaSecondary: 'See how it works',
       stats: [
@@ -51,7 +51,7 @@ export const translations = {
           icon: 'brain',
           title: 'AI-Powered Analysis',
           description:
-            'GPT-4o ingests your company context, uploaded documents, and problem statement to deliver insights that would take consultants weeks.',
+            'Advanced AI models ingest your company context, uploaded documents, and problem statement to deliver insights that would take consultants weeks.',
         },
         {
           icon: 'document',
@@ -63,13 +63,13 @@ export const translations = {
           icon: 'chat',
           title: 'Iterative Refinement',
           description:
-            'Chat directly with the AI to deepen any section, pivot the strategic direction, or add new initiatives — unlimited iterations included.',
+            'Chat directly with Aris, your AI assistant, to deepen any section, pivot the strategic direction, or add new initiatives — unlimited iterations included.',
         },
         {
           icon: 'export',
           title: 'Multi-Format Export',
           description:
-            'Download polished PDF, Word, or PowerPoint files the moment your report is ready. Board-ready from the first draft.',
+            'Download polished PDF or Word files the moment your report is ready. Board-ready from the first draft.',
         },
         {
           icon: 'company',
@@ -297,7 +297,7 @@ export const translations = {
         terms:     'Terms of Service',
       },
       copyright: '© {year} Strategic Decision. All rights reserved.',
-      madeWith: 'Built for leaders who move fast.',
+      madeWith: '',
     },
   },
 
@@ -306,7 +306,7 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — Inteligencia Estratégica con IA',
       description:
-        'Genera informes estratégicos de nivel directivo en minutos. Impulsado por GPT-4o, adaptado al contexto específico de tu empresa.',
+        'Genera informes estratégicos de nivel directivo en minutos. Impulsado por modelos de IA avanzados, adaptado al contexto específico de tu empresa.',
       ogTitle: 'Strategic Decision — Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
     },
     nav: {
@@ -317,10 +317,10 @@ export const translations = {
       getStarted: 'Empieza Ahora',
     },
     hero: {
-      badge: 'Ahora con GPT-4o',
+      badge: 'Ahora con agentes IA avanzados',
       headline: 'Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
       subheadline:
-        'Genera informes estratégicos de alto nivel en minutos, no en meses. GPT-4o aprende el contexto específico de tu empresa antes de producir una sola recomendación.',
+        'Genera informes estratégicos de alto nivel en minutos, no en meses. Nuestros agentes IA aprenden el contexto específico de tu empresa antes de producir una sola recomendación.',
       ctaPrimary: 'Empieza Ahora',
       ctaSecondary: 'Cómo funciona',
       stats: [
@@ -352,7 +352,7 @@ export const translations = {
           icon: 'brain',
           title: 'Análisis con IA',
           description:
-            'GPT-4o ingiere el contexto de tu empresa, documentos subidos y el planteamiento del problema para entregar insights que a consultores les llevaría semanas.',
+            'Modelos de IA avanzados ingieren el contexto de tu empresa, documentos subidos y el planteamiento del problema para entregar insights que a consultores les llevaría semanas.',
         },
         {
           icon: 'document',
@@ -364,13 +364,13 @@ export const translations = {
           icon: 'chat',
           title: 'Refinamiento Iterativo',
           description:
-            'Chatea directamente con la IA para profundizar en cualquier sección, cambiar la dirección estratégica o añadir nuevas iniciativas — iteraciones ilimitadas.',
+            'Chatea directamente con Aris, tu asistente IA, para profundizar en cualquier sección, cambiar la dirección estratégica o añadir nuevas iniciativas — iteraciones ilimitadas.',
         },
         {
           icon: 'export',
           title: 'Exportación Multiformato',
           description:
-            'Descarga PDFs, documentos Word o presentaciones PowerPoint en cuanto tu informe esté listo. Listos para el consejo desde el primer borrador.',
+            'Descarga PDFs o documentos Word en cuanto tu informe esté listo. Listos para el consejo desde el primer borrador.',
         },
         {
           icon: 'company',
@@ -598,7 +598,7 @@ export const translations = {
         terms:     'Términos de Servicio',
       },
       copyright: '© {year} Strategic Decision. Todos los derechos reservados.',
-      madeWith: 'Construido para líderes que se mueven rápido.',
+      madeWith: '',
     },
   },
 } as const;

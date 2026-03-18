@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n/translations';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'es';
+const t = translations[lang];
+const updated = '18 de marzo de 2026';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Política de Privacidad — Strategic Decision"
+  description="Política de privacidad de Strategic Decision. Cómo recopilamos, usamos y protegemos tus datos."
+>
+  <Nav t={t.nav} lang={lang} />
+
+  <main class="pt-24 pb-20">
+    <div class="section-container max-w-3xl">
+
+      <div class="mb-10">
+        <div class="badge mb-4" style="width:fit-content">Legal</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+          Política de Privacidad
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Última actualización: {updated}</p>
+      </div>
+
+      <div class="prose prose-slate dark:prose-invert max-w-none space-y-8 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">1. Responsable del tratamiento</h2>
+          <p>
+            Strategic Decision AI S.L. (en adelante, <strong>"nosotros"</strong> o <strong>"la empresa"</strong>) es responsable del tratamiento de los datos personales recogidos a través de la plataforma <strong>strategicdecision.ai</strong>.
+          </p>
+          <p class="mt-2">Correo de contacto: <a href="mailto:info@strategicdecision.ai" class="text-indigo-600 dark:text-indigo-400 hover:underline">info@strategicdecision.ai</a></p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">2. Datos que recopilamos</h2>
+          <ul class="list-disc list-inside space-y-1.5">
+            <li><strong>Datos de cuenta:</strong> nombre, dirección de correo electrónico y contraseña (almacenada con hash bcrypt).</li>
+            <li><strong>Datos de empresa:</strong> nombre de empresa, sector, tamaño, logo y colores de marca que el usuario introduce voluntariamente.</li>
+            <li><strong>Documentos subidos:</strong> archivos que el usuario carga para enriquecer el contexto de sus proyectos.</li>
+            <li><strong>Datos de uso:</strong> proyectos creados, informes generados, historial de chat con Aris y preferencias de configuración.</li>
+            <li><strong>Datos de pago:</strong> procesados íntegramente por nuestro proveedor de pagos (Stripe). No almacenamos datos de tarjeta.</li>
+            <li><strong>Datos técnicos:</strong> dirección IP, tipo de navegador, sistema operativo y registros de acceso, con fines de seguridad y diagnóstico.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">3. Finalidad y base legal</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-white/10">
+                  <th class="text-left py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Finalidad</th>
+                  <th class="text-left py-2 font-semibold text-slate-700 dark:text-slate-300">Base legal</th>
+                </tr>
+              </thead>
+              <tbody class="space-y-1">
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Prestación del servicio (generación de informes, chat)</td>
+                  <td class="py-2">Ejecución de contrato (art. 6.1.b RGPD)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Gestión de cuenta y autenticación</td>
+                  <td class="py-2">Ejecución de contrato (art. 6.1.b RGPD)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Comunicaciones de servicio y soporte</td>
+                  <td class="py-2">Interés legítimo (art. 6.1.f RGPD)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-white/5">
+                  <td class="py-2 pr-4">Mejora del producto y análisis de uso (datos anonimizados)</td>
+                  <td class="py-2">Interés legítimo (art. 6.1.f RGPD)</td>
+                </tr>
+                <tr>
+                  <td class="py-2 pr-4">Envío de comunicaciones comerciales</td>
+                  <td class="py-2">Consentimiento (art. 6.1.a RGPD)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">4. Modelos de IA y tus datos</h2>
+          <p>
+            Strategic Decision utiliza modelos de IA avanzados de terceros para generar los informes estratégicos. Los datos que introduces (contexto de empresa, documentos, preguntas de intake) se transmiten a dichos modelos exclusivamente para producir tu informe.
+          </p>
+          <p class="mt-2 font-medium text-slate-700 dark:text-slate-200">
+            Tus datos nunca se utilizan para entrenar modelos de IA de terceros ni los nuestros propios.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">5. Compartición de datos</h2>
+          <p>No vendemos ni cedemos tus datos personales a terceros. Únicamente los compartimos con:</p>
+          <ul class="list-disc list-inside space-y-1.5 mt-2">
+            <li><strong>Proveedores de infraestructura:</strong> Railway (hosting backend), Vercel (hosting frontend), Supabase / PostgreSQL (base de datos), con acuerdos de procesamiento de datos vigentes.</li>
+            <li><strong>Proveedor de IA:</strong> OpenAI o equivalente, bajo acuerdo de procesamiento de datos que prohíbe el uso de datos para entrenamiento.</li>
+            <li><strong>Plataforma de pagos:</strong> Stripe, que opera con sus propias políticas de privacidad.</li>
+            <li><strong>Obligaciones legales:</strong> cuando así lo exija la legislación aplicable o resolución judicial.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">6. Conservación de datos</h2>
+          <p>
+            Conservamos tus datos mientras tu cuenta esté activa. Si cancelas tu cuenta, eliminaremos o anonimizaremos tus datos personales en un plazo de 30 días, salvo que la legislación exija un período de retención mayor.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">7. Tus derechos</h2>
+          <p>Conforme al RGPD tienes derecho a:</p>
+          <ul class="list-disc list-inside space-y-1.5 mt-2">
+            <li><strong>Acceso:</strong> solicitar una copia de los datos que tenemos sobre ti.</li>
+            <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
+            <li><strong>Supresión:</strong> solicitar la eliminación de tus datos ("derecho al olvido").</li>
+            <li><strong>Limitación:</strong> restringir el tratamiento en determinadas circunstancias.</li>
+            <li><strong>Portabilidad:</strong> recibir tus datos en formato estructurado y legible por máquina.</li>
+            <li><strong>Oposición:</strong> oponerte al tratamiento basado en interés legítimo.</li>
+          </ul>
+          <p class="mt-2">
+            Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:info@strategicdecision.ai" class="text-indigo-600 dark:text-indigo-400 hover:underline">info@strategicdecision.ai</a>. Responderemos en un plazo máximo de 30 días.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">8. Seguridad</h2>
+          <p>
+            Aplicamos medidas técnicas y organizativas para proteger tus datos: cifrado TLS en tránsito, contraseñas almacenadas con bcrypt, tokens JWT de corta duración, aislamiento de datos por usuario y monitorización continua de accesos.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">9. Cookies</h2>
+          <p>
+            Usamos únicamente cookies estrictamente necesarias para el funcionamiento de la sesión. No empleamos cookies de seguimiento ni publicidad de terceros.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">10. Cambios en esta política</h2>
+          <p>
+            Podemos actualizar esta política ocasionalmente. Te notificaremos por correo electrónico con al menos 15 días de antelación ante cambios materiales. La versión vigente siempre estará disponible en esta página.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold text-slate-900 dark:text-white mb-3">11. Reclamaciones</h2>
+          <p>
+            Si consideras que el tratamiento de tus datos infringe la normativa de protección de datos, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en <a href="https://www.aepd.es" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 hover:underline">www.aepd.es</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>
