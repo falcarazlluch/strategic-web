@@ -3,7 +3,7 @@ interface Props {
   lang: 'en' | 'es';
 }
 const { lang } = Astro.props;
-const API_URL = (import.meta.env.PUBLIC_API_URL ?? '').replace(/\/$/, '');
+const API_URL = (import.meta.env.PUBLIC_API_URL ?? 'https://strategic-production.up.railway.app/api/v1').replace(/\/$/, '');
 
 const i18n = {
   es: {
@@ -286,16 +286,7 @@ const t = i18n[lang];
     abortCtrl = new AbortController()
 
     try {
-      const endpoint = API_URL
-        ? `${API_URL}/help/public-chat`
-        : null
-
-      if (!endpoint) {
-        streamBbl.innerHTML = '<span style="color:#f87171">API URL no configurada. Configura PUBLIC_API_URL.</span>'
-        return
-      }
-
-      const res = await fetch(endpoint, {
+      const res = await fetch(`${API_URL}/help/public-chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: content, history: history.slice(-10) }),
