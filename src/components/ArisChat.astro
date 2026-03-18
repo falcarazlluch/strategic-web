@@ -3,7 +3,8 @@ interface Props {
   lang: 'en' | 'es';
 }
 const { lang } = Astro.props;
-const API_URL = (import.meta.env.PUBLIC_API_URL ?? 'https://strategic-production.up.railway.app/api/v1').replace(/\/$/, '');
+let API_URL = (import.meta.env.PUBLIC_API_URL ?? 'https://strategic-production.up.railway.app/api/v1').replace(/\/$/, '');
+if (!API_URL.startsWith('http')) API_URL = `https://${API_URL}`;
 
 const i18n = {
   es: {
