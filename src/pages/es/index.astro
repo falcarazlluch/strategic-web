@@ -9,6 +9,7 @@ import VideoSection from '../../components/VideoSection.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
+import ReferralShare from '../../components/ReferralShare.astro';
 import Footer from '../../components/Footer.astro';
 import ArisChat from '../../components/ArisChat.astro';
 
@@ -26,6 +27,7 @@ const t = translations[lang];
     <Testimonials t={t.testimonials} />
     <Pricing      t={t.pricing}      lang={lang} />
     <CTA          t={t.cta} />
+    <ReferralShare lang={lang} />
   </main>
   <Footer t={t.footer} lang={lang} />
   <ArisChat lang={lang} />

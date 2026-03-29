@@ -1,0 +1,336 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+}
+
+const { lang } = Astro.props;
+const API_URL   = import.meta.env.PUBLIC_API_URL  ?? 'https://strategic-production.up.railway.app/api/v1';
+const APP_URL   = import.meta.env.PUBLIC_APP_URL  ?? 'https://strategic-z6xl.vercel.app';
+
+const copy = {
+  en: {
+    badge:        'Partner Program',
+    headline:     'Recommend and earn 20% commission',
+    sub:          'Every time someone you refer signs up for a paid plan, you earn 20% of their subscription — for as long as they remain a client.',
+    howTitle:     'How it works',
+    steps: [
+      'Enter your email to generate your unique referral link.',
+      'Share it with executives, consultants, or strategy professionals.',
+      'When they subscribe to a paid plan, you earn a 20% commission.',
+    ],
+    cta:          'Generate my referral link',
+    modalTitle:   'Generate your referral link',
+    modalSub:     'Your unique code is generated automatically from your email and saved on this device for future shares.',
+    emailLabel:   'Your email',
+    emailPh:      'you@company.com',
+    generate:     'Generate link',
+    generating:   'Generating…',
+    linkLabel:    'Your referral link',
+    copy:         'Copy',
+    copied:       'Copied!',
+    notice:       'Your code has been saved on this device. Future shares will use it automatically.',
+    close:        'Close',
+    errorEmpty:   'Please enter your email.',
+    errorGeneric: 'Could not generate the link. Try again.',
+  },
+  es: {
+    badge:        'Programa de Partners',
+    headline:     'Recomienda y gana un 20% de comisión',
+    sub:          'Cada vez que alguien que refieres contrata un plan de pago, ganas un 20% de su suscripción — durante todo el tiempo que sea cliente.',
+    howTitle:     'Cómo funciona',
+    steps: [
+      'Introduce tu email para generar tu enlace de referido único.',
+      'Compártelo con directivos, consultores o profesionales de estrategia.',
+      'Cuando contraten un plan de pago, recibirás una comisión del 20%.',
+    ],
+    cta:          'Generar mi enlace de referido',
+    modalTitle:   'Genera tu enlace de referido',
+    modalSub:     'Tu código único se genera automáticamente a partir de tu email y se guarda en este dispositivo para usos futuros.',
+    emailLabel:   'Tu email',
+    emailPh:      'tu@empresa.com',
+    generate:     'Generar enlace',
+    generating:   'Generando…',
+    linkLabel:    'Tu enlace de referido',
+    copy:         'Copiar',
+    copied:       '¡Copiado!',
+    notice:       'Tu código se ha guardado en este dispositivo. Los próximos usos lo usarán automáticamente.',
+    close:        'Cerrar',
+    errorEmpty:   'Introduce tu email.',
+    errorGeneric: 'No se pudo generar el enlace. Inténtalo de nuevo.',
+  },
+}[lang];
+---
+
+<!-- ── Section ─────────────────────────────────────────────────────────────── -->
+<section id="referral-program" class="section-padding">
+  <div class="section-container">
+    <div class="relative rounded-3xl overflow-hidden border border-brand-500/20 bg-gradient-to-br from-brand-600/10 via-slate-900/40 to-transparent backdrop-blur-sm p-8 sm:p-12 lg:p-16">
+
+      <!-- Background grid -->
+      <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-10 dark:opacity-20 pointer-events-none" aria-hidden="true"></div>
+      <!-- Top line -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-brand-400/40 to-transparent" aria-hidden="true"></div>
+
+      <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <div class="badge mb-4 inline-flex">{copy.badge}</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
+            {copy.headline}
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-lg mb-8 max-w-lg">
+            {copy.sub}
+          </p>
+          <button
+            id="open-referral-modal"
+            class="btn-primary inline-flex gap-2 text-base px-7 py-3.5"
+          >
+            <!-- Share icon -->
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+            </svg>
+            {copy.cta}
+          </button>
+        </div>
+
+        <!-- Right: steps -->
+        <div class="space-y-5">
+          <p class="text-xs font-semibold text-slate-700 dark:text-slate-400 uppercase tracking-wider">{copy.howTitle}</p>
+          {copy.steps.map((step, i) => (
+            <div class="flex items-start gap-4">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600/20 border border-brand-500/30 text-xs font-bold text-brand-400 mt-0.5">
+                {i + 1}
+              </span>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{step}</p>
+            </div>
+          ))}
+
+          <!-- Commission highlight -->
+          <div class="mt-6 rounded-xl border border-brand-500/20 bg-brand-500/5 px-5 py-4 flex items-center gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-600/20">
+              <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-800 dark:text-white">20% comisión recurrente</p>
+              <p class="text-xs text-slate-500">Plus €9.80 · Premium €29.80 · Agency €59.80 / mes</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Modal ──────────────────────────────────────────────────────────────── -->
+<div
+  id="referral-modal-overlay"
+  class="fixed inset-0 z-[60] flex items-center justify-center p-4 hidden"
+  aria-modal="true"
+  role="dialog"
+>
+  <!-- Backdrop -->
+  <div id="referral-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+  <!-- Panel -->
+  <div class="relative w-full max-w-md rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl p-6">
+
+    <!-- Close -->
+    <button id="close-referral-modal" class="absolute right-4 top-4 text-slate-500 hover:text-slate-300 transition-colors" aria-label="Close">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-1">
+        <svg class="h-5 w-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+        </svg>
+        <h3 class="text-base font-semibold text-white" id="modal-title-text">{copy.modalTitle}</h3>
+      </div>
+      <p class="text-sm text-slate-500" id="modal-sub-text">{copy.modalSub}</p>
+    </div>
+
+    <!-- Step 1: email form -->
+    <div id="referral-step-email">
+      <div class="space-y-1.5 mb-4">
+        <label for="referral-email-input" class="block text-sm font-medium text-slate-300">
+          {copy.emailLabel}
+        </label>
+        <input
+          id="referral-email-input"
+          type="email"
+          placeholder={copy.emailPh}
+          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+        />
+        <p id="referral-email-error" class="text-xs text-red-400 hidden"></p>
+      </div>
+      <button
+        id="referral-generate-btn"
+        class="btn-primary w-full justify-center gap-2"
+      >
+        <span id="referral-generate-text">{copy.generate}</span>
+        <svg id="referral-spinner" class="h-4 w-4 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Step 2: generated link -->
+    <div id="referral-step-link" class="hidden space-y-4">
+      <div class="space-y-1.5">
+        <label class="block text-sm font-medium text-slate-300">{copy.linkLabel}</label>
+        <div class="flex gap-2">
+          <input
+            id="referral-link-display"
+            type="text"
+            readonly
+            class="flex-1 min-w-0 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-xs font-mono text-slate-300 focus:outline-none"
+          />
+          <button
+            id="referral-copy-btn"
+            class="shrink-0 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 hover:text-white hover:border-brand-500 transition-colors flex items-center gap-1.5"
+          >
+            <svg id="copy-icon" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <svg id="check-icon" class="h-4 w-4 text-green-400 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span id="copy-btn-text">{copy.copy}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="rounded-lg border border-brand-500/20 bg-brand-500/5 px-4 py-3">
+        <p class="text-xs text-brand-300">{copy.notice}</p>
+      </div>
+
+      <button
+        id="referral-close-final"
+        class="btn-outline w-full justify-center text-sm py-2.5"
+      >
+        {copy.close}
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script define:vars={{ API_URL, APP_URL, copy }}>
+  const STORAGE_CODE = 'sde_ref_code';
+  const STORAGE_SID  = 'sde_share_id';
+
+  const overlay     = document.getElementById('referral-modal-overlay');
+  const backdrop    = document.getElementById('referral-modal-backdrop');
+  const openBtn     = document.getElementById('open-referral-modal');
+  const closeBtn    = document.getElementById('close-referral-modal');
+  const closeFinal  = document.getElementById('referral-close-final');
+  const stepEmail   = document.getElementById('referral-step-email');
+  const stepLink    = document.getElementById('referral-step-link');
+  const emailInput  = document.getElementById('referral-email-input');
+  const emailError  = document.getElementById('referral-email-error');
+  const generateBtn = document.getElementById('referral-generate-btn');
+  const generateTxt = document.getElementById('referral-generate-text');
+  const spinner     = document.getElementById('referral-spinner');
+  const linkDisplay = document.getElementById('referral-link-display');
+  const copyBtn     = document.getElementById('referral-copy-btn');
+  const copyIcon    = document.getElementById('copy-icon');
+  const checkIcon   = document.getElementById('check-icon');
+  const copyBtnTxt  = document.getElementById('copy-btn-text');
+
+  function openModal() {
+    overlay?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    // Reset to step 1
+    stepEmail?.classList.remove('hidden');
+    stepLink?.classList.add('hidden');
+    emailError?.classList.add('hidden');
+    if (emailInput) emailInput.value = '';
+    setTimeout(() => emailInput?.focus(), 50);
+  }
+
+  function closeModal() {
+    overlay?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+  closeFinal?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  generateBtn?.addEventListener('click', async () => {
+    const email = emailInput?.value?.trim()?.toLowerCase();
+    if (!email) {
+      if (emailError) { emailError.textContent = copy.errorEmpty; emailError.classList.remove('hidden'); }
+      return;
+    }
+    emailError?.classList.add('hidden');
+
+    // Loading state
+    if (generateTxt) generateTxt.textContent = copy.generating;
+    spinner?.classList.remove('hidden');
+    if (generateBtn) generateBtn.disabled = true;
+
+    try {
+      const res = await fetch(`${API_URL}/referrals/share`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, channel: 'web_landing' }),
+      });
+
+      if (!res.ok) throw new Error('api_error');
+
+      const data = await res.json();
+      const link = `${APP_URL}/register?ref=${data.code}&sid=${data.share_id}`;
+
+      // Save to localStorage
+      try {
+        localStorage.setItem(STORAGE_CODE, data.code);
+        localStorage.setItem(STORAGE_SID, data.share_id);
+      } catch (_) {}
+
+      // Show step 2
+      if (linkDisplay) linkDisplay.value = link;
+      stepEmail?.classList.add('hidden');
+      stepLink?.classList.remove('hidden');
+
+    } catch (_) {
+      if (emailError) { emailError.textContent = copy.errorGeneric; emailError.classList.remove('hidden'); }
+    } finally {
+      if (generateTxt) generateTxt.textContent = copy.generate;
+      spinner?.classList.add('hidden');
+      if (generateBtn) generateBtn.disabled = false;
+    }
+  });
+
+  // Copy link
+  copyBtn?.addEventListener('click', async () => {
+    const link = linkDisplay?.value;
+    if (!link) return;
+    try {
+      await navigator.clipboard.writeText(link);
+      copyIcon?.classList.add('hidden');
+      checkIcon?.classList.remove('hidden');
+      if (copyBtnTxt) copyBtnTxt.textContent = copy.copied;
+      setTimeout(() => {
+        copyIcon?.classList.remove('hidden');
+        checkIcon?.classList.add('hidden');
+        if (copyBtnTxt) copyBtnTxt.textContent = copy.copy;
+      }, 2000);
+    } catch (_) {}
+  });
+
+  // Also allow pressing Enter in email input
+  emailInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') generateBtn?.click();
+  });
+</script>
