@@ -31,6 +31,8 @@ const copy = {
     copy:         'Copy',
     copied:       'Copied!',
     notice:       'Your code has been saved on this device. Future shares will use it automatically.',
+    trackCta:     'Track your referrals',
+    trackSub:     'Create a free account to see conversions and commissions.',
     close:        'Close',
     errorEmpty:   'Please enter your email.',
     errorGeneric: 'Could not generate the link. Try again.',
@@ -56,6 +58,8 @@ const copy = {
     copy:         'Copiar',
     copied:       '¡Copiado!',
     notice:       'Tu código se ha guardado en este dispositivo. Los próximos usos lo usarán automáticamente.',
+    trackCta:     'Ver mi cartera de referidos',
+    trackSub:     'Crea una cuenta gratuita para ver conversiones y comisiones.',
     close:        'Cerrar',
     errorEmpty:   'Introduce tu email.',
     errorGeneric: 'No se pudo generar el enlace. Inténtalo de nuevo.',
@@ -238,6 +242,21 @@ const copy = {
         <p class="text-xs text-brand-300">{copy.notice}</p>
       </div>
 
+      <!-- CTA: register as partner -->
+      <a
+        id="referral-register-link"
+        href="#"
+        target="_blank"
+        rel="noopener"
+        class="btn-primary w-full justify-center gap-2 text-sm"
+      >
+        <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        {copy.trackCta}
+      </a>
+      <p class="text-center text-xs text-slate-500">{copy.trackSub}</p>
+
       <button
         id="referral-close-final"
         class="btn-outline w-full justify-center text-sm py-2.5"
@@ -329,6 +348,11 @@ const copy = {
 
       // Show step 2
       if (linkDisplay) linkDisplay.value = link;
+      // Set register-as-partner link (pre-fills email so they use same address)
+      const registerLink = document.getElementById('referral-register-link');
+      if (registerLink) {
+        registerLink.href = `${APP_URL}/register?plan=partner&email=${encodeURIComponent(email)}`;
+      }
       stepEmail?.classList.add('hidden');
       stepLink?.classList.remove('hidden');
 
