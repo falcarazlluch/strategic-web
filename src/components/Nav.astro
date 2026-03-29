@@ -10,7 +10,7 @@ interface Props {
 const { t, lang } = Astro.props;
 const base    = `/${lang}`;
 const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
-const shareLabel = lang === 'es' ? 'Ganar 20%' : 'Earn 20%';
+const shareLabel = lang === 'es' ? 'Comparte y gana' : 'Share & earn';
 ---
 
 <header
@@ -114,16 +114,22 @@ const shareLabel = lang === 'es' ? 'Ganar 20%' : 'Earn 20%';
       <a href={`${base}/#how-it-works`} class="px-3 py-2.5 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all">{t.howItWorks}</a>
       <a href={`${base}/#pricing`}      class="px-3 py-2.5 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all">{t.pricing}</a>
       <a href={`${APP_URL}/login`}      class="px-3 py-2.5 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all">{t.signIn}</a>
-      <button id="mobile-share-btn" class="mt-1 flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-brand-500 dark:text-brand-400 hover:bg-brand-500/10 transition-all w-full text-left">
-        <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-        </svg>
-        {shareLabel}
-      </button>
       <a href="#pricing"   class="mt-2 btn-primary text-sm justify-center">{t.getStarted}</a>
     </div>
   </div>
 </header>
+
+<!-- Floating share button — mobile only (desktop uses nav button) -->
+<button
+  id="nav-floating-share-btn"
+  class="md:hidden fixed bottom-6 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white shadow-xl shadow-brand-600/40 transition-all duration-200 hover:bg-brand-500 hover:scale-105 active:scale-95"
+  aria-label={shareLabel}
+>
+  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+  </svg>
+  <span class="absolute inset-0 rounded-full bg-brand-500/30 animate-ping pointer-events-none" aria-hidden="true"></span>
+</button>
 
 <script>
   // ── Theme toggle ─────────────────────────────────────────────
@@ -163,11 +169,5 @@ const shareLabel = lang === 'es' ? 'Ganar 20%' : 'Earn 20%';
   // ── Share button → opens referral modal ───────────────────────
   const dispatchShare = () => window.dispatchEvent(new CustomEvent('openReferralModal'));
   document.getElementById('nav-share-btn')?.addEventListener('click', dispatchShare);
-  document.getElementById('mobile-share-btn')?.addEventListener('click', () => {
-    // Close mobile menu first
-    menu?.classList.add('hidden');
-    open?.classList.remove('hidden');
-    close?.classList.add('hidden');
-    dispatchShare();
-  });
+  document.getElementById('nav-floating-share-btn')?.addEventListener('click', dispatchShare);
 </script>
