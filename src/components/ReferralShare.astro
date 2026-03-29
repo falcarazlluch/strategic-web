@@ -63,6 +63,30 @@ const copy = {
 }[lang];
 ---
 
+<!-- ── Floating share button ────────────────────────────────────────────────── -->
+<div
+  id="floating-share-btn"
+  class="fixed bottom-6 right-5 z-40 flex items-center gap-2 cursor-pointer select-none"
+  role="button"
+  aria-label={copy.cta}
+>
+  <!-- Pill label (hidden on xs) -->
+  <span class="hidden sm:flex items-center gap-1.5 rounded-full bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold px-4 py-2.5 shadow-lg shadow-brand-600/30 transition-all duration-200 hover:scale-105 active:scale-95 whitespace-nowrap">
+    <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+    </svg>
+    {copy.cta}
+  </span>
+  <!-- Icon only (mobile) -->
+  <span class="sm:hidden flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 hover:bg-brand-500 text-white shadow-xl shadow-brand-600/40 transition-all duration-200 hover:scale-105 active:scale-95">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+    </svg>
+  </span>
+  <!-- Pulse ring (mobile only) -->
+  <span class="sm:hidden absolute inset-0 rounded-full bg-brand-500/30 animate-ping pointer-events-none" aria-hidden="true"></span>
+</div>
+
 <!-- ── Section ─────────────────────────────────────────────────────────────── -->
 <section id="referral-program" class="section-padding">
   <div class="section-container">
@@ -264,10 +288,13 @@ const copy = {
   }
 
   openBtn?.addEventListener('click', openModal);
+  document.getElementById('floating-share-btn')?.addEventListener('click', openModal);
   closeBtn?.addEventListener('click', closeModal);
   closeFinal?.addEventListener('click', closeModal);
   backdrop?.addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  // Global event — triggered by Nav button and floating button
+  window.addEventListener('openReferralModal', openModal);
 
   generateBtn?.addEventListener('click', async () => {
     const email = emailInput?.value?.trim()?.toLowerCase();
