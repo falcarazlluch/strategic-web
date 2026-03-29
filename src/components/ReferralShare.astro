@@ -4,8 +4,10 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const API_URL   = import.meta.env.PUBLIC_API_URL  ?? 'https://strategic-production.up.railway.app/api/v1';
-const APP_URL   = import.meta.env.PUBLIC_APP_URL  ?? 'https://strategic-z6xl.vercel.app';
+const rawApiUrl = import.meta.env.PUBLIC_API_URL ?? 'https://strategic-production.up.railway.app/api/v1';
+const API_URL   = rawApiUrl.startsWith('http') ? rawApiUrl : `https://${rawApiUrl}`;
+const rawAppUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+const APP_URL   = rawAppUrl.startsWith('http') ? rawAppUrl : `https://${rawAppUrl}`;
 
 const copy = {
   en: {
