@@ -295,8 +295,9 @@ const copy = {
 </div>
 
 <script define:vars={{ API_URL, APP_URL, copy }}>
-  const STORAGE_CODE = 'sde_ref_code';
-  const STORAGE_SID  = 'sde_share_id';
+  const STORAGE_CODE  = 'sde_ref_code';
+  const STORAGE_SID   = 'sde_share_id';
+  const STORAGE_EMAIL = 'sde_ref_email';
 
   const overlay     = document.getElementById('referral-modal-overlay');
   const backdrop    = document.getElementById('referral-modal-backdrop');
@@ -323,7 +324,12 @@ const copy = {
     stepEmail?.classList.remove('hidden');
     stepLink?.classList.add('hidden');
     emailError?.classList.add('hidden');
-    if (emailInput) emailInput.value = '';
+    try {
+      const savedEmail = localStorage.getItem(STORAGE_EMAIL);
+      if (emailInput) emailInput.value = savedEmail ?? '';
+    } catch (_) {
+      if (emailInput) emailInput.value = '';
+    }
     setTimeout(() => emailInput?.focus(), 50);
   }
 
@@ -369,6 +375,7 @@ const copy = {
       try {
         localStorage.setItem(STORAGE_CODE, data.code);
         localStorage.setItem(STORAGE_SID, data.share_id);
+        localStorage.setItem(STORAGE_EMAIL, email);
       } catch (_) {}
 
       // Show step 2
