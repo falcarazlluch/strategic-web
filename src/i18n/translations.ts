@@ -311,7 +311,7 @@ export const translations = {
         },
         {
           name: 'Plus',
-          description: 'The preferred plan for strategy teams and independent advisors.',
+          description: 'Everything you need to make faster, better-informed strategic decisions. The plan most professionals never outgrow.',
           price: 299,
           currency: '€',
           period: '/ month',
@@ -722,7 +722,7 @@ export const translations = {
         },
         {
           name: 'Plus',
-          description: 'El plan preferido por equipos de estrategia y asesores independientes.',
+          description: 'Todo lo que necesitas para tomar decisiones estratégicas más rápidas y mejor fundamentadas. El plan del que la mayoría no necesita pasar.',
           price: 299,
           currency: '€',
           period: '/ mes',
