@@ -22,7 +22,7 @@ export const translations = {
       subheadline:
         'Describe your challenge, the system analyses your company in depth and generates a structured, thorough analysis: diagnosis, prioritised initiatives, projections and roadmap. Adapted to your sector, your role and the focus you choose — strategic, financial, operational, immediate results or risk.',
       ctaPrimary: 'Start for Free',
-      ctaSecondary: 'See how it works',
+      ctaSecondary: 'Watch demo',
       mockup: {
         title: 'B2B SaaS Expansion — Southern Europe',
         subtitle: 'Go-to-Market Strategy · Financial Projections',
@@ -432,7 +432,7 @@ export const translations = {
       subheadline:
         'Describe tu reto, el sistema analiza tu empresa en profundidad y genera un análisis estructurado y profundo: diagnóstico, iniciativas priorizadas, proyecciones y hoja de ruta. Adaptado a tu sector, tu rol y el enfoque que elijas — estratégico, financiero, operativo, resultados inmediatos o de riesgos.',
       ctaPrimary: 'Empieza Gratis',
-      ctaSecondary: 'Cómo funciona',
+      ctaSecondary: 'Ver demo',
       mockup: {
         title: 'Expansión B2B SaaS — Sur de Europa',
         subtitle: 'Estrategia Go-to-Market · Proyecciones Financieras',

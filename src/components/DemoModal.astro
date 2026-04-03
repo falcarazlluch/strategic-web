@@ -1,0 +1,322 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+
+// ── UPDATE WHEN VIDEO IS READY ───────────────────────────────────────────────
+const YOUTUBE_VIDEO_ID = ''; // e.g. 'dQw4w9WgXcQ'
+// ────────────────────────────────────────────────────────────────────────────
+
+// ── CHAPTER TIMESTAMPS (seconds) — update after recording ───────────────────
+const TIMESTAMPS = [0, 45, 90, 135, 170, 230];
+// ────────────────────────────────────────────────────────────────────────────
+
+const hasVideo = YOUTUBE_VIDEO_ID !== '';
+
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
+
+const copy = {
+  en: {
+    title:         'See how it works',
+    sub:           'From company setup to executive report in under 10 minutes.',
+    chaptersLabel: 'Jump to',
+    close:         'Close',
+    noVideoTitle:  'Demo video coming soon',
+    noVideoSub:    'We are recording the full walkthrough. Check back shortly.',
+    cta:           'Start for Free',
+    chapters: [
+      { label: 'Company setup',      desc: 'Profile your company, sector and strategic context' },
+      { label: 'Problem definition', desc: 'Describe the business challenge you want to analyse' },
+      { label: 'Strategic intake',   desc: 'The AI asks targeted questions tailored to your role' },
+      { label: 'Report type',        desc: 'Choose your focus: strategic, financial, operational…' },
+      { label: 'Report generation',  desc: '4,000+ words generated in real time, section by section' },
+      { label: 'Refine with Aris',   desc: 'Iterate, edit sections and export your branded report' },
+    ],
+  },
+  es: {
+    title:         'Cómo funciona',
+    sub:           'De la configuración de empresa al informe ejecutivo en menos de 10 minutos.',
+    chaptersLabel: 'Ir a',
+    close:         'Cerrar',
+    noVideoTitle:  'Vídeo demo próximamente',
+    noVideoSub:    'Estamos grabando el vídeo completo. Vuelve pronto.',
+    cta:           'Empieza Gratis',
+    chapters: [
+      { label: 'Configuración de empresa', desc: 'Da de alta tu empresa, sector y contexto estratégico' },
+      { label: 'Definición del problema',  desc: 'Describe el reto de negocio que quieres analizar' },
+      { label: 'Intake estratégico',       desc: 'La IA te hace preguntas clave adaptadas a tu rol' },
+      { label: 'Tipo de informe',          desc: 'Elige el enfoque: estratégico, financiero, operativo…' },
+      { label: 'Generación del informe',   desc: 'Más de 4.000 palabras generadas en tiempo real, sección a sección' },
+      { label: 'Retoque con Aris',         desc: 'Itera, edita secciones y exporta con tu imagen de marca' },
+    ],
+  },
+}[lang];
+---
+
+<!-- ── Modal overlay ─────────────────────────────────────────────────────── -->
+<div
+  id="demo-modal-overlay"
+  class="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 hidden"
+  aria-modal="true"
+  role="dialog"
+  aria-labelledby="demo-modal-title"
+>
+  <!-- Backdrop -->
+  <div id="demo-modal-backdrop" class="absolute inset-0 bg-black/85 backdrop-blur-sm"></div>
+
+  <!-- Panel -->
+  <div class="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0b1018] shadow-2xl">
+
+    <!-- Header -->
+    <div class="flex items-start justify-between px-5 sm:px-6 py-4 border-b border-white/[0.07] flex-shrink-0">
+      <div>
+        <h2 id="demo-modal-title" class="text-white font-bold text-base sm:text-lg leading-snug">
+          {copy.title}
+        </h2>
+        <p class="text-slate-500 text-xs sm:text-sm mt-0.5">{copy.sub}</p>
+      </div>
+      <button
+        id="close-demo-modal"
+        class="ml-4 flex-shrink-0 p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/[0.07] transition-colors"
+        aria-label={copy.close}
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="flex flex-col lg:flex-row flex-1 min-h-0">
+
+      <!-- ── Video column ── -->
+      <div class="lg:w-[60%] flex-shrink-0 bg-black flex items-center justify-center">
+        {hasVideo ? (
+          <div id="demo-video-container" class="w-full aspect-video"></div>
+        ) : (
+          <!-- Placeholder state -->
+          <div class="w-full aspect-video flex flex-col items-center justify-center gap-4 px-8 text-center"
+            style="background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(15,20,30,1) 60%)"
+          >
+            <div class="w-16 h-16 rounded-full flex items-center justify-center border border-indigo-500/30"
+              style="background:rgba(99,102,241,0.12)"
+            >
+              <svg class="w-7 h-7 text-indigo-400 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm">{copy.noVideoTitle}</p>
+              <p class="text-slate-500 text-xs mt-1 max-w-xs">{copy.noVideoSub}</p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <!-- ── Chapters column ── -->
+      <div class="lg:w-[40%] flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.07] overflow-y-auto">
+        <div class="px-4 sm:px-5 pt-4 pb-2">
+          <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-600">
+            {copy.chaptersLabel}
+          </p>
+        </div>
+
+        <!-- Chapter buttons -->
+        <div class="px-3 sm:px-4 space-y-1 flex-1">
+          {copy.chapters.map((ch, i) => (
+            <button
+              class="chapter-btn group w-full flex items-start gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 hover:bg-white/[0.04]"
+              data-idx={i}
+              data-t={TIMESTAMPS[i]}
+              type="button"
+            >
+              <span
+                class="chapter-num flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 transition-all duration-200 bg-white/[0.06] text-slate-500"
+              >
+                {i + 1}
+              </span>
+              <div class="min-w-0">
+                <p class="chapter-label text-sm font-semibold text-slate-300 group-hover:text-white transition-colors leading-snug">
+                  {ch.label}
+                </p>
+                <p class="text-[11px] text-slate-600 leading-snug mt-0.5">{ch.desc}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="px-4 sm:px-5 py-4 mt-2 border-t border-white/[0.07] flex-shrink-0">
+          <a
+            href={`${APP_URL}/register`}
+            class="btn-primary w-full justify-center text-sm py-2.5"
+          >
+            {copy.cta}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ YOUTUBE_VIDEO_ID, TIMESTAMPS, hasVideo }}>
+(function () {
+  // ── DOM refs ──────────────────────────────────────────────────────────────
+  const overlay      = document.getElementById('demo-modal-overlay');
+  const backdrop     = document.getElementById('demo-modal-backdrop');
+  const closeBtn     = document.getElementById('close-demo-modal');
+  const chapterBtns  = Array.from(document.querySelectorAll('.chapter-btn'));
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  let player       = null;
+  let pollInterval = null;
+  let playerReady  = false;
+  let pendingOpen  = false;
+
+  // ── Open / Close ──────────────────────────────────────────────────────────
+  function openModal() {
+    if (!overlay) return;
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (hasVideo && !player) {
+      initYT();
+    }
+  }
+
+  function closeModal() {
+    if (!overlay) return;
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+    stopPoll();
+    if (player && playerReady) {
+      try { player.pauseVideo(); } catch (_) {}
+    }
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  window.addEventListener('openDemoModal', openModal);
+
+  // ── YouTube player ────────────────────────────────────────────────────────
+  function initYT() {
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+      return;
+    }
+    // Load API script once
+    if (!document.getElementById('yt-api-script')) {
+      const tag = document.createElement('script');
+      tag.id  = 'yt-api-script';
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    }
+    // YT will call window.onYouTubeIframeAPIReady when ready
+    pendingOpen = true;
+  }
+
+  // Global callback required by YouTube IFrame API
+  const prevCallback = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = function () {
+    if (prevCallback) prevCallback();
+    if (pendingOpen) { pendingOpen = false; createPlayer(); }
+  };
+
+  function createPlayer() {
+    const container = document.getElementById('demo-video-container');
+    if (!container || player) return;
+
+    // Create a div for the player inside the container
+    const div = document.createElement('div');
+    div.id = 'yt-player-el';
+    container.appendChild(div);
+
+    player = new YT.Player('yt-player-el', {
+      videoId:     YOUTUBE_VIDEO_ID,
+      width:       '100%',
+      height:      '100%',
+      playerVars: {
+        autoplay:        1,
+        rel:             0,
+        modestbranding:  1,
+        iv_load_policy:  3,
+        color:           'white',
+      },
+      events: {
+        onReady: () => { playerReady = true; },
+        onStateChange: (e) => {
+          if (e.data === 1 /* PLAYING */) startPoll();
+          else stopPoll();
+        },
+      },
+    });
+  }
+
+  // ── Chapter seek ──────────────────────────────────────────────────────────
+  chapterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const t   = parseInt(btn.dataset.t ?? '0', 10);
+      const idx = parseInt(btn.dataset.idx ?? '0', 10);
+
+      if (player && playerReady) {
+        player.seekTo(t, true);
+        player.playVideo();
+      }
+      setActive(idx);
+    });
+  });
+
+  // ── Auto-highlight via polling ────────────────────────────────────────────
+  function startPoll() {
+    stopPoll();
+    pollInterval = setInterval(() => {
+      if (!player || !playerReady) return;
+      try {
+        const t = player.getCurrentTime();
+        // Find last chapter whose timestamp <= current time
+        let active = 0;
+        for (let i = TIMESTAMPS.length - 1; i >= 0; i--) {
+          if (t >= TIMESTAMPS[i]) { active = i; break; }
+        }
+        setActive(active);
+      } catch (_) {}
+    }, 500);
+  }
+
+  function stopPoll() {
+    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+  }
+
+  // ── Visual state of chapters ──────────────────────────────────────────────
+  function setActive(idx) {
+    chapterBtns.forEach((btn, i) => {
+      const num   = btn.querySelector('.chapter-num');
+      const label = btn.querySelector('.chapter-label');
+      const active = i === idx;
+
+      btn.classList.toggle('bg-indigo-500/[0.08]', active);
+      btn.classList.toggle('border',               active);
+      btn.classList.toggle('border-indigo-500/20', active);
+
+      if (num) {
+        num.classList.toggle('bg-indigo-500',      active);
+        num.classList.toggle('text-white',          active);
+        num.classList.toggle('bg-white/[0.06]',    !active);
+        num.classList.toggle('text-slate-500',      !active);
+      }
+      if (label) {
+        label.classList.toggle('text-white',        active);
+        label.classList.toggle('text-slate-300',    !active);
+      }
+    });
+  }
+
+  // Highlight first chapter on load
+  setActive(0);
+})();
+</script>
