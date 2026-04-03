@@ -8,7 +8,7 @@ const sections = lang === 'es'
   ? [
       { id: 'profiles',        label: 'Adaptado a tu perfil' },
       { id: 'features',        label: 'Funcionalidades' },
-      { id: 'consulting-model',label: 'Modelo de consultoría' },
+      { id: 'consulting-model',label: 'Metodología aplicada' },
       { id: 'how-it-works',    label: 'Cómo funciona' },
       { id: 'demo',            label: 'Ver demo' },
       { id: 'agency',          label: 'Para consultoras' },
@@ -18,7 +18,7 @@ const sections = lang === 'es'
   : [
       { id: 'profiles',        label: 'Built for your role' },
       { id: 'features',        label: 'Features' },
-      { id: 'consulting-model',label: 'The consulting model' },
+      { id: 'consulting-model',label: 'Applied methodology' },
       { id: 'how-it-works',    label: 'How it works' },
       { id: 'demo',            label: 'Watch demo' },
       { id: 'agency',          label: 'For consultants' },
@@ -39,7 +39,7 @@ const sections = lang === 'es'
     z-index:40;
     opacity:0;
     pointer-events:none;
-    transition:opacity 0.3s ease, transform 0.3s ease;
+    transition:opacity 0.35s ease, transform 0.35s ease;
   "
 >
   <button
@@ -75,22 +75,22 @@ const sections = lang === 'es'
 
 <script define:vars={{ sections }}>
 (function () {
-  const btn      = document.getElementById('scroll-nav-btn');
-  const inner    = document.getElementById('scroll-nav-inner');
-  const labelEl  = document.getElementById('scroll-nav-label');
+  const btn     = document.getElementById('scroll-nav-btn');
+  const inner   = document.getElementById('scroll-nav-inner');
+  const labelEl = document.getElementById('scroll-nav-label');
   if (!btn || !inner || !labelEl) return;
-
-  let nextSection = null;
-  let hideTimer   = null;
 
   // Build ordered list of section elements that exist in DOM
   const sectionEls = sections
     .map(s => ({ ...s, el: document.getElementById(s.id) }))
     .filter(s => s.el);
 
+  if (sectionEls.length === 0) return;
+
   function showBtn(label, targetId) {
-    labelEl.textContent = label;
-    inner.dataset.target = targetId;
+    // Only update label/target when they actually change (avoids flicker)
+    if (labelEl.textContent !== label) labelEl.textContent = label;
+    if (inner.dataset.target !== targetId) inner.dataset.target = targetId;
     btn.style.opacity = '1';
     btn.style.transform = 'translateX(-50%) translateY(0)';
     btn.style.pointerEvents = 'auto';
@@ -105,24 +105,21 @@ const sections = lang === 'es'
   }
 
   function update() {
-    const scrollY    = window.scrollY;
-    const winH       = window.innerHeight;
-    const docH       = document.documentElement.scrollHeight;
-    const nearBottom = scrollY + winH >= docH - 80;
+    const winH   = window.innerHeight;
+    const docH   = document.documentElement.scrollHeight;
+    const scrollY = window.scrollY;
 
-    // Hide near the very bottom
-    if (nearBottom) { hideBtn(); return; }
+    // Hide only when at the very bottom (pricing / footer visible)
+    if (scrollY + winH >= docH - 60) { hideBtn(); return; }
 
-    // Hide very near the top (before first section)
-    if (scrollY < winH * 0.3) { hideBtn(); return; }
-
-    // Find current visible section: last one whose top is above 60% of viewport
+    // Find current section: last one whose top is above 55% of viewport
     let current = -1;
     for (let i = 0; i < sectionEls.length; i++) {
-      const rect = sectionEls[i].el.getBoundingClientRect();
-      if (rect.top <= winH * 0.6) current = i;
+      const top = sectionEls[i].el.getBoundingClientRect().top;
+      if (top <= winH * 0.55) current = i;
     }
 
+    // When current === -1 we're still in the hero → point to first section
     const nextIdx = current + 1;
     if (nextIdx < sectionEls.length) {
       showBtn(sectionEls[nextIdx].label, sectionEls[nextIdx].id);
@@ -131,13 +128,10 @@ const sections = lang === 'es'
     }
   }
 
-  // Scroll to target on click
+  // Click → smooth scroll to target
   inner.addEventListener('click', () => {
-    const targetId = inner.dataset.target;
-    if (!targetId) return;
-    const el = document.getElementById(targetId);
-    if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById(inner.dataset.target ?? '');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // Throttled scroll listener
@@ -149,7 +143,7 @@ const sections = lang === 'es'
     }
   }, { passive: true });
 
-  // Initial call after a short delay (wait for layout)
-  setTimeout(update, 600);
+  // Show immediately on load (after a brief paint delay)
+  setTimeout(update, 200);
 })();
 </script>

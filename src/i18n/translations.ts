@@ -126,8 +126,8 @@ export const translations = {
     },
 
     consulting: {
-      badge: 'The consulting model',
-      headline: 'Methodology, not just AI output',
+      badge: 'Applied methodology',
+      headline: 'Frameworks, not generic text',
       subheadline:
         'Strategic Decision applies the same structured thinking used by top consulting firms. Each report is built on proven frameworks adapted to your specific situation.',
       frameworks: [
@@ -550,8 +550,8 @@ export const translations = {
     },
 
     consulting: {
-      badge: 'El modelo de consultoría',
-      headline: 'Metodología, no solo output de IA',
+      badge: 'Metodología aplicada',
+      headline: 'Frameworks reales, no texto genérico',
       subheadline:
         'Strategic Decision aplica el mismo pensamiento estructurado que usan las grandes consultoras. Cada informe se construye sobre frameworks probados adaptados a tu situación específica.',
       frameworks: [
