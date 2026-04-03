@@ -15,6 +15,7 @@ import CTA from '../components/CTA.astro';
 import ReferralShare from '../components/ReferralShare.astro';
 import Footer from '../components/Footer.astro';
 import ArisChat from '../components/ArisChat.astro';
+import ScrollNav from '../components/ScrollNav.astro';
 
 const lang = 'es';
 const t = translations[lang];
@@ -36,5 +37,6 @@ const t = translations[lang];
     <ReferralShare   lang={lang} />
   </main>
   <Footer   t={t.footer} lang={lang} />
-  <ArisChat lang={lang} />
+  <ArisChat  lang={lang} />
+  <ScrollNav lang={lang} />
 </BaseLayout>

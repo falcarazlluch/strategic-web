@@ -96,7 +96,7 @@ export const translations = {
           icon: 'document',
           title: 'Reports Structured for Your Case',
           description:
-            'Sections are named and structured specifically for your problem — not "Market Analysis" but "B2B SaaS penetration in Spanish SME banking". 4,000+ words with executive summary, diagnosis, initiatives, financials, risk analysis, and roadmap.',
+            'Every section title is written for your specific problem. A generic "Market Analysis" becomes "B2B SaaS entry into Spanish SME banking" — named, framed, and argued around your actual situation. Each report exceeds 4,000 words and covers: executive summary, strategic diagnosis, prioritised initiatives, financial projections, risk matrix, and implementation roadmap.',
         },
         {
           icon: 'chat',
@@ -162,35 +162,41 @@ export const translations = {
       badge: 'Simple process',
       headline: 'From problem to strategy in under 15 minutes',
       subheadline:
-        'A structured AI methodology ensures every recommendation is grounded in your specific business reality — not a generic template.',
+        'Your company context is set up once and reused across every report. Each new challenge takes minutes — not hours.',
+      setupNote: 'One-time setup',
+      perReportNote: 'Per report',
       steps: [
         {
           number: '01',
-          title: 'Define the Challenge',
+          title: 'Set Up Your Company (once)',
           description:
-            'Describe your business problem in plain language. The system immediately identifies the type of analysis required, the complexity level, and the consultant profiles needed.',
-          time: '2 min',
+            'When you sign up, you create your company workspace: sector, business model, geographic markets, development stage, competitors, and your role (CEO, CFO, CTO…). Upload strategic documents or auto-import context from your website. This is done once — every report you generate from that point inherits all this context automatically.',
+          time: 'One-time',
+          isSetup: true,
         },
         {
           number: '02',
-          title: 'Enrich Company Context',
+          title: 'Define the Challenge & Choose the Focus',
           description:
-            'Complete your company profile: sector, business model, geographic markets, competitors, development stage. Upload strategic documents or auto-import context from your website.',
-          time: '3 min',
+            'Describe the specific problem you want to solve. Then choose the analytical approach: Strategic, Tactical, Financial, Operational, or Risk. Plus and Premium plans let you combine multiple approaches in a single report for a more complete analysis.',
+          time: '2 min',
+          isSetup: false,
         },
         {
           number: '03',
           title: 'AI Strategic Intake',
           description:
-            'The system generates 6–8 targeted questions specific to your case and your role. A CEO gets different questions than a CFO. Designed to build the Business Model Canvas for your situation.',
+            'The system generates 6–8 targeted questions built around your challenge, your company context, and your role. A CEO gets different questions than a CFO — even for the same problem. Designed to surface the key variables that shape the analysis.',
           time: '5 min',
+          isSetup: false,
         },
         {
           number: '04',
           title: 'Report Generation',
           description:
-            'Your report is structured with sections named for your specific case. Watch it generate in real time: executive summary, competitive analysis, strategic initiatives, financial projections, risk matrix, and roadmap.',
+            'Watch your report materialise in real time. Sections are named and structured specifically for your case — not generic titles. The system produces 4,000+ words covering executive summary, diagnosis, strategic initiatives, financial projections, risk matrix, and implementation roadmap.',
           time: '3 min',
+          isSetup: false,
         },
         {
           number: '05',
@@ -198,6 +204,7 @@ export const translations = {
           description:
             'Iterate with Aris, edit sections manually, and export a branded PDF or Word document — ready for your board or to deliver to a client.',
           time: 'Unlimited',
+          isSetup: false,
         },
       ],
     },
@@ -513,7 +520,7 @@ export const translations = {
           icon: 'document',
           title: 'Informes Estructurados para tu Caso',
           description:
-            'Las secciones se nombran y estructuran específicamente para tu problema — no "Análisis de Mercado" genérico, sino "Penetración SaaS B2B en banca española para PYMEs". Más de 4.000 palabras con resumen ejecutivo, diagnóstico, iniciativas, finanzas, análisis de riesgos y hoja de ruta.',
+            'Cada sección del informe se titula y argumenta en torno a tu problema concreto. Un "Análisis de Mercado" genérico se convierte en "Penetración SaaS B2B en banca española para PYMEs" — nombrado, enfocado y desarrollado desde tu situación real. Más de 4.000 palabras que cubren: resumen ejecutivo, diagnóstico estratégico, iniciativas priorizadas, proyecciones financieras, matriz de riesgos y hoja de ruta de implementación.',
         },
         {
           icon: 'chat',
@@ -579,35 +586,41 @@ export const translations = {
       badge: 'Proceso claro',
       headline: 'Del problema a la estrategia en menos de 15 minutos',
       subheadline:
-        'Una metodología de IA estructurada garantiza que cada recomendación esté fundamentada en la realidad específica de tu negocio — no en una plantilla genérica.',
+        'El contexto de tu empresa se configura una vez y se reutiliza en todos los informes. Cada nuevo desafío lleva minutos — no horas.',
+      setupNote: 'Configuración única',
+      perReportNote: 'Por informe',
       steps: [
         {
           number: '01',
-          title: 'Define el Desafío',
+          title: 'Configura tu Empresa (una vez)',
           description:
-            'Describe tu problema de negocio en lenguaje natural. El sistema identifica inmediatamente el tipo de análisis requerido, la complejidad y los perfiles de consultor necesarios.',
-          time: '2 min',
+            'Al registrarte, creas el espacio de trabajo de tu empresa: sector, modelo de negocio, mercados geográficos, fase de desarrollo, competidores y tu rol (CEO, CFO, CTO…). Sube documentos estratégicos o importa el contexto automáticamente desde la URL de tu web. Esto se hace una sola vez — cada informe que generes a partir de ese momento hereda todo este contexto de forma automática.',
+          time: 'Una vez',
+          isSetup: true,
         },
         {
           number: '02',
-          title: 'Enriquece el Contexto',
+          title: 'Define el Desafío y Elige el Enfoque',
           description:
-            'Completa el perfil de tu empresa: sector, modelo de negocio, mercados geográficos, competidores, fase de desarrollo. Sube documentos estratégicos o importa el contexto automáticamente desde la URL de tu web.',
-          time: '3 min',
+            'Describe el problema concreto que quieres resolver. A continuación, elige el enfoque analítico: Estratégico, Táctico, Financiero, Operativo o de Riesgos. Los planes Plus y Premium permiten combinar varios enfoques en un único informe para un análisis más completo.',
+          time: '2 min',
+          isSetup: false,
         },
         {
           number: '03',
           title: 'Intake Estratégico con IA',
           description:
-            'El sistema genera 6–8 preguntas específicas para tu caso y tu rol. Un CEO recibe preguntas distintas a las de un CFO. Diseñadas para construir el Business Model Canvas de tu situación.',
+            'El sistema genera 6–8 preguntas construidas alrededor de tu desafío, el contexto de tu empresa y tu rol. Un CEO recibe preguntas distintas a las de un CFO — ante el mismo problema. Diseñadas para identificar las variables clave que condicionan el análisis.',
           time: '5 min',
+          isSetup: false,
         },
         {
           number: '04',
           title: 'Generación del Informe',
           description:
-            'Tu informe se estructura con secciones nombradas para tu caso concreto. Obsérvalo generarse en tiempo real: resumen ejecutivo, análisis competitivo, iniciativas estratégicas, proyecciones financieras, matriz de riesgos y hoja de ruta.',
+            'Observa cómo tu informe se materializa en tiempo real. Las secciones se titulan y estructuran específicamente para tu caso — sin títulos genéricos. El sistema produce más de 4.000 palabras que cubren resumen ejecutivo, diagnóstico, iniciativas estratégicas, proyecciones financieras, matriz de riesgos y hoja de ruta de implementación.',
           time: '3 min',
+          isSetup: false,
         },
         {
           number: '05',
@@ -615,6 +628,7 @@ export const translations = {
           description:
             'Itera con Aris, edita secciones manualmente y exporta un PDF o Word con tu imagen de marca — listo para el consejo o para entregar a un cliente.',
           time: 'Ilimitado',
+          isSetup: false,
         },
       ],
     },

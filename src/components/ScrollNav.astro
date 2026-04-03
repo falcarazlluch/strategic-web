@@ -1,0 +1,155 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+
+const sections = lang === 'es'
+  ? [
+      { id: 'profiles',        label: 'Adaptado a tu perfil' },
+      { id: 'features',        label: 'Funcionalidades' },
+      { id: 'consulting-model',label: 'Modelo de consultoría' },
+      { id: 'how-it-works',    label: 'Cómo funciona' },
+      { id: 'demo',            label: 'Ver demo' },
+      { id: 'agency',          label: 'Para consultoras' },
+      { id: 'testimonials',    label: 'Testimonios' },
+      { id: 'pricing',         label: 'Planes y precios' },
+    ]
+  : [
+      { id: 'profiles',        label: 'Built for your role' },
+      { id: 'features',        label: 'Features' },
+      { id: 'consulting-model',label: 'The consulting model' },
+      { id: 'how-it-works',    label: 'How it works' },
+      { id: 'demo',            label: 'Watch demo' },
+      { id: 'agency',          label: 'For consultants' },
+      { id: 'testimonials',    label: 'Testimonials' },
+      { id: 'pricing',         label: 'Pricing' },
+    ];
+---
+
+<!-- Floating scroll-to-next button -->
+<div
+  id="scroll-nav-btn"
+  aria-hidden="true"
+  style="
+    position:fixed;
+    bottom:5.5rem;
+    left:50%;
+    transform:translateX(-50%) translateY(12px);
+    z-index:40;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease, transform 0.3s ease;
+  "
+>
+  <button
+    id="scroll-nav-inner"
+    style="
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      background:rgba(99,102,241,0.92);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      color:white;
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:9999px;
+      padding:0.5rem 1.1rem 0.5rem 1.25rem;
+      font-size:0.8rem;
+      font-weight:600;
+      font-family:inherit;
+      cursor:pointer;
+      box-shadow:0 8px 28px rgba(99,102,241,0.4);
+      white-space:nowrap;
+      transition:background 0.2s ease, box-shadow 0.2s ease;
+    "
+    onmouseenter="this.style.background='rgba(79,70,229,0.95)'"
+    onmouseleave="this.style.background='rgba(99,102,241,0.92)'"
+  >
+    <span id="scroll-nav-label">–</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </button>
+</div>
+
+<script define:vars={{ sections }}>
+(function () {
+  const btn      = document.getElementById('scroll-nav-btn');
+  const inner    = document.getElementById('scroll-nav-inner');
+  const labelEl  = document.getElementById('scroll-nav-label');
+  if (!btn || !inner || !labelEl) return;
+
+  let nextSection = null;
+  let hideTimer   = null;
+
+  // Build ordered list of section elements that exist in DOM
+  const sectionEls = sections
+    .map(s => ({ ...s, el: document.getElementById(s.id) }))
+    .filter(s => s.el);
+
+  function showBtn(label, targetId) {
+    labelEl.textContent = label;
+    inner.dataset.target = targetId;
+    btn.style.opacity = '1';
+    btn.style.transform = 'translateX(-50%) translateY(0)';
+    btn.style.pointerEvents = 'auto';
+    btn.setAttribute('aria-hidden', 'false');
+  }
+
+  function hideBtn() {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateX(-50%) translateY(12px)';
+    btn.style.pointerEvents = 'none';
+    btn.setAttribute('aria-hidden', 'true');
+  }
+
+  function update() {
+    const scrollY    = window.scrollY;
+    const winH       = window.innerHeight;
+    const docH       = document.documentElement.scrollHeight;
+    const nearBottom = scrollY + winH >= docH - 80;
+
+    // Hide near the very bottom
+    if (nearBottom) { hideBtn(); return; }
+
+    // Hide very near the top (before first section)
+    if (scrollY < winH * 0.3) { hideBtn(); return; }
+
+    // Find current visible section: last one whose top is above 60% of viewport
+    let current = -1;
+    for (let i = 0; i < sectionEls.length; i++) {
+      const rect = sectionEls[i].el.getBoundingClientRect();
+      if (rect.top <= winH * 0.6) current = i;
+    }
+
+    const nextIdx = current + 1;
+    if (nextIdx < sectionEls.length) {
+      showBtn(sectionEls[nextIdx].label, sectionEls[nextIdx].id);
+    } else {
+      hideBtn();
+    }
+  }
+
+  // Scroll to target on click
+  inner.addEventListener('click', () => {
+    const targetId = inner.dataset.target;
+    if (!targetId) return;
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Throttled scroll listener
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { update(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Initial call after a short delay (wait for layout)
+  setTimeout(update, 600);
+})();
+</script>
