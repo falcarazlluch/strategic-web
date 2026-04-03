@@ -331,10 +331,9 @@ export const translations = {
             'Report regeneration',
             'Aris AI consultant chat',
             'Additional report packs',
-          ],
-          notIncluded: [
             'Early access to new features',
           ],
+          notIncluded: [],
         },
         {
           name: 'Premium',
@@ -742,10 +741,9 @@ export const translations = {
             'Regeneración de informe',
             'Aris, consultor IA',
             'Packs de informes adicionales',
-          ],
-          notIncluded: [
             'Acceso anticipado a nuevas funciones',
           ],
+          notIncluded: [],
         },
         {
           name: 'Premium',
