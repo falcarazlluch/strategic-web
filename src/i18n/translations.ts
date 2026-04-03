@@ -213,7 +213,7 @@ export const translations = {
       badge: 'For consulting firms & agencies',
       headline: 'Your reports. Your brand. Your clients.',
       subheadline:
-        'Strategic Decision gives boutique consultancies and independent advisors the infrastructure to deliver McKinsey-quality work at a fraction of the time and cost.',
+        'Strategic Decision gives boutique consultancies and independent advisors the infrastructure to deliver senior-level strategic work in a fraction of the time — all included in the Premium plan.',
       features: [
         {
           icon: 'brand',
@@ -233,10 +233,10 @@ export const translations = {
         {
           icon: 'speed',
           title: 'Deliver in Hours, Not Weeks',
-          description: 'A full strategic analysis that would take a junior team 3 weeks is ready in 10 minutes. Bill the same, invest the time differently.',
+          description: 'A full strategic analysis that would take a senior team days is ready in 10 minutes. Invest the time you save in higher-value client work.',
         },
       ],
-      cta: 'Explore Agency Plans',
+      cta: 'See Premium Plan',
     },
 
     video: {
@@ -637,7 +637,7 @@ export const translations = {
       badge: 'Para consultoras y agencias',
       headline: 'Tus informes. Tu marca. Tus clientes.',
       subheadline:
-        'Strategic Decision da a las boutiques de estrategia y asesores independientes la infraestructura para entregar trabajo de calidad McKinsey en una fracción del tiempo y el coste.',
+        'Strategic Decision da a las boutiques de estrategia y asesores independientes la infraestructura para entregar trabajo estratégico de primer nivel en una fracción del tiempo — todo incluido en el plan Premium.',
       features: [
         {
           icon: 'brand',
@@ -656,11 +656,11 @@ export const translations = {
         },
         {
           icon: 'speed',
-          title: 'Entrega en Horas, no Semanas',
-          description: 'Un análisis estratégico completo que llevaría 3 semanas a un equipo junior está listo en 10 minutos. Factura igual, invierte el tiempo de otra forma.',
+          title: 'Entrega en Horas, no Días',
+          description: 'Un análisis estratégico completo que llevaría días a un equipo senior está listo en 10 minutos. Invierte el tiempo que ahorras en trabajo de mayor valor para el cliente.',
         },
       ],
-      cta: 'Ver Planes para Agencias',
+      cta: 'Ver Plan Premium',
     },
 
     video: {
