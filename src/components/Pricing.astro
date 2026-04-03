@@ -59,9 +59,7 @@ const agencyMailto = `mailto:info@strategicdecision.ai?subject=${encodeURICompon
           <!-- Price -->
           <div class="mb-3">
             {plan.price === null ? (
-              <span class="text-3xl font-extrabold text-slate-900 dark:text-white">
-                {lang === 'es' ? 'A medida' : 'Custom'}
-              </span>
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white">Custom</span>
             ) : (
               <div class="flex items-baseline gap-0.5">
                 <span class="text-3xl font-extrabold text-slate-900 dark:text-white">{plan.currency}{plan.price}</span>

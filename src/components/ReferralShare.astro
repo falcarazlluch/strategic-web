@@ -102,12 +102,6 @@ const copy = {
             </svg>
             {copy.cta}
           </button>
-          <a
-            href={`/${lang}/partner-terms`}
-            class="text-xs text-slate-400 hover:text-indigo-400 underline underline-offset-2 transition-colors mt-3 inline-block"
-          >
-            {lang === 'es' ? 'Ver condiciones del programa' : 'View programme terms'}
-          </a>
         </div>
 
         <!-- Right: steps -->
@@ -121,10 +115,20 @@ const copy = {
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{step}</p>
             </div>
           ))}
-
         </div>
 
       </div>
+
+      <!-- Terms link: bottom-right on desktop, centered on mobile -->
+      <div class="relative z-10 mt-8 flex justify-center lg:justify-end">
+        <a
+          href={`/${lang}/partner-terms`}
+          class="text-xs text-slate-400 hover:text-indigo-400 underline underline-offset-2 transition-colors"
+        >
+          {lang === 'es' ? 'Ver condiciones del programa' : 'View programme terms'}
+        </a>
+      </div>
+
     </div>
   </div>
 </section>

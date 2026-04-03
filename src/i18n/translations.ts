@@ -377,6 +377,7 @@ export const translations = {
           featured: false,
           badge: null,
           features: [
+            'Everything included in the Premium plan',
             'Custom report volume',
           ],
           notIncluded: [],
@@ -787,6 +788,7 @@ export const translations = {
           featured: false,
           badge: null,
           features: [
+            'Todo lo incluido en el plan Premium',
             'Volumen de informes personalizado',
           ],
           notIncluded: [],
