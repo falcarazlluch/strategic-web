@@ -311,7 +311,7 @@ export const translations = {
         },
         {
           name: 'Plus',
-          description: 'Everything you need to make faster, better-informed strategic decisions. The plan most professionals never outgrow.',
+          description: 'For executives who need solid, fast, and well-founded analysis.',
           price: 299,
           currency: '€',
           period: '/ month',
@@ -722,7 +722,7 @@ export const translations = {
         },
         {
           name: 'Plus',
-          description: 'Todo lo que necesitas para tomar decisiones estratégicas más rápidas y mejor fundamentadas. El plan del que la mayoría no necesita pasar.',
+          description: 'Para directivos que necesitan análisis sólidos, rápidos y bien fundamentados.',
           price: 299,
           currency: '€',
           period: '/ mes',
