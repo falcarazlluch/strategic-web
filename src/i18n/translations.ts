@@ -17,10 +17,10 @@ export const translations = {
       forConsultants: 'For Consultants',
     },
     hero: {
-      badge: 'AI that learns your company before writing a single line',
-      headline: 'The First AI That Analyses Your Business Like a Strategy Consultant',
+      badge: 'Your strategic consultancy. From business problem to executive report.',
+      headline: 'Your Strategic Consultancy. From Business Problem to Executive Report.',
       subheadline:
-        'Before generating a single insight, our system profiles your company, identifies the right consultant frameworks, and builds a personalised report structure. The result: analysis that actually fits your reality.',
+        'Describe your challenge, the system analyses your company in depth and generates a structured, thorough analysis: diagnosis, prioritised initiatives, projections and roadmap. Adapted to your sector, your role and the focus you choose — strategic, financial, operational, immediate results or risk.',
       ctaPrimary: 'Start for Free',
       ctaSecondary: 'See how it works',
       mockup: {
@@ -427,10 +427,10 @@ export const translations = {
       forConsultants: 'Para Consultoras',
     },
     hero: {
-      badge: 'IA que aprende tu empresa antes de escribir una sola línea',
-      headline: 'El Primer Sistema de IA que Analiza tu Empresa como una Consultora Estratégica',
+      badge: 'Tu consultora estratégica. Del problema de negocio al informe ejecutivo.',
+      headline: 'Tu Consultora Estratégica. Del Problema de Negocio al Informe Ejecutivo.',
       subheadline:
-        'Antes de generar una sola recomendación, el sistema perfila tu empresa, identifica los marcos de análisis correctos y construye una estructura de informe personalizada. El resultado: análisis que realmente encaja con tu realidad.',
+        'Describe tu reto, el sistema analiza tu empresa en profundidad y genera un análisis estructurado y profundo: diagnóstico, iniciativas priorizadas, proyecciones y hoja de ruta. Adaptado a tu sector, tu rol y el enfoque que elijas — estratégico, financiero, operativo, resultados inmediatos o de riesgos.',
       ctaPrimary: 'Empieza Gratis',
       ctaSecondary: 'Cómo funciona',
       mockup: {
