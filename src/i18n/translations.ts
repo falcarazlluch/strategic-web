@@ -17,8 +17,8 @@ export const translations = {
       forConsultants: 'For Consultants',
     },
     hero: {
-      badge: 'Your strategic consultancy. From business problem to executive report.',
-      headline: 'Your Strategic Consultancy. From Business Problem to Executive Report.',
+      badge: 'From business problem to executive report in minutes',
+      headline: 'Your strategic consultancy. From business problem to executive report.',
       subheadline:
         'Describe your challenge, the system analyses your company in depth and generates a structured, thorough analysis: diagnosis, prioritised initiatives, projections and roadmap. Adapted to your sector, your role and the focus you choose — strategic, financial, operational, immediate results or risk.',
       ctaPrimary: 'Start for Free',
@@ -427,8 +427,8 @@ export const translations = {
       forConsultants: 'Para Consultoras',
     },
     hero: {
-      badge: 'Tu consultora estratégica. Del problema de negocio al informe ejecutivo.',
-      headline: 'Tu Consultora Estratégica. Del Problema de Negocio al Informe Ejecutivo.',
+      badge: 'Del problema al informe ejecutivo en minutos',
+      headline: 'Tu consultora estratégica. Del problema de negocio al informe ejecutivo.',
       subheadline:
         'Describe tu reto, el sistema analiza tu empresa en profundidad y genera un análisis estructurado y profundo: diagnóstico, iniciativas priorizadas, proyecciones y hoja de ruta. Adaptado a tu sector, tu rol y el enfoque que elijas — estratégico, financiero, operativo, resultados inmediatos o de riesgos.',
       ctaPrimary: 'Empieza Gratis',
