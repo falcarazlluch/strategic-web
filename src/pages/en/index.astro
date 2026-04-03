@@ -3,9 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { translations } from '../../i18n/translations';
 import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
+import ProfileSection from '../../components/ProfileSection.astro';
 import Features from '../../components/Features.astro';
+import ConsultingModel from '../../components/ConsultingModel.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import VideoSection from '../../components/VideoSection.astro';
+import AgencySection from '../../components/AgencySection.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
@@ -20,15 +23,18 @@ const t = translations[lang];
 <BaseLayout lang={lang} title={t.meta.title} description={t.meta.description} ogTitle={t.meta.ogTitle}>
   <Nav t={t.nav} lang={lang} />
   <main>
-    <Hero         t={t.hero}         lang={lang} />
-    <Features     t={t.features} />
-    <HowItWorks   t={t.howItWorks} />
-    <VideoSection t={t.video}        lang={lang} />
-    <Testimonials t={t.testimonials} />
-    <Pricing      t={t.pricing}      lang={lang} />
-    <CTA          t={t.cta} />
-    <ReferralShare lang={lang} />
+    <Hero            t={t.hero}         lang={lang} />
+    <ProfileSection  t={t.profile}      lang={lang} />
+    <Features        t={t.features} />
+    <ConsultingModel t={t.consulting} />
+    <HowItWorks      t={t.howItWorks} />
+    <VideoSection    t={t.video}        lang={lang} />
+    <AgencySection   t={t.agency}       lang={lang} />
+    <Testimonials    t={t.testimonials} />
+    <Pricing         t={t.pricing}      lang={lang} />
+    <CTA             t={t.cta} />
+    <ReferralShare   lang={lang} />
   </main>
-  <Footer t={t.footer} lang={lang} />
+  <Footer   t={t.footer} lang={lang} />
   <ArisChat lang={lang} />
 </BaseLayout>

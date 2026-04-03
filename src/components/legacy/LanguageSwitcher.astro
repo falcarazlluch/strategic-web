@@ -1,0 +1,22 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+const otherLang = lang === 'en' ? 'es' : 'en';
+
+// Swap the locale prefix in the current path
+const currentPath = Astro.url.pathname;
+const otherPath   = currentPath.includes(`/${lang}/`)
+  ? currentPath.replace(`/${lang}/`, `/${otherLang}/`)
+  : `/${otherLang}/`;
+---
+
+<a
+  href={otherPath}
+  class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-150"
+  aria-label={lang === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés'}
+>
+  <span class="text-[10px] leading-none">{lang === 'en' ? '🇪🇸' : '🇬🇧'}</span>
+  <span>{lang === 'en' ? 'ES' : 'EN'}</span>
+</a>

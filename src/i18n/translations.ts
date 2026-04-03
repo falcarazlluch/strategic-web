@@ -5,8 +5,8 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — AI-Powered Strategic Intelligence',
       description:
-        'Generate comprehensive boardroom-ready strategic reports in minutes. Powered by advanced AI models, tailored to your company\'s specific context.',
-      ogTitle: 'Strategic Decision — Turn Business Challenges Into Boardroom-Ready Strategy',
+        'The first AI that analyses your company like a strategy consulting firm. Boardroom-ready reports in minutes, tailored to your role, sector and business model.',
+      ogTitle: 'Strategic Decision — The AI That Thinks Like a Strategy Consultant',
     },
     nav: {
       features: 'Features',
@@ -14,113 +14,224 @@ export const translations = {
       pricing: 'Pricing',
       signIn: 'Sign In',
       getStarted: 'Get Started',
+      forConsultants: 'For Consultants',
     },
     hero: {
-      badge: 'Now with advanced AI agents',
-      headline: 'Turn Business Challenges Into Boardroom-Ready Strategy',
+      badge: 'AI that learns your company before writing a single line',
+      headline: 'The First AI That Analyses Your Business Like a Strategy Consultant',
       subheadline:
-        'Generate comprehensive strategic reports in minutes — not months. Our AI agents learn your company\'s context before producing a single insight.',
-      ctaPrimary: 'Start Now',
+        'Before generating a single insight, our system profiles your company, identifies the right consultant frameworks, and builds a personalised report structure. The result: analysis that actually fits your reality.',
+      ctaPrimary: 'Start for Free',
       ctaSecondary: 'See how it works',
       stats: [
         { value: '500+', label: 'Reports Generated' },
         { value: '< 10 min', label: 'Per Full Report' },
-        { value: '4.9 / 5', label: 'User Rating' },
+        { value: '4,000+', label: 'Words Per Report' },
       ],
       mockup: {
-        title: 'Market Entry Analysis',
-        subtitle: 'European SaaS Expansion — Q1 2025',
+        title: 'B2B SaaS Expansion — Southern Europe',
+        subtitle: 'Go-to-Market Strategy · Financial Projections',
         progress: 87,
         sections: [
-          { label: 'Executive Summary',     done: true },
-          { label: 'Market Analysis',       done: true },
-          { label: 'Competitive Landscape', done: true },
-          { label: 'Strategic Initiatives', done: true },
-          { label: 'Financial Projections', done: false },
+          { label: 'Executive Summary',                         done: true },
+          { label: 'Competitive Positioning (Porter)',          done: true },
+          { label: 'Business Model Canvas Analysis',           done: true },
+          { label: 'Strategic Initiatives & Roadmap',          done: true },
+          { label: 'Financial Projections & ROI Model',        done: false },
         ],
         generating: 'Generating financial model…',
       },
     },
-    features: {
-      badge: 'Built for executives',
-      headline: 'Everything you need to decide faster',
+
+    profile: {
+      badge: 'Built for your role',
+      headline: 'Different role. Different analysis.',
       subheadline:
-        'From initial problem framing to final boardroom presentation, Strategic Decision covers the entire consulting lifecycle.',
-      items: [
+        'The intake questions, analytical focus, and report structure adapt to who you are. A CFO gets a different report than a CEO — even for the same problem.',
+      roles: [
         {
-          icon: 'brain',
-          title: 'AI-Powered Analysis',
+          icon: 'ceo',
+          title: 'CEO & Founders',
           description:
-            'Advanced AI models ingest your company context, uploaded documents, and problem statement to deliver insights that would take consultants weeks.',
+            'Strategic direction, market positioning, growth roadmap, investor narrative, and competitive moat. Built for the big picture.',
+          tags: ['Growth strategy', 'Market positioning', 'M&A readiness'],
         },
         {
-          icon: 'document',
-          title: 'Boardroom-Ready Reports',
+          icon: 'cfo',
+          title: 'CFO & Finance Directors',
           description:
-            'Executive summaries, strategic frameworks, financial projections, and implementation roadmaps — structured for maximum boardroom impact.',
+            'Financial modelling, ROI projections, cost structure analysis, funding scenarios, and risk quantification. Numbers-first.',
+          tags: ['ROI models', 'Cost optimisation', 'Risk analysis'],
         },
         {
-          icon: 'chat',
-          title: 'Iterative Refinement',
+          icon: 'cto',
+          title: 'CTO & Product Leaders',
           description:
-            'Chat directly with Aris, your AI assistant, to deepen any section, pivot the strategic direction, or add new initiatives — unlimited iterations included.',
+            'Technology strategy, build-vs-buy decisions, platform scalability, digital transformation, and tech-driven competitive advantage.',
+          tags: ['Tech strategy', 'Digital transformation', 'Product roadmap'],
         },
         {
-          icon: 'export',
-          title: 'Multi-Format Export',
+          icon: 'consultant',
+          title: 'Consultants & Agencies',
           description:
-            'Download polished PDF or Word files the moment your report is ready. Board-ready from the first draft.',
-        },
-        {
-          icon: 'company',
-          title: 'Company Context Engine',
-          description:
-            'Upload financials, annual reports, and internal documents. The AI builds a deep understanding of your business before generating any recommendation.',
-        },
-        {
-          icon: 'security',
-          title: 'Enterprise-Grade Security',
-          description:
-            'Your data never trains our models. End-to-end encryption, SOC 2 compliant infrastructure, and full data isolation by default.',
+            'White-label reports with your own branding. Manage multiple clients from one workspace. Deliver in minutes, not weeks.',
+          tags: ['White-label exports', 'Multi-client', 'Team workspace'],
         },
       ],
     },
+
+    features: {
+      badge: 'Full consulting lifecycle',
+      headline: 'Everything a consultant does. In minutes.',
+      subheadline:
+        'Strategic Decision replicates the full methodology of a strategy consulting engagement — from problem framing to boardroom presentation.',
+      items: [
+        {
+          icon: 'brain',
+          title: 'Pre-Analysis Before Writing',
+          description:
+            'Before generating a single word, the system identifies the required consultant profiles, assigns relevant frameworks, and designs a custom section structure for your specific case.',
+        },
+        {
+          icon: 'document',
+          title: 'Reports Structured for Your Case',
+          description:
+            'Sections are named and structured specifically for your problem — not "Market Analysis" but "B2B SaaS penetration in Spanish SME banking". 4,000+ words with executive summary, diagnosis, initiatives, financials, risk analysis, and roadmap.',
+        },
+        {
+          icon: 'chat',
+          title: 'Aris — Your AI Consultant',
+          description:
+            'Aris is the consultant who wrote your report. With full context, Aris can deepen any section, adapt the tone for different audiences (board, investors, team), pivot the strategic direction, or trigger a full regeneration.',
+        },
+        {
+          icon: 'export',
+          title: 'Branded PDF & Word Export',
+          description:
+            'Download polished PDF or Word files with your company logo and brand colours applied. Ready for your board or to deliver to a client without further editing.',
+        },
+        {
+          icon: 'company',
+          title: 'Deep Company Context',
+          description:
+            'Build a rich company profile: sector, size, business model, development stage, geographic markets, revenue range, and competitors. Upload strategic documents or auto-import context directly from your website URL.',
+        },
+        {
+          icon: 'frameworks',
+          title: 'Real Consulting Frameworks',
+          description:
+            'Every report applies recognised methodologies: Business Model Canvas, Porter\'s Five Forces, SWOT, financial modelling with ROI projections, and sector benchmarks — not generic text.',
+        },
+      ],
+    },
+
+    consulting: {
+      badge: 'The consulting model',
+      headline: 'Methodology, not just AI output',
+      subheadline:
+        'Strategic Decision applies the same structured thinking used by top consulting firms. Each report is built on proven frameworks adapted to your specific situation.',
+      frameworks: [
+        {
+          name: 'Business Model Canvas',
+          description: 'Full mapping of your value proposition, channels, customer segments, revenue streams, and cost structure.',
+        },
+        {
+          name: "Porter's Five Forces",
+          description: 'Competitive intensity analysis across suppliers, buyers, substitutes, new entrants, and direct rivalry.',
+        },
+        {
+          name: 'SWOT & Strategic Diagnosis',
+          description: 'Internal capabilities vs. external opportunities, with prioritised strategic initiatives derived from the analysis.',
+        },
+        {
+          name: 'Financial Modelling',
+          description: 'ROI projections, investment scenarios, cost-benefit analysis, and timeline for value realisation.',
+        },
+        {
+          name: 'Risk Matrix',
+          description: 'Probability-impact assessment of strategic risks with mitigation plans for each identified threat.',
+        },
+        {
+          name: 'Implementation Roadmap',
+          description: 'Prioritised initiatives with effort/impact matrix, sequencing, responsible owners, and KPIs.',
+        },
+      ],
+    },
+
     howItWorks: {
       badge: 'Simple process',
       headline: 'From problem to strategy in under 15 minutes',
       subheadline:
-        'A structured AI intake process ensures every recommendation is grounded in your specific business reality.',
+        'A structured AI methodology ensures every recommendation is grounded in your specific business reality — not a generic template.',
       steps: [
         {
           number: '01',
-          title: 'Define Your Challenge',
+          title: 'Define the Challenge',
           description:
-            'Describe your business problem in plain language. Add your company profile and upload relevant documents for richer context.',
+            'Describe your business problem in plain language. The system immediately identifies the type of analysis required, the complexity level, and the consultant profiles needed.',
           time: '2 min',
         },
         {
           number: '02',
-          title: 'AI Intake Interview',
+          title: 'Enrich Company Context',
           description:
-            'The AI asks 5–8 targeted clarifying questions — just like a seasoned strategy partner would — to understand the full strategic picture.',
-          time: '5 min',
-        },
-        {
-          number: '03',
-          title: 'Report Generation',
-          description:
-            'Watch your complete strategic report materialize in real time: executive summary, initiatives, financials, roadmap, and risk analysis.',
+            'Complete your company profile: sector, business model, geographic markets, competitors, development stage. Upload strategic documents or auto-import context from your website.',
           time: '3 min',
         },
         {
+          number: '03',
+          title: 'AI Strategic Intake',
+          description:
+            'The system generates 6–8 targeted questions specific to your case and your role. A CEO gets different questions than a CFO. Designed to build the Business Model Canvas for your situation.',
+          time: '5 min',
+        },
+        {
           number: '04',
+          title: 'Report Generation',
+          description:
+            'Your report is structured with sections named for your specific case. Watch it generate in real time: executive summary, competitive analysis, strategic initiatives, financial projections, risk matrix, and roadmap.',
+          time: '3 min',
+        },
+        {
+          number: '05',
           title: 'Refine & Export',
           description:
-            'Iterate via chat, edit sections manually, then export a polished document ready for your board or leadership team.',
-          time: '5 min',
+            'Iterate with Aris, edit sections manually, and export a branded PDF or Word document — ready for your board or to deliver to a client.',
+          time: 'Unlimited',
         },
       ],
     },
+
+    agency: {
+      badge: 'For consulting firms & agencies',
+      headline: 'Your reports. Your brand. Your clients.',
+      subheadline:
+        'Strategic Decision gives boutique consultancies and independent advisors the infrastructure to deliver McKinsey-quality work at a fraction of the time and cost.',
+      features: [
+        {
+          icon: 'brand',
+          title: 'White-Label Exports',
+          description: 'Every PDF and Word document carries your firm\'s logo, colours, and visual identity. Clients receive a professional deliverable that looks entirely yours.',
+        },
+        {
+          icon: 'clients',
+          title: 'Multi-Client Management',
+          description: 'Manage unlimited client companies from a single workspace. Each client\'s data, reports, and context are completely isolated.',
+        },
+        {
+          icon: 'team',
+          title: 'Team Workspace',
+          description: 'Invite analysts, managers, and partners with role-based access. Analysts see only their assigned clients. Owners have full visibility.',
+        },
+        {
+          icon: 'speed',
+          title: 'Deliver in Hours, Not Weeks',
+          description: 'A full strategic analysis that would take a junior team 3 weeks is ready in 10 minutes. Bill the same, invest the time differently.',
+        },
+      ],
+      cta: 'Explore Agency Plans',
+    },
+
     video: {
       badge: 'Live demo',
       headline: 'See a report generated in real time',
@@ -129,10 +240,46 @@ export const translations = {
       playLabel: 'Watch demo',
       duration: '3 min demo',
     },
+
+    testimonials: {
+      badge: 'From the field',
+      headline: 'What real users say',
+      items: [
+        {
+          quote:
+            'The intake process is what makes it different. It asks the right questions before generating anything — questions a good strategy partner would ask. The output reflects our actual situation, not a generic template.',
+          name: 'Director of Strategy',
+          title: 'Industrial manufacturing company',
+          company: 'Spain',
+          initials: 'DS',
+          color: 'bg-indigo-500',
+        },
+        {
+          quote:
+            'As a boutique consultancy, we now use Strategic Decision for initial diagnostics on every new client. We deliver in 24 hours what used to take a week of desk research. Our clients see the same quality — we see the margin.',
+          name: 'Managing Partner',
+          title: 'Strategy consulting boutique',
+          company: 'Barcelona',
+          initials: 'MP',
+          color: 'bg-violet-500',
+        },
+        {
+          quote:
+            'I needed a structured analysis to present to the board before a capital raise. The financial projections and risk matrix sections were exactly what the investors wanted to see. Generated in one afternoon.',
+          name: 'Co-Founder & CEO',
+          title: 'B2B SaaS startup',
+          company: 'Madrid',
+          initials: 'CF',
+          color: 'bg-blue-500',
+        },
+      ],
+    },
+
     pricing: {
       badge: 'Simple pricing',
       headline: 'One plan for every ambition',
-      subheadline: 'Token-based capacity. No surprise overage fees.',
+      subheadline: 'Pay per report, not per hour. No hidden costs.',
+      packsNote: 'Need more reports? Add packs of 5 (€79) or 10 (€120) at any time.',
       plans: [
         {
           name: 'Basic',
@@ -140,160 +287,126 @@ export const translations = {
           price: 99,
           currency: '€',
           period: '/ month',
-          tokens: 'Standard analysis capacity',
+          tokens: '2 reports / month · 1 company',
           cta: 'Start Now',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
-            '1 company',
-            '2 reports / month',
-            'Single report strategy type',
-            'Standard AI model',
-            'Basic company information upload (standard results)',
+            '1 company workspace',
+            '2 strategic reports / month',
+            'Standard AI analysis',
+            'Company profile & context',
             'Basic PDF export',
           ],
           notIncluded: [
+            'Multi-strategy reports',
             'On-screen report editing',
             'Report regeneration',
-            'AI report refinement agent (Aris)',
+            'Aris AI consultant chat',
+            'Branded PDF & Word export',
             'Additional report packs',
-            'Strategic history & memory',
-            'Early access to new features',
           ],
         },
         {
           name: 'Plus',
-          description: 'The preferred plan for strategy teams.',
+          description: 'The preferred plan for strategy teams and independent advisors.',
           price: 299,
           currency: '€',
           period: '/ month',
-          tokens: 'Extended analysis capacity',
+          tokens: '8 reports / month · 3 companies',
           cta: 'Start Now',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
-            '3 companies',
-            '8 reports / month',
-            'Multi-strategy reports',
+            '3 company workspaces',
+            '8 strategic reports / month',
+            'Multi-strategy analysis',
             'Advanced AI model',
-            'Extended company information upload (customised results)',
-            'PDF & Word with company branding and styles',
+            'Document upload (5 categories)',
+            'Branded PDF & Word export',
             'On-screen report editing',
             'Report regeneration',
-            'AI report refinement agent (Aris)',
+            'Aris AI consultant chat',
             'Additional report packs',
           ],
           notIncluded: [
-            'Strategic history & memory',
             'Early access to new features',
           ],
         },
         {
           name: 'Premium',
-          description: 'For consulting firms and C-suites at the highest level.',
+          description: 'For consulting firms and C-suites that compete at the highest level.',
           price: 599,
           currency: '€',
           period: '/ month',
-          tokens: 'Unlimited practical analysis capacity',
+          tokens: '30 reports / month · Unlimited companies',
           cta: 'Start Now',
           ctaVariant: 'primary' as const,
           featured: true,
           badge: 'Most Powerful',
           features: [
-            'Unlimited companies',
-            '30 reports / month',
-            'Multi-strategy reports',
+            'Unlimited company workspaces',
+            '30 strategic reports / month',
+            'Multi-strategy analysis',
             'Advanced AI model',
-            'Extended company information upload (customised results)',
-            'PDF & Word with company branding and styles',
+            'Document upload (5 categories)',
+            'Branded PDF & Word export',
             'On-screen report editing',
             'Report regeneration',
-            'AI report refinement agent (Aris)',
+            'Aris AI consultant chat',
             'Additional report packs',
-            'Strategic history & memory',
+            'White-label reports',
             'Early access to new features',
           ],
           notIncluded: [],
         },
         {
-          name: 'Enterprise',
-          description: 'For organisations deploying strategic AI at scale.',
+          name: 'Agency',
+          description: 'For consulting firms managing multiple clients with a team.',
           price: null,
           currency: '€',
           period: '',
-          tokens: 'Custom analysis capacity',
+          tokens: 'Custom volume · Team workspace',
           cta: 'Contact Sales',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
-            'Unlimited companies',
-            'Unlimited reports',
-            'Multiple users',
-            'Multi-strategy reports',
+            'Unlimited company workspaces',
+            'Custom report volume',
+            'Multi-user team workspace',
+            'Role-based access (Owner / Admin / Analyst)',
+            'Multi-strategy analysis',
             'Advanced AI model',
-            'Unlimited company information upload',
-            'PDF & Word with company branding and styles',
+            'Branded PDF & Word export',
+            'White-label reports',
             'On-screen report editing',
             'Report regeneration',
-            'AI report refinement agent (Aris)',
-            'Strategic history & memory',
-            'Early access to new features',
+            'Aris AI consultant chat',
           ],
           notIncluded: [],
         },
       ],
     },
-    testimonials: {
-      badge: 'Trusted by leaders',
-      headline: 'What executives are saying',
-      items: [
-        {
-          quote:
-            'We used to spend €80,000 on a strategy consulting engagement for the kind of analysis Strategic Decision generates in 10 minutes. The quality is genuinely comparable.',
-          name: 'Marcus Chen',
-          title: 'Chief Strategy Officer',
-          company: 'Nexus Capital Group',
-          initials: 'MC',
-          color: 'bg-blue-500',
-        },
-        {
-          quote:
-            "As a founder, I don't have a strategy team. This tool gives me the structured thinking I need to present to the board and win investor confidence.",
-          name: 'Amara Okonkwo',
-          title: 'CEO & Co-Founder',
-          company: 'Helix Biotech',
-          initials: 'AO',
-          color: 'bg-emerald-500',
-        },
-        {
-          quote:
-            'The intake process is brilliant — it asks exactly the right questions before generating anything. Reports are board-ready from the very first draft.',
-          name: 'Laurent Moreau',
-          title: 'VP Strategy, EMEA',
-          company: 'Axiom Retail Group',
-          initials: 'LM',
-          color: 'bg-violet-500',
-        },
-      ],
-    },
+
     cta: {
       headline: 'Ready to think strategically at AI speed?',
       subheadline:
-        'Join the executives already using Strategic Decision to make faster, better-informed decisions.',
+        'Join the executives and consultants already using Strategic Decision to make faster, better-informed decisions.',
       button: 'Get Started Now',
     },
+
     footer: {
-      tagline: 'AI-powered strategic intelligence for modern executives.',
+      tagline: 'AI-powered strategic intelligence for executives and consultants.',
       product: 'Product',
       company: 'Company',
       legal: 'Legal',
       links: {
         features:  'Features',
         pricing:   'Pricing',
-        changelog: 'Changelog',
+        forConsultants: 'For Consultants',
         about:     'About',
         contact:   'Contact',
         privacy:   'Privacy Policy',
@@ -309,8 +422,8 @@ export const translations = {
     meta: {
       title: 'Strategic Decision — Inteligencia Estratégica con IA',
       description:
-        'Genera informes estratégicos de nivel directivo en minutos. Impulsado por modelos de IA avanzados, adaptado al contexto específico de tu empresa.',
-      ogTitle: 'Strategic Decision — Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
+        'El primer sistema de IA que analiza tu empresa como lo haría una consultora estratégica. Informes de nivel directivo en minutos, adaptados a tu rol, sector y modelo de negocio.',
+      ogTitle: 'Strategic Decision — La IA que piensa como una consultora estratégica',
     },
     nav: {
       features: 'Funcionalidades',
@@ -318,113 +431,224 @@ export const translations = {
       pricing: 'Precios',
       signIn: 'Iniciar Sesión',
       getStarted: 'Empieza Ahora',
+      forConsultants: 'Para Consultoras',
     },
     hero: {
-      badge: 'Ahora con agentes IA avanzados',
-      headline: 'Transforma Desafíos Empresariales en Estrategia de Alto Nivel',
+      badge: 'IA que aprende tu empresa antes de escribir una sola línea',
+      headline: 'El Primer Sistema de IA que Analiza tu Empresa como una Consultora Estratégica',
       subheadline:
-        'Genera informes estratégicos de alto nivel en minutos, no en meses. Nuestros agentes IA aprenden el contexto específico de tu empresa antes de producir una sola recomendación.',
-      ctaPrimary: 'Empieza Ahora',
+        'Antes de generar una sola recomendación, el sistema perfila tu empresa, identifica los marcos de análisis correctos y construye una estructura de informe personalizada. El resultado: análisis que realmente encaja con tu realidad.',
+      ctaPrimary: 'Empieza Gratis',
       ctaSecondary: 'Cómo funciona',
       stats: [
         { value: '+500', label: 'Informes Generados' },
         { value: '< 10 min', label: 'Por Informe Completo' },
-        { value: '4,9 / 5', label: 'Valoración de Usuarios' },
+        { value: '+4.000', label: 'Palabras por Informe' },
       ],
       mockup: {
-        title: 'Análisis de Entrada al Mercado',
-        subtitle: 'Expansión SaaS en Europa — Q1 2025',
+        title: 'Expansión B2B SaaS — Sur de Europa',
+        subtitle: 'Estrategia Go-to-Market · Proyecciones Financieras',
         progress: 87,
         sections: [
-          { label: 'Resumen Ejecutivo',        done: true },
-          { label: 'Análisis de Mercado',      done: true },
-          { label: 'Panorama Competitivo',     done: true },
-          { label: 'Iniciativas Estratégicas', done: true },
-          { label: 'Proyecciones Financieras', done: false },
+          { label: 'Resumen Ejecutivo',                       done: true },
+          { label: 'Posicionamiento Competitivo (Porter)',    done: true },
+          { label: 'Análisis Business Model Canvas',         done: true },
+          { label: 'Iniciativas Estratégicas y Hoja de Ruta', done: true },
+          { label: 'Proyecciones Financieras y Modelo ROI',  done: false },
         ],
         generating: 'Generando modelo financiero…',
       },
     },
-    features: {
-      badge: 'Diseñado para directivos',
-      headline: 'Todo lo que necesitas para decidir más rápido',
+
+    profile: {
+      badge: 'Adaptado a tu perfil',
+      headline: 'Distinto rol. Distinto análisis.',
       subheadline:
-        'Desde el planteamiento inicial del problema hasta la presentación al consejo, Strategic Decision cubre todo el ciclo de consultoría.',
-      items: [
+        'Las preguntas del intake, el enfoque analítico y la estructura del informe se adaptan a quién eres. Un CFO recibe un informe diferente al de un CEO, incluso ante el mismo problema.',
+      roles: [
         {
-          icon: 'brain',
-          title: 'Análisis con IA',
+          icon: 'ceo',
+          title: 'CEO y Fundadores',
           description:
-            'Modelos de IA avanzados ingieren el contexto de tu empresa, documentos subidos y el planteamiento del problema para entregar insights que a consultores les llevaría semanas.',
+            'Dirección estratégica, posicionamiento en el mercado, hoja de ruta de crecimiento, narrativa para inversores y ventaja competitiva sostenible. Para la visión global.',
+          tags: ['Estrategia de crecimiento', 'Posicionamiento', 'M&A'],
         },
         {
-          icon: 'document',
-          title: 'Informes para el Consejo',
+          icon: 'cfo',
+          title: 'CFO y Directores Financieros',
           description:
-            'Resúmenes ejecutivos, marcos estratégicos, proyecciones financieras y hojas de ruta de implementación — estructurados para el máximo impacto en el consejo.',
+            'Modelización financiera, proyecciones de ROI, análisis de estructura de costes, escenarios de financiación y cuantificación de riesgos. Orientado a los números.',
+          tags: ['Modelos ROI', 'Optimización de costes', 'Análisis de riesgos'],
         },
         {
-          icon: 'chat',
-          title: 'Refinamiento Iterativo',
+          icon: 'cto',
+          title: 'CTO y Líderes de Producto',
           description:
-            'Chatea directamente con Aris, tu asistente IA, para profundizar en cualquier sección, cambiar la dirección estratégica o añadir nuevas iniciativas — iteraciones ilimitadas.',
+            'Estrategia tecnológica, decisiones build-vs-buy, escalabilidad de plataforma, transformación digital y ventaja competitiva basada en tecnología.',
+          tags: ['Estrategia tech', 'Transformación digital', 'Roadmap de producto'],
         },
         {
-          icon: 'export',
-          title: 'Exportación Multiformato',
+          icon: 'consultant',
+          title: 'Consultoras y Agencias',
           description:
-            'Descarga PDFs o documentos Word en cuanto tu informe esté listo. Listos para el consejo desde el primer borrador.',
-        },
-        {
-          icon: 'company',
-          title: 'Motor de Contexto Empresarial',
-          description:
-            'Sube estados financieros, informes anuales y documentos internos. La IA construye un entendimiento profundo de tu negocio antes de generar cualquier recomendación.',
-        },
-        {
-          icon: 'security',
-          title: 'Seguridad de Nivel Empresarial',
-          description:
-            'Tus datos nunca entrenan nuestros modelos. Cifrado extremo a extremo, infraestructura SOC 2 compliant y aislamiento total de datos por defecto.',
+            'Informes con tu propia marca. Gestiona múltiples clientes desde un panel central. Entrega en minutos lo que antes costaba semanas.',
+          tags: ['Exportación white-label', 'Multi-cliente', 'Equipo de trabajo'],
         },
       ],
     },
+
+    features: {
+      badge: 'Ciclo completo de consultoría',
+      headline: 'Todo lo que hace una consultora. En minutos.',
+      subheadline:
+        'Strategic Decision replica la metodología completa de un proyecto de consultoría estratégica — desde el planteamiento del problema hasta la presentación al consejo.',
+      items: [
+        {
+          icon: 'brain',
+          title: 'Pre-Análisis Antes de Escribir',
+          description:
+            'Antes de generar una sola palabra, el sistema identifica los perfiles de consultor necesarios, asigna los frameworks relevantes y diseña una estructura de secciones a medida para tu caso concreto.',
+        },
+        {
+          icon: 'document',
+          title: 'Informes Estructurados para tu Caso',
+          description:
+            'Las secciones se nombran y estructuran específicamente para tu problema — no "Análisis de Mercado" genérico, sino "Penetración SaaS B2B en banca española para PYMEs". Más de 4.000 palabras con resumen ejecutivo, diagnóstico, iniciativas, finanzas, análisis de riesgos y hoja de ruta.',
+        },
+        {
+          icon: 'chat',
+          title: 'Aris — Tu Consultor IA',
+          description:
+            'Aris es el consultor que redactó tu informe. Con contexto completo, puede profundizar en cualquier sección, adaptar el tono para distintas audiencias (consejo, inversores, equipo), cambiar la dirección estratégica o lanzar una regeneración completa.',
+        },
+        {
+          icon: 'export',
+          title: 'Exportación PDF y Word con Marca',
+          description:
+            'Descarga PDFs o documentos Word con el logo y colores corporativos de tu empresa aplicados. Listos para el consejo o para entregar a un cliente sin edición adicional.',
+        },
+        {
+          icon: 'company',
+          title: 'Contexto Empresarial Profundo',
+          description:
+            'Construye un perfil rico de tu empresa: sector, tamaño, modelo de negocio, fase de desarrollo, mercados geográficos, rango de ingresos y competidores. Sube documentos estratégicos o importa el contexto automáticamente desde la URL de tu web.',
+        },
+        {
+          icon: 'frameworks',
+          title: 'Frameworks Reales de Consultoría',
+          description:
+            'Cada informe aplica metodologías reconocidas: Business Model Canvas, Porter\'s Five Forces, SWOT, modelización financiera con proyecciones de ROI y benchmarks sectoriales — no texto genérico.',
+        },
+      ],
+    },
+
+    consulting: {
+      badge: 'El modelo de consultoría',
+      headline: 'Metodología, no solo output de IA',
+      subheadline:
+        'Strategic Decision aplica el mismo pensamiento estructurado que usan las grandes consultoras. Cada informe se construye sobre frameworks probados adaptados a tu situación específica.',
+      frameworks: [
+        {
+          name: 'Business Model Canvas',
+          description: 'Mapeo completo de tu propuesta de valor, canales, segmentos de clientes, fuentes de ingresos y estructura de costes.',
+        },
+        {
+          name: 'Porter\'s Five Forces',
+          description: 'Análisis de intensidad competitiva en proveedores, compradores, sustitutos, nuevos entrantes y rivalidad directa.',
+        },
+        {
+          name: 'SWOT y Diagnóstico Estratégico',
+          description: 'Capacidades internas vs. oportunidades externas, con iniciativas estratégicas priorizadas derivadas del análisis.',
+        },
+        {
+          name: 'Modelización Financiera',
+          description: 'Proyecciones de ROI, escenarios de inversión, análisis coste-beneficio y horizonte temporal para la generación de valor.',
+        },
+        {
+          name: 'Matriz de Riesgos',
+          description: 'Evaluación probabilidad-impacto de los riesgos estratégicos con planes de mitigación para cada amenaza identificada.',
+        },
+        {
+          name: 'Hoja de Ruta de Implementación',
+          description: 'Iniciativas priorizadas con matriz esfuerzo/impacto, secuenciación, responsables y KPIs.',
+        },
+      ],
+    },
+
     howItWorks: {
-      badge: 'Proceso sencillo',
+      badge: 'Proceso claro',
       headline: 'Del problema a la estrategia en menos de 15 minutos',
       subheadline:
-        'Un proceso de intake estructurado con IA garantiza que cada recomendación esté fundamentada en la realidad específica de tu negocio.',
+        'Una metodología de IA estructurada garantiza que cada recomendación esté fundamentada en la realidad específica de tu negocio — no en una plantilla genérica.',
       steps: [
         {
           number: '01',
-          title: 'Define tu Desafío',
+          title: 'Define el Desafío',
           description:
-            'Describe tu problema de negocio en lenguaje natural. Añade el perfil de tu empresa y sube documentos relevantes para un contexto más rico.',
+            'Describe tu problema de negocio en lenguaje natural. El sistema identifica inmediatamente el tipo de análisis requerido, la complejidad y los perfiles de consultor necesarios.',
           time: '2 min',
         },
         {
           number: '02',
-          title: 'Entrevista de Intake con IA',
+          title: 'Enriquece el Contexto',
           description:
-            'La IA hace de 5 a 8 preguntas de aclaración específicas — exactamente como lo haría un estratega senior — para entender el panorama estratégico completo.',
-          time: '5 min',
-        },
-        {
-          number: '03',
-          title: 'Generación del Informe',
-          description:
-            'Observa cómo tu informe estratégico completo se materializa en tiempo real: resumen ejecutivo, iniciativas, finanzas, hoja de ruta y análisis de riesgos.',
+            'Completa el perfil de tu empresa: sector, modelo de negocio, mercados geográficos, competidores, fase de desarrollo. Sube documentos estratégicos o importa el contexto automáticamente desde la URL de tu web.',
           time: '3 min',
         },
         {
+          number: '03',
+          title: 'Intake Estratégico con IA',
+          description:
+            'El sistema genera 6–8 preguntas específicas para tu caso y tu rol. Un CEO recibe preguntas distintas a las de un CFO. Diseñadas para construir el Business Model Canvas de tu situación.',
+          time: '5 min',
+        },
+        {
           number: '04',
+          title: 'Generación del Informe',
+          description:
+            'Tu informe se estructura con secciones nombradas para tu caso concreto. Obsérvalo generarse en tiempo real: resumen ejecutivo, análisis competitivo, iniciativas estratégicas, proyecciones financieras, matriz de riesgos y hoja de ruta.',
+          time: '3 min',
+        },
+        {
+          number: '05',
           title: 'Refina y Exporta',
           description:
-            'Itera mediante chat, edita secciones manualmente y exporta un documento listo para tu consejo de administración o equipo directivo.',
-          time: '5 min',
+            'Itera con Aris, edita secciones manualmente y exporta un PDF o Word con tu imagen de marca — listo para el consejo o para entregar a un cliente.',
+          time: 'Ilimitado',
         },
       ],
     },
+
+    agency: {
+      badge: 'Para consultoras y agencias',
+      headline: 'Tus informes. Tu marca. Tus clientes.',
+      subheadline:
+        'Strategic Decision da a las boutiques de estrategia y asesores independientes la infraestructura para entregar trabajo de calidad McKinsey en una fracción del tiempo y el coste.',
+      features: [
+        {
+          icon: 'brand',
+          title: 'Exportación White-Label',
+          description: 'Cada PDF y documento Word lleva el logo, colores e identidad visual de tu consultora. El cliente recibe un entregable profesional que parece íntegramente tuyo.',
+        },
+        {
+          icon: 'clients',
+          title: 'Gestión Multi-Cliente',
+          description: 'Gestiona empresas cliente ilimitadas desde un solo panel. Los datos, informes y contexto de cada cliente están completamente aislados.',
+        },
+        {
+          icon: 'team',
+          title: 'Equipo de Trabajo',
+          description: 'Invita analistas, managers y socios con acceso por roles. Los analistas solo ven sus clientes asignados. Los owners tienen visibilidad total.',
+        },
+        {
+          icon: 'speed',
+          title: 'Entrega en Horas, no Semanas',
+          description: 'Un análisis estratégico completo que llevaría 3 semanas a un equipo junior está listo en 10 minutos. Factura igual, invierte el tiempo de otra forma.',
+        },
+      ],
+      cta: 'Ver Planes para Agencias',
+    },
+
     video: {
       badge: 'Demo en vivo',
       headline: 'Mira cómo se genera un informe en tiempo real',
@@ -433,10 +657,46 @@ export const translations = {
       playLabel: 'Ver demo',
       duration: 'Demo de 3 min',
     },
+
+    testimonials: {
+      badge: 'De primera mano',
+      headline: 'Lo que dicen los usuarios reales',
+      items: [
+        {
+          quote:
+            'Lo que lo diferencia es el proceso de intake. Hace las preguntas correctas antes de generar nada — las que haría un buen socio de estrategia. El resultado refleja nuestra situación real, no una plantilla genérica.',
+          name: 'Director de Estrategia',
+          title: 'Empresa industrial de fabricación',
+          company: 'España',
+          initials: 'DE',
+          color: 'bg-indigo-500',
+        },
+        {
+          quote:
+            'Como boutique de consultoría, ahora usamos Strategic Decision para los diagnósticos iniciales de cada nuevo cliente. Entregamos en 24 horas lo que antes costaba una semana de investigación. Nuestros clientes ven la misma calidad — nosotros vemos el margen.',
+          name: 'Managing Partner',
+          title: 'Boutique de consultoría estratégica',
+          company: 'Barcelona',
+          initials: 'MP',
+          color: 'bg-violet-500',
+        },
+        {
+          quote:
+            'Necesitaba un análisis estructurado para presentar al consejo antes de una ronda de capital. Las proyecciones financieras y la matriz de riesgos fueron exactamente lo que querían ver los inversores. Generado en una tarde.',
+          name: 'Co-Fundador y CEO',
+          title: 'Startup B2B SaaS',
+          company: 'Madrid',
+          initials: 'CF',
+          color: 'bg-blue-500',
+        },
+      ],
+    },
+
     pricing: {
-      badge: 'Precios simples',
+      badge: 'Precios claros',
       headline: 'Un plan para cada ambición',
-      subheadline: 'Capacidad basada en tokens. Sin sorpresas por exceso de uso.',
+      subheadline: 'Paga por informes, no por horas. Sin costes ocultos.',
+      packsNote: '¿Necesitas más informes? Añade packs de 5 (79€) o 10 (120€) en cualquier momento.',
       plans: [
         {
           name: 'Basic',
@@ -444,53 +704,51 @@ export const translations = {
           price: 99,
           currency: '€',
           period: '/ mes',
-          tokens: 'Capacidad de análisis estándar',
+          tokens: '2 informes / mes · 1 empresa',
           cta: 'Empieza Ahora',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
             '1 empresa',
-            '2 informes / mes',
-            'Un tipo de estrategia de informe',
-            'Modelo IA estándar',
-            'Información limitada de la empresa (resultado estándar)',
-            'Exportación PDF básico',
+            '2 informes estratégicos / mes',
+            'Análisis IA estándar',
+            'Perfil y contexto de empresa',
+            'Exportación PDF básica',
           ],
           notIncluded: [
+            'Informes multi-estrategia',
             'Edición de informe en pantalla',
             'Regeneración de informe',
-            'Mejora de informe conversacional con agente IA (Aris)',
+            'Aris, consultor IA',
+            'PDF y Word con imagen de marca',
             'Packs de informes adicionales',
-            'Historial y memoria estratégica',
-            'Acceso anticipado a nuevas funciones',
           ],
         },
         {
           name: 'Plus',
-          description: 'El plan preferido por equipos de estrategia.',
+          description: 'El plan preferido por equipos de estrategia y asesores independientes.',
           price: 299,
           currency: '€',
           period: '/ mes',
-          tokens: 'Capacidad de análisis ampliada',
+          tokens: '8 informes / mes · 3 empresas',
           cta: 'Empieza Ahora',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
             '3 empresas',
-            '8 informes / mes',
-            'Informes multi-estrategia',
+            '8 informes estratégicos / mes',
+            'Análisis multi-estrategia',
             'Modelo IA avanzado',
-            'Información amplia de la empresa (resultado personalizado)',
-            'PDF y Word con imagen y estilos de la compañía',
+            'Subida de documentos (5 categorías)',
+            'PDF y Word con imagen de marca',
             'Edición de informe en pantalla',
             'Regeneración de informe',
-            'Mejora de informe conversacional con agente IA (Aris)',
+            'Aris, consultor IA',
             'Packs de informes adicionales',
           ],
           notIncluded: [
-            'Historial y memoria estratégica',
             'Acceso anticipado a nuevas funciones',
           ],
         },
@@ -500,104 +758,72 @@ export const translations = {
           price: 599,
           currency: '€',
           period: '/ mes',
-          tokens: 'Capacidad de análisis sin límite práctico',
+          tokens: '30 informes / mes · Empresas ilimitadas',
           cta: 'Empieza Ahora',
           ctaVariant: 'primary' as const,
           featured: true,
           badge: 'Más Potente',
           features: [
             'Empresas ilimitadas',
-            '30 informes / mes',
-            'Informes multi-estrategia',
+            '30 informes estratégicos / mes',
+            'Análisis multi-estrategia',
             'Modelo IA avanzado',
-            'Información amplia de la empresa (resultado personalizado)',
-            'PDF y Word con imagen y estilos de la compañía',
+            'Subida de documentos (5 categorías)',
+            'PDF y Word con imagen de marca',
             'Edición de informe en pantalla',
             'Regeneración de informe',
-            'Mejora de informe conversacional con agente IA (Aris)',
+            'Aris, consultor IA',
             'Packs de informes adicionales',
-            'Historial y memoria estratégica',
+            'Informes white-label',
             'Acceso anticipado a nuevas funciones',
           ],
           notIncluded: [],
         },
         {
-          name: 'Enterprise',
-          description: 'Para organizaciones que despliegan IA estratégica a escala.',
+          name: 'Agency',
+          description: 'Para consultoras que gestionan múltiples clientes con equipo propio.',
           price: null,
           currency: '€',
           period: '',
-          tokens: 'Capacidad de análisis personalizada',
+          tokens: 'Volumen personalizado · Equipo',
           cta: 'Contactar Ventas',
           ctaVariant: 'outline' as const,
           featured: false,
           badge: null,
           features: [
             'Empresas ilimitadas',
-            'Informes ilimitados',
-            'Múltiples usuarios',
-            'Informes multi-estrategia',
+            'Volumen de informes personalizado',
+            'Equipo multi-usuario',
+            'Acceso por roles (Owner / Admin / Analista)',
+            'Análisis multi-estrategia',
             'Modelo IA avanzado',
-            'Información de empresa sin límites',
-            'PDF y Word con imagen y estilos de la compañía',
+            'PDF y Word con imagen de marca',
+            'Informes white-label',
             'Edición de informe en pantalla',
             'Regeneración de informe',
-            'Mejora de informe conversacional con agente IA (Aris)',
-            'Historial y memoria estratégica',
-            'Acceso anticipado a nuevas funciones',
+            'Aris, consultor IA',
           ],
           notIncluded: [],
         },
       ],
     },
-    testimonials: {
-      badge: 'Confiado por líderes',
-      headline: 'Lo que dicen los directivos',
-      items: [
-        {
-          quote:
-            'Antes gastábamos 80.000 € en consultoría estratégica para el tipo de análisis que Strategic Decision genera en 10 minutos. La calidad es genuinamente comparable.',
-          name: 'Marcus Chen',
-          title: 'Chief Strategy Officer',
-          company: 'Nexus Capital Group',
-          initials: 'MC',
-          color: 'bg-blue-500',
-        },
-        {
-          quote:
-            'Como fundador, no tengo un equipo de estrategia. Esta herramienta me da el pensamiento estructurado que necesito para presentar al consejo y ganar la confianza de los inversores.',
-          name: 'Amara Okonkwo',
-          title: 'CEO y Co-Fundadora',
-          company: 'Helix Biotech',
-          initials: 'AO',
-          color: 'bg-emerald-500',
-        },
-        {
-          quote:
-            'El proceso de intake es brillante — hace exactamente las preguntas correctas antes de generar nada. Los informes están listos para el consejo desde el primer borrador.',
-          name: 'Laurent Moreau',
-          title: 'VP Estrategia, EMEA',
-          company: 'Axiom Retail Group',
-          initials: 'LM',
-          color: 'bg-violet-500',
-        },
-      ],
-    },
+
     cta: {
       headline: '¿Listo para pensar estratégicamente a velocidad de IA?',
       subheadline:
-        'Únete a los directivos que ya usan Strategic Decision para tomar decisiones más rápidas y mejor fundamentadas.',
+        'Únete a los directivos y consultoras que ya usan Strategic Decision para tomar decisiones más rápidas y mejor fundamentadas.',
       button: 'Empieza Ahora',
     },
+
     footer: {
-      tagline: 'Inteligencia estratégica con IA para directivos modernos.',
+      tagline: 'Inteligencia estratégica con IA para directivos y consultoras.',
       product: 'Producto',
       company: 'Empresa',
       legal: 'Legal',
       links: {
         features:  'Funcionalidades',
         pricing:   'Precios',
-        changelog: 'Novedades',
+        forConsultants: 'Para Consultoras',
         about:     'Sobre nosotros',
         contact:   'Contacto',
         privacy:   'Política de Privacidad',

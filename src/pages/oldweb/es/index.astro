@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { translations } from '../../../i18n/translations';
+import Nav from '../../../components/legacy/Nav.astro';
+import Hero from '../../../components/legacy/Hero.astro';
+import Features from '../../../components/legacy/Features.astro';
+import HowItWorks from '../../../components/legacy/HowItWorks.astro';
+import VideoSection from '../../../components/legacy/VideoSection.astro';
+import Testimonials from '../../../components/legacy/Testimonials.astro';
+import Pricing from '../../../components/legacy/Pricing.astro';
+import CTA from '../../../components/legacy/CTA.astro';
+import ReferralShare from '../../../components/legacy/ReferralShare.astro';
+import Footer from '../../../components/legacy/Footer.astro';
+import ArisChat from '../../../components/legacy/ArisChat.astro';
+
+const lang = 'es';
+const t = translations[lang];
+---
+
+<BaseLayout lang={lang} title={t.meta.title} description={t.meta.description} ogTitle={t.meta.ogTitle}>
+  <Nav t={t.nav} lang={lang} />
+  <main>
+    <Hero         t={t.hero}         lang={lang} />
+    <Features     t={t.features} />
+    <HowItWorks   t={t.howItWorks} />
+    <VideoSection t={t.video}        lang={lang} />
+    <Testimonials t={t.testimonials} />
+    <Pricing      t={t.pricing}      lang={lang} />
+    <CTA          t={t.cta} />
+    <ReferralShare lang={lang} />
+  </main>
+  <Footer t={t.footer} lang={lang} />
+  <ArisChat lang={lang} />
+</BaseLayout>
