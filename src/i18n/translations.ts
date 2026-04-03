@@ -23,11 +23,6 @@ export const translations = {
         'Before generating a single insight, our system profiles your company, identifies the right consultant frameworks, and builds a personalised report structure. The result: analysis that actually fits your reality.',
       ctaPrimary: 'Start for Free',
       ctaSecondary: 'See how it works',
-      stats: [
-        { value: '500+', label: 'Reports Generated' },
-        { value: '< 10 min', label: 'Per Full Report' },
-        { value: '4,000+', label: 'Words Per Report' },
-      ],
       mockup: {
         title: 'B2B SaaS Expansion — Southern Europe',
         subtitle: 'Go-to-Market Strategy · Financial Projections',
@@ -447,11 +442,6 @@ export const translations = {
         'Antes de generar una sola recomendación, el sistema perfila tu empresa, identifica los marcos de análisis correctos y construye una estructura de informe personalizada. El resultado: análisis que realmente encaja con tu realidad.',
       ctaPrimary: 'Empieza Gratis',
       ctaSecondary: 'Cómo funciona',
-      stats: [
-        { value: '+500', label: 'Informes Generados' },
-        { value: '< 10 min', label: 'Por Informe Completo' },
-        { value: '+4.000', label: 'Palabras por Informe' },
-      ],
       mockup: {
         title: 'Expansión B2B SaaS — Sur de Europa',
         subtitle: 'Estrategia Go-to-Market · Proyecciones Financieras',
