@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { translations } from '../../i18n/translations';
+
+const lang = 'es';
+const t = translations[lang];
+---
+
+<BaseLayout lang={lang} title="Condiciones del Programa de Partners — Strategic Decision" description="Condiciones de participación en el programa de referidos de Strategic Decision. Comisiones, requisitos y funcionamiento del descuento en cuota.">
+  <Nav t={t.nav} lang={lang} />
+  <main class="max-w-3xl mx-auto px-6 py-32">
+
+    <div class="mb-10">
+      <a href={`/${lang}/`} class="text-sm text-indigo-500 hover:text-indigo-400 transition-colors">&larr; Volver al inicio</a>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+      Condiciones del Programa de Partners
+    </h1>
+    <p class="text-slate-500 dark:text-slate-400 text-sm mb-12">Última actualización: abril de 2025</p>
+
+    <div class="prose prose-slate dark:prose-invert max-w-none space-y-10 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">1. ¿En qué consiste el programa?</h2>
+        <p>
+          El Programa de Partners de Strategic Decision permite a cualquier persona generar un enlace de referido único y compartirlo con profesionales de su entorno. Cuando alguien se registra y contrata un plan de pago a través de ese enlace, el partner recibe una <strong class="text-slate-900 dark:text-white">comisión del 20%</strong> sobre la cuota mensual del cliente referido, durante todo el tiempo que ese cliente mantenga activa su suscripción.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">2. Requisito principal: capacidad de facturación</h2>
+        <p>
+          Para recibir la comisión en forma de pago económico, el partner debe ser <strong class="text-slate-900 dark:text-white">autónomo o profesional con actividad económica dada de alta</strong> y con capacidad legal para emitir facturas en su país de residencia.
+        </p>
+        <p class="mt-3">
+          Si cumples este requisito, recibirás el pago de las comisiones generadas previa emisión de factura a Strategic Decision, con periodicidad mensual y una vez superado el umbral mínimo de 20 € acumulados.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">3. ¿Y si no puedo facturar? Descuento en tu cuota</h2>
+        <p>
+          Si eres empleado por cuenta ajena, particular sin actividad económica registrada, o cualquier persona sin capacidad legal de emitir factura, <strong class="text-slate-900 dark:text-white">no podrás recibir las comisiones en metálico</strong>. En este caso, las comisiones generadas se aplican automáticamente como <strong class="text-slate-900 dark:text-white">descuento en tu propia cuota mensual</strong> de Strategic Decision, bajo las siguientes condiciones:
+        </p>
+        <ul class="mt-3 space-y-2 list-none pl-0">
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span><strong class="text-slate-900 dark:text-white">Máximo: el 100% de tu cuota mensual.</strong> El descuento nunca supera el importe de tu suscripción. Nunca pagas de más y nunca recibes dinero.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span><strong class="text-slate-900 dark:text-white">No acumulable entre meses.</strong> El descuento que no se aplica en el mes en curso no se arrastra al mes siguiente. Se pierde el excedente no utilizado.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span><strong class="text-slate-900 dark:text-white">Ejemplo práctico:</strong> Si tu cuota es de 99 €/mes y en ese mes has generado 150 € en comisiones, se aplica un descuento de 99 € (quedando tu cuota a 0 €). Los 51 € restantes no se acumulan ni se pagan: se cancelan al cierre del periodo mensual.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">4. Normas de uso honesto</h2>
+        <ul class="space-y-2 list-none pl-0">
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span>No está permitido referirte a ti mismo ni a cuentas que controles directa o indirectamente.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span>No está permitido el uso de spam, publicidad masiva no autorizada ni técnicas engañosas para difundir el enlace.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-500 font-bold mt-0.5">—</span>
+            <span>Strategic Decision se reserva el derecho de cancelar la participación en el programa ante cualquier conducta fraudulenta o contraria a estos términos, sin previo aviso y sin obligación de abonar comisiones pendientes.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">5. Modificaciones del programa</h2>
+        <p>
+          Strategic Decision puede modificar en cualquier momento las condiciones del programa (porcentaje de comisión, umbrales, plazos de pago, etc.), notificándolo con al menos 30 días de antelación a los partners activos. La continuación en el programa tras la notificación implica la aceptación de las nuevas condiciones.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3">6. Contacto</h2>
+        <p>
+          Para cualquier consulta sobre el programa, escríbenos a <a href="mailto:info@strategicdecision.ai" class="text-indigo-500 hover:text-indigo-400 underline">info@strategicdecision.ai</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+  <Footer t={t.footer} lang={lang} />
+</BaseLayout>

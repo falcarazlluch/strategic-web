@@ -102,6 +102,12 @@ const copy = {
             </svg>
             {copy.cta}
           </button>
+          <a
+            href={`/${lang}/partner-terms`}
+            class="text-xs text-slate-400 hover:text-indigo-400 underline underline-offset-2 transition-colors mt-3 inline-block"
+          >
+            {lang === 'es' ? 'Ver condiciones del programa' : 'View programme terms'}
+          </a>
         </div>
 
         <!-- Right: steps -->
@@ -152,6 +158,13 @@ const copy = {
         <h3 class="text-base font-semibold text-white" id="modal-title-text">{copy.modalTitle}</h3>
       </div>
       <p class="text-sm text-slate-500" id="modal-sub-text">{copy.modalSub}</p>
+      <a
+        href={`/${lang}/partner-terms`}
+        class="text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors mt-1 inline-block"
+        target="_blank"
+      >
+        {lang === 'es' ? 'Ver condiciones del programa' : 'View programme terms'}
+      </a>
     </div>
 
     <!-- Step 1: email form -->
