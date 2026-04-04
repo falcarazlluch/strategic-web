@@ -27,7 +27,7 @@ const sections = lang === 'es'
     ];
 ---
 
-<!-- Floating scroll-to-next button -->
+<!-- Floating scroll-to-next button (desktop) -->
 <div
   id="scroll-nav-btn"
   aria-hidden="true"
@@ -41,6 +41,7 @@ const sections = lang === 'es'
     pointer-events:none;
     transition:opacity 0.35s ease, transform 0.35s ease;
   "
+  class="hidden sm:block"
 >
   <button
     id="scroll-nav-inner"
@@ -73,12 +74,66 @@ const sections = lang === 'es'
   </button>
 </div>
 
+<!-- Mobile scroll-to-next bar (full-width, bottom, solid bg) -->
+<div
+  id="scroll-nav-mobile"
+  aria-hidden="true"
+  style="
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:40;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.35s ease, transform 0.35s ease;
+    transform:translateY(8px);
+    background:#09090b;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:0.625rem 1rem;
+    padding-bottom:calc(0.625rem + env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  "
+  class="sm:hidden"
+>
+  <button
+    id="scroll-nav-mobile-inner"
+    style="
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      background:#6366f1;
+      color:white;
+      border:none;
+      border-radius:9999px;
+      padding:0.5rem 1.25rem;
+      font-size:0.8rem;
+      font-weight:600;
+      font-family:inherit;
+      cursor:pointer;
+      width:100%;
+      max-width:20rem;
+      justify-content:center;
+    "
+  >
+    <span id="scroll-nav-mobile-label">–</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </button>
+</div>
+
 <script define:vars={{ sections }}>
 (function () {
   const btn     = document.getElementById('scroll-nav-btn');
   const inner   = document.getElementById('scroll-nav-inner');
   const labelEl = document.getElementById('scroll-nav-label');
-  if (!btn || !inner || !labelEl) return;
+
+  const mobileBar   = document.getElementById('scroll-nav-mobile');
+  const mobileInner = document.getElementById('scroll-nav-mobile-inner');
+  const mobileLabelEl = document.getElementById('scroll-nav-mobile-label');
 
   // Build ordered list of section elements that exist in DOM
   const sectionEls = sections
@@ -88,20 +143,41 @@ const sections = lang === 'es'
   if (sectionEls.length === 0) return;
 
   function showBtn(label, targetId) {
-    // Only update label/target when they actually change (avoids flicker)
-    if (labelEl.textContent !== label) labelEl.textContent = label;
-    if (inner.dataset.target !== targetId) inner.dataset.target = targetId;
-    btn.style.opacity = '1';
-    btn.style.transform = 'translateX(-50%) translateY(0)';
-    btn.style.pointerEvents = 'auto';
-    btn.setAttribute('aria-hidden', 'false');
+    // Desktop
+    if (btn && inner && labelEl) {
+      if (labelEl.textContent !== label) labelEl.textContent = label;
+      if (inner.dataset.target !== targetId) inner.dataset.target = targetId;
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateX(-50%) translateY(0)';
+      btn.style.pointerEvents = 'auto';
+      btn.setAttribute('aria-hidden', 'false');
+    }
+    // Mobile
+    if (mobileBar && mobileInner && mobileLabelEl) {
+      if (mobileLabelEl.textContent !== label) mobileLabelEl.textContent = label;
+      if (mobileInner.dataset.target !== targetId) mobileInner.dataset.target = targetId;
+      mobileBar.style.opacity = '1';
+      mobileBar.style.transform = 'translateY(0)';
+      mobileBar.style.pointerEvents = 'auto';
+      mobileBar.setAttribute('aria-hidden', 'false');
+    }
   }
 
   function hideBtn() {
-    btn.style.opacity = '0';
-    btn.style.transform = 'translateX(-50%) translateY(12px)';
-    btn.style.pointerEvents = 'none';
-    btn.setAttribute('aria-hidden', 'true');
+    // Desktop
+    if (btn) {
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateX(-50%) translateY(12px)';
+      btn.style.pointerEvents = 'none';
+      btn.setAttribute('aria-hidden', 'true');
+    }
+    // Mobile
+    if (mobileBar) {
+      mobileBar.style.opacity = '0';
+      mobileBar.style.transform = 'translateY(8px)';
+      mobileBar.style.pointerEvents = 'none';
+      mobileBar.setAttribute('aria-hidden', 'true');
+    }
   }
 
   function update() {
@@ -128,9 +204,15 @@ const sections = lang === 'es'
     }
   }
 
-  // Click → smooth scroll to target
-  inner.addEventListener('click', () => {
+  // Click → smooth scroll to target (desktop)
+  if (inner) inner.addEventListener('click', () => {
     const el = document.getElementById(inner.dataset.target ?? '');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Click → smooth scroll to target (mobile)
+  if (mobileInner) mobileInner.addEventListener('click', () => {
+    const el = document.getElementById(mobileInner.dataset.target ?? '');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
