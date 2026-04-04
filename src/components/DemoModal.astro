@@ -144,7 +144,7 @@ const isMobile = () => window.innerWidth < 768;
 // ── Open ─────────────────────────────────────────────────────────────────────
 function openModal() {
   if (!overlay || !panelDesktop || !panelMobile) return;
-  overlay.style.display      = 'block';
+  overlay.style.display      = 'flex';
   document.body.style.overflow = 'hidden';
 
   if (isMobile()) {
