@@ -11,13 +11,13 @@ const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel
 
 const copy = {
   en: {
-    title: 'See how it works', close: 'Close', cta: 'See plans',
+    title: 'See how it works', close: 'Close', cta: 'Get Started',
     noVideoTitle: 'Demo video coming soon',
     noVideoSub: 'We are recording the full walkthrough. Check back shortly.',
     chapters: ['Company setup','Problem definition','Strategic intake','Report type','Generation','Refine with Aris'],
   },
   es: {
-    title: 'Cómo funciona', close: 'Cerrar', cta: 'Ver planes',
+    title: 'Cómo funciona', close: 'Cerrar', cta: 'Empieza ahora',
     noVideoTitle: 'Vídeo demo próximamente',
     noVideoSub: 'Estamos grabando el vídeo completo. Vuelve pronto.',
     chapters: ['Config. empresa','Definir problema','Intake IA','Tipo informe','Generación','Retoque con Aris'],
@@ -72,7 +72,7 @@ const hasVideo = YOUTUBE_VIDEO_ID !== '';
             </button>
           ))}
         </div>
-        <a href="#pricing" class="demo-cta-close btn-primary" style="width:100%;justify-content:center;font-size:.875rem;padding:.625rem 1rem;text-decoration:none">
+        <a href={APP_URL + '/register'} class="demo-cta-close btn-primary" style="width:100%;justify-content:center;font-size:.875rem;padding:.625rem 1rem;text-decoration:none">
           {copy.cta}
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
