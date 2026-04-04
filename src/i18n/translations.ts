@@ -112,10 +112,10 @@ export const translations = {
             'Build a rich company profile: sector, size, business model, development stage, geographic markets, revenue range, and competitors. Upload strategic documents or auto-import context directly from your website URL.',
         },
         {
-          icon: 'frameworks',
-          title: 'Real Consulting Frameworks',
+          icon: 'security',
+          title: 'Security & Compliance',
           description:
-            'Every report applies recognised methodologies: Business Model Canvas, Porter\'s Five Forces, SWOT, financial modelling with ROI projections, and sector benchmarks — not generic text.',
+            'Your data is isolated by company and project — no client ever accesses another\'s information. We comply with GDPR and leading data protection regulations. We never share or use your data to train AI models.',
         },
       ],
     },
@@ -522,10 +522,10 @@ export const translations = {
             'Construye un perfil rico de tu empresa: sector, tamaño, modelo de negocio, fase de desarrollo, mercados geográficos, rango de ingresos y competidores. Sube documentos estratégicos o importa el contexto automáticamente desde la URL de tu web.',
         },
         {
-          icon: 'frameworks',
-          title: 'Frameworks Reales de Consultoría',
+          icon: 'security',
+          title: 'Seguridad y Cumplimiento Normativo',
           description:
-            'Cada informe aplica metodologías reconocidas: Business Model Canvas, Porter\'s Five Forces, SWOT, modelización financiera con proyecciones de ROI y benchmarks sectoriales — no texto genérico.',
+            'Tus datos están aislados por empresa y proyecto — ningún cliente accede a la información de otro. Cumplimos con el RGPD y las principales normativas de protección de datos. Nunca compartimos ni usamos tu información para entrenar modelos de IA.',
         },
       ],
     },
