@@ -38,6 +38,7 @@ const VIDEO_ID = import.meta.env.PUBLIC_DEMO_VIDEO_ID ?? '';
             <div class="glow-blob w-72 h-72 bg-indigo-500/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
             <button
               id="demo-play-btn"
+              onclick="if(window.openDemoModal)window.openDemoModal()"
               class="relative z-10 group w-20 h-20 rounded-full bg-indigo-600 hover:bg-indigo-500 shadow-glow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 mb-5"
               aria-label={t.playLabel}
             >
