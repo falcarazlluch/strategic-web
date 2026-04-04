@@ -7,53 +7,54 @@ const YOUTUBE_VIDEO_ID = ''; // e.g. 'dQw4w9WgXcQ'
 // ── CHAPTER TIMESTAMPS (seconds) — update after recording ──────────────────
 const TIMESTAMPS = [0, 45, 90, 135, 170, 230];
 
-const hasVideo = YOUTUBE_VIDEO_ID !== '';
+const APP_URL = import.meta.env.PUBLIC_APP_URL ?? 'https://strategic-z6xl.vercel.app';
 
 const copy = {
   en: {
     title: 'See how it works', close: 'Close', cta: 'See plans',
     noVideoTitle: 'Demo video coming soon',
     noVideoSub: 'We are recording the full walkthrough. Check back shortly.',
-    chapters: [
-      'Company setup', 'Problem definition', 'Strategic intake',
-      'Report type', 'Generation', 'Refine with Aris',
-    ],
+    chapters: ['Company setup','Problem definition','Strategic intake','Report type','Generation','Refine with Aris'],
   },
   es: {
     title: 'Cómo funciona', close: 'Cerrar', cta: 'Ver planes',
     noVideoTitle: 'Vídeo demo próximamente',
     noVideoSub: 'Estamos grabando el vídeo completo. Vuelve pronto.',
-    chapters: [
-      'Config. empresa', 'Definir problema', 'Intake IA',
-      'Tipo informe', 'Generación', 'Retoque con Aris',
-    ],
+    chapters: ['Config. empresa','Definir problema','Intake IA','Tipo informe','Generación','Retoque con Aris'],
   },
 }[lang];
+
+const hasVideo = YOUTUBE_VIDEO_ID !== '';
 ---
 
-<div id="demo-modal-overlay" aria-modal="true" role="dialog" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(6px)">
+<!-- data-* carries config to the script without define:vars -->
+<div
+  id="demo-modal-overlay"
+  data-video-id={YOUTUBE_VIDEO_ID}
+  data-has-video={hasVideo ? '1' : '0'}
+  style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(6px)"
+  aria-modal="true" role="dialog"
+>
 
-  <!-- Desktop panel (hidden on mobile) -->
-  <div id="demo-panel-desktop" style="display:flex;align-items:center;justify-content:center;height:100%;padding:1.5rem">
+  <!-- ── Desktop panel ──────────────────────────────────────────────────── -->
+  <div id="demo-panel-desktop" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem">
     <div style="position:relative;width:100%;max-width:54rem;border-radius:1rem;overflow:hidden;background:#0b1018;border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 80px rgba(0,0,0,0.7)">
 
-      <!-- Header -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:0.875rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.07)">
         <h2 style="color:white;font-weight:700;font-size:1rem;margin:0">{copy.title}</h2>
-        <button id="close-demo-desktop" aria-label={copy.close} style="color:#64748b;background:none;border:none;cursor:pointer;padding:0.25rem;border-radius:0.375rem;line-height:0" onclick="window.closeDemoModal&&window.closeDemoModal()">
+        <button class="demo-close-btn" aria-label={copy.close} style="color:#64748b;background:none;border:none;cursor:pointer;padding:.25rem;border-radius:.375rem;line-height:0">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- Video -->
-      <div style="background:black;width:100%">
+      <div style="background:black">
         {hasVideo
           ? <div id="demo-video-desktop" style="width:100%;aspect-ratio:16/9"></div>
           : <div style="width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:linear-gradient(135deg,rgba(99,102,241,0.1),#0b1018 70%)">
               <div style="width:3.5rem;height:3.5rem;border-radius:9999px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center">
                 <svg width="24" height="24" fill="#818cf8" viewBox="0 0 24 24" style="transform:translateX(2px)"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <div style="text-align:center">
+              <div style="text-align:center;padding:0 2rem">
                 <p style="color:white;font-weight:600;font-size:.875rem;margin:0">{copy.noVideoTitle}</p>
                 <p style="color:#475569;font-size:.75rem;margin:.25rem 0 0">{copy.noVideoSub}</p>
               </div>
@@ -61,18 +62,17 @@ const copy = {
         }
       </div>
 
-      <!-- Chapters + CTA -->
-      <div style="padding:0.75rem 1.25rem;border-top:1px solid rgba(255,255,255,0.07)">
-        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0.375rem;margin-bottom:0.75rem" id="chapters-desktop">
+      <div style="padding:.75rem 1.25rem;border-top:1px solid rgba(255,255,255,0.07)">
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:.375rem;margin-bottom:.75rem">
           {copy.chapters.map((label, i) => (
-            <button class="ch-btn" data-idx={i} data-t={TIMESTAMPS[i]} data-target="desktop" type="button"
-              style="display:flex;flex-direction:column;align-items:center;gap:0.35rem;padding:0.5rem 0.25rem;border-radius:0.5rem;background:rgba(255,255,255,0.04);border:1px solid transparent;cursor:pointer;transition:all .15s">
+            <button class="demo-ch-btn" data-idx={i} data-t={TIMESTAMPS[i]} data-panel="desktop" type="button"
+              style="display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.5rem .25rem;border-radius:.5rem;background:rgba(255,255,255,0.04);border:1px solid transparent;cursor:pointer;transition:all .15s">
               <span class="ch-num" style="width:1.375rem;height:1.375rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;background:rgba(255,255,255,0.06);color:#64748b;flex-shrink:0">{i+1}</span>
               <span class="ch-label" style="font-size:.65rem;font-weight:600;color:#94a3b8;text-align:center;line-height:1.2">{label}</span>
             </button>
           ))}
         </div>
-        <a href="#pricing" onclick="window.closeDemoModal&&window.closeDemoModal()" class="btn-primary" style="width:100%;justify-content:center;font-size:.875rem;padding:.625rem 1rem;text-decoration:none">
+        <a href="#pricing" class="demo-cta-close btn-primary" style="width:100%;justify-content:center;font-size:.875rem;padding:.625rem 1rem;text-decoration:none">
           {copy.cta}
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
@@ -80,17 +80,13 @@ const copy = {
     </div>
   </div>
 
-  <!-- Mobile panel: fullscreen landscape -->
+  <!-- ── Mobile panel ───────────────────────────────────────────────────── -->
   <div id="demo-panel-mobile" style="display:none;position:absolute;inset:0;flex-direction:column;background:#000">
-
-    <!-- Close button -->
-    <button id="close-demo-mobile" aria-label={copy.close} type="button"
-      style="position:absolute;top:.625rem;right:.625rem;z-index:10;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:.5rem;padding:.375rem;color:white;cursor:pointer;line-height:0"
-      onclick="window.closeDemoModal&&window.closeDemoModal()">
+    <button class="demo-close-btn" aria-label={copy.close}
+      style="position:absolute;top:.625rem;right:.625rem;z-index:10;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:.5rem;padding:.375rem;color:white;cursor:pointer;line-height:0">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
 
-    <!-- Video (fills available space) -->
     <div style="flex:1;min-height:0;background:black;display:flex;align-items:center">
       {hasVideo
         ? <div id="demo-video-mobile" style="width:100%;aspect-ratio:16/9"></div>
@@ -103,18 +99,17 @@ const copy = {
       }
     </div>
 
-    <!-- Chapters strip -->
     <div style="flex-shrink:0;background:#0b1018;border-top:1px solid rgba(255,255,255,0.08);padding:.5rem .75rem">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.25rem;margin-bottom:.5rem" id="chapters-mobile">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.25rem;margin-bottom:.5rem">
         {copy.chapters.map((label, i) => (
-          <button class="ch-btn" data-idx={i} data-t={TIMESTAMPS[i]} data-target="mobile" type="button"
+          <button class="demo-ch-btn" data-idx={i} data-t={TIMESTAMPS[i]} data-panel="mobile" type="button"
             style="display:flex;align-items:center;gap:.375rem;padding:.375rem .5rem;border-radius:.5rem;background:rgba(255,255,255,0.04);border:1px solid transparent;cursor:pointer;transition:all .15s;text-align:left">
             <span class="ch-num" style="flex-shrink:0;width:1.25rem;height:1.25rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;background:rgba(255,255,255,0.06);color:#64748b">{i+1}</span>
             <span class="ch-label" style="font-size:.6rem;font-weight:600;color:#94a3b8;line-height:1.2">{label}</span>
           </button>
         ))}
       </div>
-      <a href="#pricing" onclick="window.closeDemoModal&&window.closeDemoModal()" class="btn-primary" style="width:100%;justify-content:center;font-size:.8rem;padding:.5rem;text-decoration:none">
+      <a href="#pricing" class="demo-cta-close btn-primary" style="width:100%;justify-content:center;font-size:.8rem;padding:.5rem;text-decoration:none">
         {copy.cta}
       </a>
     </div>
@@ -122,153 +117,163 @@ const copy = {
 
 </div>
 
-<script define:vars={{ YOUTUBE_VIDEO_ID, TIMESTAMPS, hasVideo }}>
-(function () {
-  const overlay        = document.getElementById('demo-modal-overlay');
-  const panelDesktop   = document.getElementById('demo-panel-desktop');
-  const panelMobile    = document.getElementById('demo-panel-mobile');
-  const chapterBtns    = Array.from(document.querySelectorAll('.ch-btn'));
+<script>
+// Runs as a bundled ES module — deferred, always after DOM is ready.
+// No define:vars needed: config is read from data-* attributes.
 
-  let playerDesktop = null, playerMobile = null;
-  let playerDReady  = false, playerMReady = false;
-  let pendingD = false, pendingM = false;
-  let pollInterval = null;
+const overlay       = document.getElementById('demo-modal-overlay') as HTMLElement | null;
+const panelDesktop  = document.getElementById('demo-panel-desktop')  as HTMLElement | null;
+const panelMobile   = document.getElementById('demo-panel-mobile')   as HTMLElement | null;
+const chapterBtns   = Array.from(document.querySelectorAll<HTMLElement>('.demo-ch-btn'));
 
-  function isMobile() { return window.innerWidth < 768; }
+if (!overlay) throw new Error('DemoModal: overlay not found');
 
-  // ── Expose globally — called by onclick on button ─────────────────────────
-  window.openDemoModal = function () {
-    if (!overlay) return;
-    overlay.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+const VIDEO_ID  = overlay.dataset.videoId  ?? '';
+const HAS_VIDEO = overlay.dataset.hasVideo === '1';
+const TIMESTAMPS = chapterBtns
+  .filter(b => b.dataset.panel === 'desktop')
+  .map(b => parseInt(b.dataset.t ?? '0', 10));
 
-    if (isMobile()) {
-      panelDesktop.style.display = 'none';
-      panelMobile.style.display  = 'flex';
-      if (hasVideo && !playerMobile) initYT('mobile');
-    } else {
-      panelMobile.style.display  = 'none';
-      panelDesktop.style.display = 'flex';
-      if (hasVideo && !playerDesktop) initYT('desktop');
-    }
-    setActive(-1); // reset
-    setActive(0);
-  };
+let playerDesktop: any = null, playerMobile: any = null;
+let playerDReady = false,      playerMReady = false;
+let pendingD = false,          pendingM = false;
+let pollInterval: ReturnType<typeof setInterval> | null = null;
 
-  window.closeDemoModal = function () {
-    if (!overlay) return;
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-    stopPoll();
-    try { if (playerDesktop && playerDReady) playerDesktop.pauseVideo(); } catch(_){}
-    try { if (playerMobile  && playerMReady) playerMobile.pauseVideo();  } catch(_){}
-  };
+const isMobile = () => window.innerWidth < 768;
 
-  // Also listen for the custom event (from any other trigger)
-  window.addEventListener('openDemoModal', window.openDemoModal);
+// ── Open ─────────────────────────────────────────────────────────────────────
+function openModal() {
+  if (!overlay || !panelDesktop || !panelMobile) return;
+  overlay.style.display      = 'block';
+  document.body.style.overflow = 'hidden';
 
-  // Backdrop click
-  overlay?.addEventListener('click', function(e) {
-    if (e.target === overlay) window.closeDemoModal();
+  if (isMobile()) {
+    panelDesktop.style.display = 'none';
+    panelMobile.style.display  = 'flex';
+    if (HAS_VIDEO && !playerMobile) initYT('mobile');
+  } else {
+    panelMobile.style.display  = 'none';
+    panelDesktop.style.display = 'flex';
+    if (HAS_VIDEO && !playerDesktop) initYT('desktop');
+  }
+  setActive(0);
+}
+
+// ── Close ────────────────────────────────────────────────────────────────────
+function closeModal() {
+  if (!overlay) return;
+  overlay.style.display        = 'none';
+  document.body.style.overflow = '';
+  stopPoll();
+  try { if (playerDesktop && playerDReady) playerDesktop.pauseVideo(); } catch (_) {}
+  try { if (playerMobile  && playerMReady) playerMobile.pauseVideo();  } catch (_) {}
+}
+
+// Expose globally so onclick="window.openDemoModal()" always works
+(window as any).openDemoModal  = openModal;
+(window as any).closeDemoModal = closeModal;
+
+// Also support custom event from any trigger
+window.addEventListener('openDemoModal', openModal);
+
+// Backdrop click
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+// Close buttons
+document.querySelectorAll('.demo-close-btn').forEach(btn =>
+  btn.addEventListener('click', closeModal));
+
+// CTA close (navigate to #pricing and close modal)
+document.querySelectorAll('.demo-cta-close').forEach(a =>
+  a.addEventListener('click', closeModal));
+
+// ── YouTube ──────────────────────────────────────────────────────────────────
+function initYT(target: 'desktop' | 'mobile') {
+  if ((window as any).YT?.Player) { createPlayer(target); return; }
+  if (!document.getElementById('yt-api-script')) {
+    const tag = document.createElement('script');
+    tag.id = 'yt-api-script';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  }
+  if (target === 'desktop') pendingD = true; else pendingM = true;
+}
+
+const prevYT = (window as any).onYouTubeIframeAPIReady;
+(window as any).onYouTubeIframeAPIReady = () => {
+  if (prevYT) prevYT();
+  if (pendingD) { pendingD = false; createPlayer('desktop'); }
+  if (pendingM) { pendingM = false; createPlayer('mobile'); }
+};
+
+function createPlayer(target: 'desktop' | 'mobile') {
+  const id = target === 'desktop' ? 'demo-video-desktop' : 'demo-video-mobile';
+  const container = document.getElementById(id);
+  if (!container) return;
+  if (target === 'desktop' && playerDesktop) return;
+  if (target === 'mobile'  && playerMobile)  return;
+
+  const div = document.createElement('div');
+  div.style.cssText = 'width:100%;height:100%';
+  container.appendChild(div);
+
+  const p = new (window as any).YT.Player(div, {
+    videoId: VIDEO_ID, width: '100%', height: '100%',
+    playerVars: { autoplay: 1, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1 },
+    events: {
+      onReady: () => { if (target === 'desktop') playerDReady = true; else playerMReady = true; },
+      onStateChange: (e: any) => { if (e.data === 1) startPoll(); else stopPoll(); },
+    },
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') window.closeDemoModal();
+  if (target === 'desktop') playerDesktop = p; else playerMobile = p;
+}
+
+// ── Chapters ─────────────────────────────────────────────────────────────────
+chapterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const t      = parseInt(btn.dataset.t   ?? '0', 10);
+    const idx    = parseInt(btn.dataset.idx ?? '0', 10);
+    const panel  = btn.dataset.panel as 'desktop' | 'mobile';
+    const player = panel === 'desktop' ? playerDesktop : playerMobile;
+    const ready  = panel === 'desktop' ? playerDReady  : playerMReady;
+    if (player && ready) { player.seekTo(t, true); player.playVideo(); }
+    setActive(idx);
   });
+});
 
-  // ── YouTube ───────────────────────────────────────────────────────────────
-  function initYT(target) {
-    if (window.YT && window.YT.Player) { createPlayer(target); return; }
-    if (!document.getElementById('yt-api-script')) {
-      const tag = document.createElement('script');
-      tag.id = 'yt-api-script';
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(tag);
-    }
-    if (target === 'desktop') pendingD = true;
-    else pendingM = true;
-  }
+function startPoll() {
+  stopPoll();
+  pollInterval = setInterval(() => {
+    const player = isMobile() ? playerMobile : playerDesktop;
+    const ready  = isMobile() ? playerMReady : playerDReady;
+    if (!player || !ready) return;
+    try {
+      const t = player.getCurrentTime();
+      let active = 0;
+      for (let i = TIMESTAMPS.length - 1; i >= 0; i--) {
+        if (t >= TIMESTAMPS[i]) { active = i; break; }
+      }
+      setActive(active);
+    } catch (_) {}
+  }, 500);
+}
 
-  const prev = window.onYouTubeIframeAPIReady;
-  window.onYouTubeIframeAPIReady = function() {
-    if (prev) prev();
-    if (pendingD) { pendingD = false; createPlayer('desktop'); }
-    if (pendingM) { pendingM = false; createPlayer('mobile'); }
-  };
+function stopPoll() {
+  if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+}
 
-  function createPlayer(target) {
-    const containerId = target === 'desktop' ? 'demo-video-desktop' : 'demo-video-mobile';
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    if (target === 'desktop' && playerDesktop) return;
-    if (target === 'mobile'  && playerMobile)  return;
-
-    const div = document.createElement('div');
-    div.style.cssText = 'width:100%;height:100%';
-    container.appendChild(div);
-
-    const p = new YT.Player(div, {
-      videoId: YOUTUBE_VIDEO_ID,
-      width: '100%', height: '100%',
-      playerVars: { autoplay: 1, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1 },
-      events: {
-        onReady: function() {
-          if (target === 'desktop') playerDReady = true;
-          else playerMReady = true;
-        },
-        onStateChange: function(e) {
-          if (e.data === 1) startPoll(); else stopPoll();
-        },
-      },
-    });
-    if (target === 'desktop') playerDesktop = p;
-    else playerMobile = p;
-  }
-
-  // ── Chapters ──────────────────────────────────────────────────────────────
-  chapterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const t   = parseInt(btn.dataset.t   || '0', 10);
-      const idx = parseInt(btn.dataset.idx || '0', 10);
-      const target = btn.dataset.target;
-      const player = target === 'desktop' ? playerDesktop : playerMobile;
-      const ready  = target === 'desktop' ? playerDReady  : playerMReady;
-      if (player && ready) { player.seekTo(t, true); player.playVideo(); }
-      setActive(idx);
-    });
+function setActive(idx: number) {
+  chapterBtns.forEach((btn, i) => {
+    const num   = btn.querySelector<HTMLElement>('.ch-num');
+    const label = btn.querySelector<HTMLElement>('.ch-label');
+    const on    = i === idx || i === idx + chapterBtns.length / 2; // highlight both panels
+    // Only highlight within same panel group
+    const sameIdx = parseInt(btn.dataset.idx ?? '-1', 10) === idx;
+    btn.style.background  = sameIdx ? 'rgba(99,102,241,0.12)' : 'rgba(255,255,255,0.04)';
+    btn.style.borderColor = sameIdx ? 'rgba(99,102,241,0.3)'  : 'transparent';
+    if (num)   { num.style.background = sameIdx ? '#6366f1' : 'rgba(255,255,255,0.06)'; num.style.color = sameIdx ? 'white' : '#64748b'; }
+    if (label) { label.style.color = sameIdx ? 'white' : '#94a3b8'; }
   });
-
-  function startPoll() {
-    stopPoll();
-    pollInterval = setInterval(function() {
-      const mobile = isMobile();
-      const player = mobile ? playerMobile : playerDesktop;
-      const ready  = mobile ? playerMReady : playerDReady;
-      if (!player || !ready) return;
-      try {
-        const t = player.getCurrentTime();
-        let active = 0;
-        for (let i = TIMESTAMPS.length - 1; i >= 0; i--) {
-          if (t >= TIMESTAMPS[i]) { active = i; break; }
-        }
-        setActive(active);
-      } catch(_) {}
-    }, 500);
-  }
-
-  function stopPoll() {
-    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
-  }
-
-  function setActive(idx) {
-    chapterBtns.forEach(function(btn, i) {
-      const num   = btn.querySelector('.ch-num');
-      const label = btn.querySelector('.ch-label');
-      const on    = i === idx;
-      btn.style.background  = on ? 'rgba(99,102,241,0.12)' : 'rgba(255,255,255,0.04)';
-      btn.style.borderColor = on ? 'rgba(99,102,241,0.3)'  : 'transparent';
-      if (num)   { num.style.background = on ? '#6366f1' : 'rgba(255,255,255,0.06)'; num.style.color = on ? 'white' : '#64748b'; }
-      if (label) { label.style.color = on ? 'white' : '#94a3b8'; }
-    });
-  }
-})();
+}
 </script>
