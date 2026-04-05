@@ -79,7 +79,7 @@ export const translations = {
       badge: 'Full consulting lifecycle',
       headline: 'Everything a consultant does. In minutes.',
       subheadline:
-        'Strategic Decision replicates the full methodology of a strategy consulting engagement — from problem framing to boardroom presentation.',
+        'Strategic Decision replicates the full methodology of a strategy consulting engagement — from problem framing to solution delivery.',
       items: [
         {
           icon: 'brain',
@@ -489,7 +489,7 @@ export const translations = {
       badge: 'Ciclo completo de consultoría',
       headline: 'Todo lo que hace una consultora. En minutos.',
       subheadline:
-        'Strategic Decision replica la metodología completa de un proyecto de consultoría estratégica — desde el planteamiento del problema hasta la presentación al consejo.',
+        'Strategic Decision replica la metodología completa de un proyecto de consultoría estratégica — desde el planteamiento del problema hasta la presentación de las soluciones.',
       items: [
         {
           icon: 'brain',

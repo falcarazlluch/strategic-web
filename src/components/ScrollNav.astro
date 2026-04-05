@@ -27,54 +27,7 @@ const sections = lang === 'es'
     ];
 ---
 
-<!-- Floating scroll-to-next button (desktop) -->
-<div
-  id="scroll-nav-btn"
-  aria-hidden="true"
-  style="
-    position:fixed;
-    bottom:5.5rem;
-    left:50%;
-    transform:translateX(-50%) translateY(12px);
-    z-index:40;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity 0.35s ease, transform 0.35s ease;
-  "
-  class="hidden sm:block"
->
-  <button
-    id="scroll-nav-inner"
-    style="
-      display:flex;
-      align-items:center;
-      gap:0.5rem;
-      background:rgba(99,102,241,0.92);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      color:white;
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:9999px;
-      padding:0.5rem 1.1rem 0.5rem 1.25rem;
-      font-size:0.8rem;
-      font-weight:600;
-      font-family:inherit;
-      cursor:pointer;
-      box-shadow:0 8px 28px rgba(99,102,241,0.4);
-      white-space:nowrap;
-      transition:background 0.2s ease, box-shadow 0.2s ease;
-    "
-    onmouseenter="this.style.background='rgba(79,70,229,0.95)'"
-    onmouseleave="this.style.background='rgba(99,102,241,0.92)'"
-  >
-    <span id="scroll-nav-label">–</span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
-  </button>
-</div>
-
-<!-- Mobile scroll-to-next bar (full-width, bottom, solid bg) -->
+<!-- Scroll-to-next bar (full-width, bottom, solid bg — all screen sizes) -->
 <div
   id="scroll-nav-mobile"
   aria-hidden="true"
@@ -96,7 +49,7 @@ const sections = lang === 'es'
     align-items:center;
     justify-content:center;
   "
-  class="sm:hidden"
+
 >
   <button
     id="scroll-nav-mobile-inner"
@@ -127,13 +80,9 @@ const sections = lang === 'es'
 
 <script define:vars={{ sections }}>
 (function () {
-  const btn     = document.getElementById('scroll-nav-btn');
-  const inner   = document.getElementById('scroll-nav-inner');
-  const labelEl = document.getElementById('scroll-nav-label');
-
-  const mobileBar   = document.getElementById('scroll-nav-mobile');
-  const mobileInner = document.getElementById('scroll-nav-mobile-inner');
-  const mobileLabelEl = document.getElementById('scroll-nav-mobile-label');
+  const bar      = document.getElementById('scroll-nav-mobile');
+  const barInner = document.getElementById('scroll-nav-mobile-inner');
+  const labelEl  = document.getElementById('scroll-nav-mobile-label');
 
   // Build ordered list of section elements that exist in DOM
   const sectionEls = sections
@@ -143,41 +92,21 @@ const sections = lang === 'es'
   if (sectionEls.length === 0) return;
 
   function showBtn(label, targetId) {
-    // Desktop
-    if (btn && inner && labelEl) {
-      if (labelEl.textContent !== label) labelEl.textContent = label;
-      if (inner.dataset.target !== targetId) inner.dataset.target = targetId;
-      btn.style.opacity = '1';
-      btn.style.transform = 'translateX(-50%) translateY(0)';
-      btn.style.pointerEvents = 'auto';
-      btn.setAttribute('aria-hidden', 'false');
-    }
-    // Mobile
-    if (mobileBar && mobileInner && mobileLabelEl) {
-      if (mobileLabelEl.textContent !== label) mobileLabelEl.textContent = label;
-      if (mobileInner.dataset.target !== targetId) mobileInner.dataset.target = targetId;
-      mobileBar.style.opacity = '1';
-      mobileBar.style.transform = 'translateY(0)';
-      mobileBar.style.pointerEvents = 'auto';
-      mobileBar.setAttribute('aria-hidden', 'false');
-    }
+    if (!bar || !barInner || !labelEl) return;
+    if (labelEl.textContent !== label) labelEl.textContent = label;
+    if (barInner.dataset.target !== targetId) barInner.dataset.target = targetId;
+    bar.style.opacity = '1';
+    bar.style.transform = 'translateY(0)';
+    bar.style.pointerEvents = 'auto';
+    bar.setAttribute('aria-hidden', 'false');
   }
 
   function hideBtn() {
-    // Desktop
-    if (btn) {
-      btn.style.opacity = '0';
-      btn.style.transform = 'translateX(-50%) translateY(12px)';
-      btn.style.pointerEvents = 'none';
-      btn.setAttribute('aria-hidden', 'true');
-    }
-    // Mobile
-    if (mobileBar) {
-      mobileBar.style.opacity = '0';
-      mobileBar.style.transform = 'translateY(8px)';
-      mobileBar.style.pointerEvents = 'none';
-      mobileBar.setAttribute('aria-hidden', 'true');
-    }
+    if (!bar) return;
+    bar.style.opacity = '0';
+    bar.style.transform = 'translateY(8px)';
+    bar.style.pointerEvents = 'none';
+    bar.setAttribute('aria-hidden', 'true');
   }
 
   function update() {
@@ -204,15 +133,9 @@ const sections = lang === 'es'
     }
   }
 
-  // Click → smooth scroll to target (desktop)
-  if (inner) inner.addEventListener('click', () => {
-    const el = document.getElementById(inner.dataset.target ?? '');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // Click → smooth scroll to target (mobile)
-  if (mobileInner) mobileInner.addEventListener('click', () => {
-    const el = document.getElementById(mobileInner.dataset.target ?? '');
+  // Click → smooth scroll to target
+  if (barInner) barInner.addEventListener('click', () => {
+    const el = document.getElementById(barInner.dataset.target ?? '');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
