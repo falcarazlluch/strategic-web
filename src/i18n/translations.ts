@@ -52,6 +52,13 @@ export const translations = {
           tags: ['Growth strategy', 'Market positioning', 'M&A readiness'],
         },
         {
+          icon: 'coo',
+          title: 'COO & Operations Directors',
+          description:
+            'Operational efficiency, process optimisation, organisational scalability, capacity management, and execution plans with measurable milestones.',
+          tags: ['Operational efficiency', 'Scalability', 'Execution'],
+        },
+        {
           icon: 'cfo',
           title: 'CFO & Finance Directors',
           description:
@@ -60,10 +67,31 @@ export const translations = {
         },
         {
           icon: 'cto',
-          title: 'CTO & Product Leaders',
+          title: 'CTO & Technology Directors',
           description:
-            'Technology strategy, build-vs-buy decisions, platform scalability, digital transformation, and tech-driven competitive advantage.',
-          tags: ['Tech strategy', 'Digital transformation', 'Product roadmap'],
+            'Technology strategy, build-vs-buy decisions, technical debt, platform scalability, and digital transformation. For those leading engineering teams and infrastructure.',
+          tags: ['Tech strategy', 'Digital transformation', 'Architecture'],
+        },
+        {
+          icon: 'cmo',
+          title: 'CMO & Marketing Directors',
+          description:
+            'Customer segmentation, brand positioning, demand generation, go-to-market strategy, and customer lifetime value.',
+          tags: ['Go-to-market', 'Brand positioning', 'Demand generation'],
+        },
+        {
+          icon: 'cpo',
+          title: 'CPO & Product Managers',
+          description:
+            'Product strategy, roadmap prioritisation, product-market fit, build-vs-buy trade-offs, and adoption metrics. From squad to board.',
+          tags: ['Product roadmap', 'Product-market fit', 'Adoption'],
+        },
+        {
+          icon: 'chro',
+          title: 'CHRO & HR Directors',
+          description:
+            'Talent strategy, organisational design, leadership development, corporate culture, and workforce planning aligned to business strategy.',
+          tags: ['Talent strategy', 'Org design', 'Culture'],
         },
         {
           icon: 'consultant',
@@ -462,6 +490,13 @@ export const translations = {
           tags: ['Estrategia de crecimiento', 'Posicionamiento', 'M&A'],
         },
         {
+          icon: 'coo',
+          title: 'COO y Directores de Operaciones',
+          description:
+            'Eficiencia operativa, optimización de procesos, escalabilidad organizativa, gestión de capacidad y planes de ejecución con hitos medibles.',
+          tags: ['Eficiencia operativa', 'Escalabilidad', 'Ejecución'],
+        },
+        {
           icon: 'cfo',
           title: 'CFO y Directores Financieros',
           description:
@@ -470,10 +505,31 @@ export const translations = {
         },
         {
           icon: 'cto',
-          title: 'CTO y Líderes de Producto',
+          title: 'CTO y Directores de Tecnología',
           description:
-            'Estrategia tecnológica, decisiones build-vs-buy, escalabilidad de plataforma, transformación digital y ventaja competitiva basada en tecnología.',
-          tags: ['Estrategia tech', 'Transformación digital', 'Roadmap de producto'],
+            'Estrategia tecnológica, decisiones build-vs-buy, deuda técnica, escalabilidad de plataforma y transformación digital. Para quien lidera la infraestructura y los equipos de ingeniería.',
+          tags: ['Estrategia tech', 'Transformación digital', 'Arquitectura'],
+        },
+        {
+          icon: 'cmo',
+          title: 'CMO y Directores de Marketing',
+          description:
+            'Segmentación de clientes, posicionamiento de marca, generación de demanda, estrategia go-to-market y valor del ciclo de vida del cliente.',
+          tags: ['Go-to-market', 'Posicionamiento de marca', 'Demanda'],
+        },
+        {
+          icon: 'cpo',
+          title: 'CPO y Product Managers',
+          description:
+            'Estrategia de producto, priorización del roadmap, product-market fit, decisiones build-vs-buy y métricas de adopción. Del equipo al consejo.',
+          tags: ['Roadmap de producto', 'Product-market fit', 'Adopción'],
+        },
+        {
+          icon: 'chro',
+          title: 'CHRO y Directores de RRHH',
+          description:
+            'Estrategia de talento, diseño organizativo, desarrollo de liderazgo, cultura corporativa y planificación de plantilla alineada con la estrategia.',
+          tags: ['Estrategia de talento', 'Diseño organizativo', 'Cultura'],
         },
         {
           icon: 'consultant',
